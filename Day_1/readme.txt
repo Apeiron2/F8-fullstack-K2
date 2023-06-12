@@ -1,0 +1,1 @@
+tìm hiểu thêm về entity (liên quan đến bảo mật)
