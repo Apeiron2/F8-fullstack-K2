@@ -1,0 +1,41 @@
+nav>div{
+    display: inline-block;
+    width: fit-content;
+    border: none;
+    color: rgb(174, 120, 12);
+}
+nav{
+    border: 1px solid rgb(174, 120, 12);
+    border-radius: 1px;
+    margin-top: 50px;
+    width: fit-content;
+}
+nav>div:hover{
+    background-color: rgb(174, 120, 12);
+    color:white;
+}
+nav>div>p{
+    display: inline-block;
+    width: fit-content;
+    padding: 0 50px;
+}
+main{
+    margin-top: 50px;
+    height: 500px;
+}
+.info{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 40%;
+    height: 100%;
+    vertical-align: top;
+    padding: 50px;
+    background-color:rgb(234, 234, 234);
+}
+.map{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 60%;
+    height: 100%;
+    margin-left: -4px;
+}

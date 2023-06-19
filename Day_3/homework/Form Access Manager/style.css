@@ -1,0 +1,58 @@
+form div{
+    margin-top: 10px;
+}
+label{
+    display: inline-block;
+    vertical-align: top;
+    width:110px;
+}
+.choose-role{
+    display: inline-block;
+}
+.choose-sign-on{
+    display: inline-block;
+}
+input{
+    border:1px solid rgb(0, 132, 255);
+}
+input[type="checkbox"] {
+    display: none;
+  }
+  
+  input[type="checkbox"] + label:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgb(0, 123, 255); 
+    border-radius: 3px; 
+  }
+
+  
+  input[type="checkbox"]:checked + label:before {
+    content: "";
+    background-color: rgb(0, 123, 255); 
+  }
+
+input[type="radio"]{
+    display: none;
+}
+    input[type="radio"] + label:before{
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 1px solid rgb(0, 123, 255);
+        border-radius: 50%;
+    }
+    input[type="radio"]:checked +label:before{
+        content: "";
+        background-color: rgb(0, 123, 255);
+    }
+select{
+    border:1px solid rgb(0, 132, 255);
+}
+button{
+    border: 1px solid rgb(0, 132, 255);
+    border-radius: 3px;
+}

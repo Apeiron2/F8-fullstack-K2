@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="../fontawesome-free-6.4.0-web/css/fontawesome.min.css"
+    />
+    <title>Form Access Manager</title>
+  </head>
+  <body>
+    <form
+      action="https://api-gateway.fullstack.edu.vn/action_page.php"
+      method="post"
+    >
+      <div class="user-name">
+        <label for="user-name">Username:</label>
+        <input type="text" name="user-name" id="user-name" />
+      </div>
+      <div class="password">
+        <label for="pass">Password:</label>
+        <input type="password" name="password" id="pass" />
+      </div>
+      <div class="city">
+        <label for="city">City of Employment:</label>
+        <input type="text" name="city" id="city" />
+      </div>
+      <div class="server">
+        <label for="server">Web server:</label>
+        <select name="server" id="server">
+          <option disabled selected>---Choose a server---</option>
+          <option value="1">Server 1</option>
+          <option value="2">Server 2</option>
+          <option value="3">Server 3</option>
+        </select>
+      </div>
+      <div class="role">
+        <label>Please specify your role:</label>
+        <div class="choose-role">
+          <input
+            type="radio"
+            name="role"
+            id="admin"
+            value="admin"
+            required
+          /><label for="admin"> Admin</label><br />
+          <input
+            type="radio"
+            name="role"
+            id="engineer"
+            value="engineer"
+            required
+          /><label for="engineer"> Engineer</label><br />
+          <input
+            type="radio"
+            name="role"
+            id="manager"
+            value="manager"
+            required
+          /><label for="manager"> Manager</label><br />
+          <input
+            type="radio"
+            name="role"
+            id="guest"
+            value="guest"
+            required
+          /><label for="guest"> Guest</label>
+        </div>
+      </div>
+      <div class="sign-in">
+        <label>Single Sign-on to the following:</label>
+        <div class="choose-sign-on">
+          <input type="checkbox" name="sign-on" id="mail" /><label for="mail">
+            Mail</label
+          ><br />
+          <input type="checkbox" name="sign-on" id="payroll" /><label
+            for="payroll"
+          >
+            Payroll</label
+          ><br />
+          <input type="checkbox" name="sign-on" id="self-service" /><label
+            for="self-service"
+          >
+            Self-service</label
+          >
+        </div>
+      </div>
+      <button style="margin-left: 110px; margin-top: 20px">Login</button>
+      <button type="reset">Reset</button>
+    </form>
+  </body>
+</html>
