@@ -1,0 +1,29 @@
+/* ul li a[href^="http://fullstack.edu.vn"]
+{
+  color: red;
+} */
+
+/* ul li a[href*="fullstack.edu.vn"] {
+  color: red;
+} */
+
+/* #item-1 {
+  color: red;
+}
+#item-2 {
+  color: blue;
+}
+#item-3 {
+  color: violet;
+}
+#item-4 {
+  color: yellow;
+}
+#item-5 {
+  color: green;
+}
+[id^="item-"] {
+  display: block;
+  margin: 20px;
+  border: 1px solid black;
+} */

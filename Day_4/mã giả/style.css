@@ -1,0 +1,29 @@
+/* .title::before {
+  content: "A";
+} */
+/* .para::selection {
+  color: red;
+  background-color: black;
+} */
+
+/* button:active {
+  background-color: green;
+} */
+/* button:focus {
+  background-color: green;
+}
+h2 {
+  display: block;
+}
+h2:focus {
+  background-color: green;
+} */
+
+h3:first-of-type {
+  color: red;
+}
+h3:last-child {
+  color: green;
+}
+
+/* muốn focus những thành phần không sử dụng được focus thì ta thêm thuộc tính tabindex="" */

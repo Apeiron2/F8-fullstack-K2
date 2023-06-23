@@ -1,0 +1,74 @@
+:root {
+  --decor-color: rgb(57, 37, 22);
+  --text-color: rgb(106, 91, 77);
+  --button-color: #af322a;
+  --width-input: 310px;
+  --height-input: 50px;
+}
+@font-face {
+  font-family: big-title;
+  src: url("./style/font/Alfa_Slab_One/AlfaSlabOne-Regular.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: small-title;
+  src: url("./style/font/Bebas_Neue/BebasNeue-Regular.ttf") format("truetype");
+}
+main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.small-title {
+  display: block;
+  font-family: small-title;
+  color: var(--decor-color);
+  font-size: 22px;
+}
+.big-title {
+  display: block;
+  font-family: big-title;
+  color: var(--decor-color);
+  font-size: 44px;
+  margin-top: -10px;
+}
+div {
+  display: block;
+  text-align: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 650px;
+  height: 250px;
+  margin-left: 425px;
+}
+input {
+  font-family: small-title;
+  color: var(--text-color);
+  width: var(--width-input);
+  height: var(--height-input);
+  border: 1px solid rgb(223, 223, 223);
+}
+button {
+  font-family: big-title;
+  color: white;
+  width: var(--width-input);
+  height: var(--height-input);
+  border: none;
+  background-color: var(--button-color);
+}
+input,
+button {
+  display: block;
+  box-sizing: border-box;
+  margin: 10px;
+  border-radius: 2px;
+  font-size: 14px;
+}
+input::placeholder {
+  padding-left: 10px;
+  color: var(--text-color);
+  font-size: 16px;
+}

@@ -1,0 +1,9 @@
+:root {
+  --decor-color: rgb(57, 37, 22);
+  --text-color: rgb(106, 91, 77);
+  --button-color: #af322a;
+  --width-input: 310px;
+  --height-input: 50px;
+}
+p + p {
+}

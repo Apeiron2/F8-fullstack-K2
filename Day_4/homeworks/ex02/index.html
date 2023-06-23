@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form đặt bàn</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <p class="small-title">RESERVATION</p>
+      <p class="big-title">Book your table</p>
+      <div>
+        <form
+          action="https://api-gateway.fullstack.edu.vn/action_page.php"
+          method="post"
+        >
+          <input type="text" placeholder="NAME" /><input
+            type="text"
+            placeholder="DATE"
+          /><input type="number" placeholder="PEOPLE" /><input
+            type="email"
+            placeholder="EMAIL"
+          /><input type="text" placeholder="TIME" />
+          <button><span>Find A Table</span></button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

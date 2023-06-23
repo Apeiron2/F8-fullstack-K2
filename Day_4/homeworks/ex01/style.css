@@ -1,0 +1,59 @@
+html {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+main {
+  display: block;
+  box-sizing: border-box;
+  width: 720px;
+  height: 140px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(51, 68, 85);
+}
+main:hover input::placeholder {
+  color: rgb(252, 164, 0);
+}
+main:hover input {
+  background-color: #ddd;
+}
+main:hover button {
+  color: white;
+  background-color: rgb(252, 164, 0);
+}
+div {
+  padding: 1px 20px;
+}
+.header {
+  font-size: 20px;
+}
+p > span {
+  color: rgb(252, 164, 0);
+}
+.header + p {
+  display: block;
+  font-size: 12px;
+  margin-top: -10px;
+}
+input {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 30px;
+  width: 180px;
+  border: none;
+  border-radius: 2px;
+}
+input::placeholder {
+  padding-left: 10px;
+}
+button {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 30px;
+  width: 150px;
+  color: black;
+  background-color: rgb(248, 219, 53);
+  border: none;
+  border-radius: 2px;
+  font-size: 12px;
+}
