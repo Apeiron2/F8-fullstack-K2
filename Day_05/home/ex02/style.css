@@ -1,0 +1,33 @@
+.nav {
+  display: block;
+  width: 100vw;
+  background-color: rgb(216, 88, 36);
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 4px;
+}
+label::before {
+  content: "+ ";
+  font-size: larger;
+  color: white;
+  padding-left: 10px;
+}
+input {
+  display: none;
+}
+input ~ p {
+  display: none;
+  padding-left: 15px;
+}
+#set-color:checked ~ p,
+#use-color:checked ~ p,
+#change-icon:checked ~ p {
+  display: block;
+}
+
+#set-color:checked ~ label::before,
+#use-color:checked ~ label::before,
+#change-icon:checked ~ label::before {
+  content: "- ";
+}

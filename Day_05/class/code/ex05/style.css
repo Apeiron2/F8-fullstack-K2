@@ -1,0 +1,6 @@
+.content {
+  width: 0px;
+  height: 0px;
+  border: 50px solid;
+  border-color: blue blue transparent blue;
+}

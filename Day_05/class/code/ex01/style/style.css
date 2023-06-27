@@ -1,0 +1,15 @@
+html {
+  font-size: 16px;
+}
+body {
+  font-size: 1rem;
+}
+.box {
+  font-size: 1.1em;
+}
+.box .content {
+  font-size: 1.1em;
+}
+body .content p {
+  font-size: 1.5em;
+}

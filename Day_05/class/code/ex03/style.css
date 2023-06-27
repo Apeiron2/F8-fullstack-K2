@@ -1,0 +1,14 @@
+p {
+  word-spacing: 10px;
+  letter-spacing: rem;
+}
+.title h2 a {
+  text-decoration: none;
+  text-transform: lowercase;
+}
+.text {
+  word-wrap: break-word;
+}
+.lorem {
+  text-indent: 10px;
+}

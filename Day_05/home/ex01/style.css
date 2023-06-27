@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+@font-face {
+  font-family: lato;
+  src: url("../font/Lato/Lato-Regular.ttf");
+}
+h1 {
+  font-family: Dancing Script;
+  color: rgb(54, 54, 54);
+}
+p {
+  font-family: lato;
+}
+p > span {
+  color: red;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 50px;
+  width: 500px;
+  margin-bottom: 20px;
+  border-radius: 0px;
+  border: 1px solid rgb(133, 129, 126);
+  position: relative;
+  padding-left: 60px;
+}
+select {
+  box-sizing: border-box;
+  width: 500px;
+  border-radius: 0px;
+  border: 1px solid rgb(133, 129, 126);
+  color: rgb(133, 129, 126);
+  display: inline-block;
+  height: 50px;
+  padding-left: 60px;
+}
+
+textarea {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 500px;
+  height: 120px;
+  border: 1px solid rgb(133, 129, 126);
+  border-radius: 0px;
+  font-family: lato;
+  padding-left: 60px;
+  padding-top: 10px;
+  margin-top: 20px;
+}
+label {
+  color: rgb(133, 129, 126);
+  float: left;
+}
+button {
+  width: fit-content;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 0px;
+  background-color: rgb(234, 63, 51);
+  color: #fff;
+  float: right;
+}
+label::before {
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgb(133, 129, 126);
+  vertical-align: text-bottom;
+  color: black;
+}
+#send-copy:checked ~ label::before {
+  content: "✔";
+}
+.submit {
+  display: block;
+  width: 500px;
+  margin-top: 20px;
+  text-align: center;
+}
+/* Làm icon đầu input */
+i {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(133, 129, 126);
+  vertical-align: top;
+  text-align: center;
+  margin-right: -4px;
+  padding-top: 20px;
+}
+.mess i {
+  margin-top: 20px;
+  height: 120px;
+}
+
+#name:focus,
+#mail:focus,
+#tel:focus,
+#subject:focus,
+textarea:focus {
+  border-radius: none;
+  border: 2px solid black;
+  outline: none;
+}
+#name:focus ~ i,
+#mail:focus ~ i,
+#tel:focus ~ i,
+#subject:focus ~ i,
+textarea:focus ~ i {
+  background-color: black;
+  color: rgb(133, 129, 126);
+}
+.name i,
+.mail i,
+.tel i,
+select + i,
+.mess i {
+  position: relative;
+  margin-left: -504px;
+}
+/* Làm thông báo khi focus */
+.noti > p {
+  width: fit-content;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+.noti > div {
+  display: block;
+  background-color: transparent;
+  height: 0px;
+  width: 0px;
+  border: 10px solid;
+  border-color: black transparent transparent transparent;
+  position: relative;
+  margin-top: -20px;
+  margin-left: 20px;
+}
+.noti {
+  position: absolute;
+  margin-top: -135px;
+  margin-left: 50px;
+  display: none;
+}
+#name:focus ~ .noti {
+  display: block;
+}

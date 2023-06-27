@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="../../../fontawesome-free-6.4.0-web/css/all.min.css"
+    />
+    <title>Bài 1</title>
+  </head>
+  <body>
+    <main>
+      <h1>Hey there</h1>
+      <p>
+        <span>We'd like to hear from you.</span> Send us your message or just
+        say hy with our <br />
+        contact form or directly via phone, we love to chat.
+      </p>
+      <form action="">
+        <div class="name">
+          <input class="input" type="text" placeholder="Your name" id="name" />
+          <i class="fa-solid fa-user"></i>
+          <div class="noti">
+            <p>Enter your name</p>
+            <div></div>
+          </div>
+        </div>
+        <div class="mail">
+          <input
+            class="input"
+            type="mail"
+            placeholder="your@domain.com"
+            id="mail"
+          />
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="tel">
+          <input class="input" type="tel" placeholder="+44 00 123" id="tel" />
+          <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+        <div class="subject">
+          <select class="input" name="subject" id="subject">
+            <option disabled selected><span>Subject</span></option>
+          </select>
+          <i class="fa-solid fa-book"></i>
+        </div>
+        <div class="mess">
+          <textarea name="message" placeholder="Message"></textarea>
+          <i class="fa-solid fa-message"></i>
+        </div>
+        <div class="submit">
+          <input style="display: none" type="checkbox" id="send-copy" /><label
+            for="send-copy"
+          >
+            Send me a copy of this message</label
+          >
+          <button>SEND</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

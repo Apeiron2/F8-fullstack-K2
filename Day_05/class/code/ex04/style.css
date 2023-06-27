@@ -1,0 +1,19 @@
+body {
+  /* height: 2000px;
+  background-color: aqua;
+  background-image: url("https://images2.thanhnien.vn/Uploaded/baovinh/2022_07_12/jameswebb-3333.png");
+  background-repeat: no-repeat;
+  background-position: -500px 50%;
+  background-size: 50%;
+  background-attachment: fixed; */
+  background: aqua
+    url("../../img/12451168-Geocentric-model-of-the-universe-illustration.jpg")
+    no-repeat left top / cover fixed;
+}
+/* background: color image repeat positon/size attachment */
+.btn-wrap {
+  text-align: center;
+}
+.box {
+  background-color: antiquewhite;
+}
