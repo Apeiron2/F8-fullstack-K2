@@ -152,3 +152,18 @@ select + i,
 #name:focus ~ .noti {
   display: block;
 }
+.name:hover .noti {
+  display: block;
+}
+.name {
+  position: relative;
+}
+.name .icon_input,
+.name .icon_input {
+  position: absolute;
+  top: 33%;
+  left: 480px;
+}
+#name:focus ~ .icon_input {
+  display: none;
+}
