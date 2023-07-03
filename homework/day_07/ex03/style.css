@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: Asap;
+}
+@font-face {
+  font-family: Asap;
+  src: url("../ex01/font/Asap.ttf");
+}
+body {
+  display: block;
+  width: fit-content;
+  margin: 5px auto;
+  text-align: center;
+}
+header {
+  color: #5e5346;
+}
+h2 {
+  display: inline-block;
+}
+hr {
+  display: inline-block;
+  width: 60%;
+  vertical-align: baseline;
+  background-color: gray;
+}
+.provinces {
+  margin: 20px 0px;
+}
+.provinces li {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 99px;
+  background-color: #e4e4e4;
+  text-align: center;
+  margin: 0px 10px;
+}
+.provinces li i {
+  display: block;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.provinces li:hover {
+  background-color: #ae7b37;
+  color: white;
+}
+.district {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+.district li {
+  display: inline-block;
+  width: 30%;
+  height: 300px;
+  margin: 10px;
+  border-radius: 5px;
+  color: white;
+  position: relative;
+}
+.district li:nth-of-type(1) {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://nasaland.vn/wp-content/uploads/2022/09/Quan-2-1.jpg");
+}
+.district li:nth-of-type(2) {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://smartland.vn/wp-content/uploads/2021/10/celesta-rise-nam-lien-ke-phu-my-hung.jpg");
+}
+.district li:nth-of-type(3) {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://vcdn-kinhdoanh.vnecdn.net/2021/01/04/Q1-8794-1609753342.jpg");
+}
+.district li:nth-of-type(4) {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://file4.batdongsan.com.vn/2021/03/25/JGcIp0rf/20210325110910-a0b1.jpg");
+}
+.district li:nth-of-type(5) {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://vcdn-vnexpress.vnecdn.net/2020/12/09/d2a763fc9c216d7f3430-1911-1607-8606-7187-1607504629.jpg");
+}
+.district li:nth-of-type(6) {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://images2.thanhnien.vn/Uploaded/dongns/2022_12_21/binh-chanh-8829.jpg");
+}
+.district li h2 {
+  position: absolute;
+  filter: brightness(1);
+  top: 40px;
+  left: 20px;
+}
+.district li p {
+  position: absolute;
+  top: calc(100% - 40px);
+  left: 20px;
+  text-shadow: 1px 1px black;
+}
+.district li p span {
+  font-weight: bold;
+}

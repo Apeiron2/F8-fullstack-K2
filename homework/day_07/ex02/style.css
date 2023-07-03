@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+@font-face {
+  font-family: Asap;
+  src: url("../ex01/font/Asap.ttf");
+}
+body {
+  background-color: white;
+  background-image: url("https://scontent.fhan14-3.fna.fbcdn.net/v/t31.18172-8/21427444_585572888233134_8577840229694243896_o.jpg?_nc_cat=103&ccb=1-7&_nc_sid=e3f864&_nc_ohc=K-m2xVNmUI4AX8NnUwE&_nc_oc=AQkEIVsEX5O8NLSvg4oIwTNrjfqyEOMyGusWqF2v7qu0ySjmZgGSqw0VNXtiSQj8LjY&_nc_ht=scontent.fhan14-3.fna&oh=00_AfAgjQZSnkE8ngPl5YJ3dYeEudx-op0tw8q-re-wwpLNEg&oe=64C9CA6F");
+  /* background-position: 0 -200px; */
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.info {
+  position: absolute;
+  top: 55%;
+  left: 5%;
+  font-family: Asap;
+  color: white;
+}
+.info img {
+  box-sizing: content-box;
+  width: 150px;
+  background-color: white;
+  padding: 60px 80px;
+  float: left;
+  border-radius: 5px;
+}
+.info > div {
+  float: left;
+  padding: 20px;
+}
+h1 {
+  text-shadow: 1px 1px rgb(223, 107, 100);
+}
+.info > div div {
+  margin-top: 25px;
+}
+.info p {
+  display: inline;
+}
+.info p + p {
+  margin-left: 50px;
+}
+.info span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+/* Tạo thanh nav */
+nav {
+  position: absolute;
+  top: 80%;
+  left: 70%;
+  font-family: Asap;
+  font-weight: bold;
+}
+nav li {
+  display: inline-block;
+}
+nav li a {
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+  overflow-wrap: normal;
+}
+nav li:hover a {
+  color: rgb(223, 107, 100);
+  text-align: center;
+  position: relative;
+}
+nav li:hover a::after {
+  content: "";
+  display: inline-block;
+  width: calc(100% - 20px);
+  height: 4px;
+  background-color: rgb(223, 107, 100);
+  position: absolute;
+  left: 10px;
+  top: 100%;
+}

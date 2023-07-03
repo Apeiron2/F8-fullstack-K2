@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+  </head>
+  <body>
+    <div class="product">
+      <div class="product-img">
+        <span class="sale">-30%</span>
+        <div class="image">
+          <a href="#"><img src="https://picsum.photos/200/300" alt="" /></a>
+        </div>
+      </div>
+      <div class="info">
+        <h3><a href="#">Sản phẩm 1</a></h3>
+        <p>Giá: 12.000đ</p>
+      </div>
+    </div>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        outline: none;
+      }
+      .product {
+        width: 200px;
+        margin: 20px auto;
+        border: 1px solid #efefef;
+        position: relative;
+      }
+      .product img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      .product .info {
+        padding: 10px;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
+      h3 a {
+        text-decoration: none;
+        color: #333;
+      }
+      .product-img {
+        position: relative;
+      }
+      .sale {
+        background-color: red;
+        color: white;
+        border-radius: 3px;
+        padding: 2px 5px;
+        font-size: 0.85rem;
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+      }
+    </style>
+  </body>
+</html>
