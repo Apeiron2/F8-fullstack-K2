@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+$footerCopyright:".copyright";
+$property: color;
+$size: 10;
+
+.footer{
+    padding: 10px 0;
+    #{$footerCopyright}{
+        text-align: center;
+        #{$property}: grey;
+        width: #{$size + 0%};
+    }
+}
+
+$prefix:".col";
+$breakpoint:"";
+$number: 0;
+$selector:"";
+@if ($breakpoint != "" and $number > 0){
+    $selector:$prefix + "-" + $breakpoint + "-" + $number;
+}   
+@else if ($number > 0){
+    $selector: $prefix + "-" + $number;
+} 
+@else {
+    $selector: $prefix;
+}
+#{$selector}{
+    width: 50%;
+}

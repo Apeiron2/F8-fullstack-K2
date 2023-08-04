@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+.box {
+  border: 1px solid red;
+  width: 500px;
+  height: 500px;
+  margin: 30px auto;
+  position: relative;
+}
+@keyframes move {
+  from {
+    left: 0;
+    rotate: 0deg;
+  }
+
+  25% {
+    left: calc(100% - 40px);
+    top: 0;
+    rotate: 360deg;
+    background-color: blue;
+  }
+  50% {
+    left: calc(100% - 40px);
+    top: calc(100% - 40px);
+    rotate: 0deg;
+    background-color: red;
+  }
+  75% {
+    top: calc(100% - 40px);
+    left: 0;
+    rotate: 360deg;
+    background-color: yellow;
+  }
+  to {
+    left: 0;
+    top: 0;
+    rotate: 0deg;
+    background-color: green;
+  }
+}
+.box span {
+  width: 40px;
+  height: 40px;
+  display: block;
+  background-color: green;
+  position: absolute;
+  animation-name: move;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.suft {
+  display: flex;
+  width: 300px;
+  height: 200px;
+  border: 1px solid red;
+  margin: 30px auto;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+}
+@keyframes suft {
+  from {
+    height: 100px;
+  }
+  50% {
+    height: 10px;
+  }
+  to {
+    height: 100px;
+  }
+}
+.suft > div {
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(91, 91, 255);
+  width: 20px;
+  animation-name: suft;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-direction: reverse;
+}
+.suft div:nth-child(1) {
+  animation-delay: 100ms;
+}
+.suft div:nth-child(2) {
+  animation-delay: 200ms;
+}
+.suft div:nth-child(3) {
+  animation-delay: 300ms;
+}
+.suft div:nth-child(4) {
+  animation-delay: 400ms;
+}
+.box h1 {
+  margin: 10px;
+  color: red;
+  position: relative;
+}
+@keyframes trans-color {
+  from {
+    content: "F8 - Học lập trình";
+    clip-path: inset(0 0 0 0);
+  }
+  50% {
+    content: "F8 - Học lập trình";
+    clip-path: inset(0 0 2rem 0);
+  }
+  to {
+    content: "F8 - Học lập trình";
+    clip-path: inset(0 0 0 0);
+  }
+}
+.box h1::after {
+  content: "F8 - Học lập trình";
+  font-size: 2rem;
+  display: block;
+  color: green;
+  position: absolute;
+  top: 0;
+  animation: trans-color 1s linear infinite;
+}
+:root {
+  --color: red;
+  --font: arial;
+  --width: 500px;
+}
+.box:nth-child(4) {
+  background-color: var(--color);
+  width: var(--width);
+}
+.box {
+  --color: blue;
+  --width: 200px;
+}
+.box div {
+  width: var(--width);
+}
+.box:nth-child(5) h2 {
+  color: var(--color);
+}
+.box:nth-child(5) h2:hover {
+  --color: green;
+}

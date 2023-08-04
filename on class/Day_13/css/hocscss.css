@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.footer {
+  padding: 10px 0;
+}
+.footer .copyright {
+  text-align: center;
+  color: grey;
+  width: 10%;
+}
+
+.col {
+  width: 50%;
+}
+
+/*# sourceMappingURL=hocscss.css.map */

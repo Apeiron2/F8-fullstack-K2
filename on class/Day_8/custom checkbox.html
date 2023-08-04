@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/css/" />
+    <title>Custom checkbox</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="checkbox" id="Checkbox" />
+      <label for="Checkbox"><span>Checkbox</span></label>
+      <input type="checkbox" id="CSS-only" /><label for="CSS-only"
+        >CSS only</label
+      >
+      <input type="checkbox" id="disabled" disabled /><label for="disabled"
+        >A Disabled checkbox</label
+      >
+      <input type="checkbox" id="fourth-option" /><label for="fourth-option"
+        >Fourth Option</label
+      >
+    </form>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        outline: none;
+      }
+      form {
+        margin: 30px;
+      }
+      label {
+        display: block;
+        width: 1.5rem;
+        height: 1rem;
+        border: 1px solid black;
+        box-sizing: border-box;
+        margin-right: 5px;
+      }
+      span {
+        display: inline-block;
+        width: fit-content;
+      }
+      input {
+        display: none;
+      }
+      input::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 5px;
+        width: 10px;
+      }
+      label::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 5px;
+        height: 10px;
+        background-color: red;
+      }
+      input:checked + label::before {
+        content: "";
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        background-color: aqua;
+      }
+
+      input:disabled + label {
+        color: gray;
+      }
+    </style>
+  </body>
+</html>

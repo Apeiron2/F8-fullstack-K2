@@ -1,0 +1,22 @@
+.news {
+  padding: 30px 0;
+  background: gray;
+}
+
+.news {
+  box-shadow: 5px 5px 5px #ccc;
+}
+
+.products {
+  width: 200px;
+  position: relative;
+}
+.products .item {
+  position: absolute;
+  display: none;
+}
+.products:hover .item {
+  display: block;
+}
+
+/*# sourceMappingURL=extend.css.map */

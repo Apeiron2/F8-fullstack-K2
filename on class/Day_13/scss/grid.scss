@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+:root {
+--container-width: 1200px;
+--column-space: 20px;
+}
+@import "mixins";
+.container {
+max-width: var(--container-width);
+margin: 0 auto;
+}
+h2{
+background:green;
+}
+.row {
+display: flex;
+flex-wrap: wrap;
+margin:0 calc(-1 * var(--column-space) / 2);
+}
+.row [class^="col-"] {
+--column-number: calc(12 / var(--column-size));
+--column-width: calc(100% / var(--column-number));
+flex-basis: var(--column-width);
+max-width: var(--column-width);
+padding: 0 calc(var(--column-space) / 2);
+}
+
+@include column();
+$breakpoints: (
+    sm:576, 
+    md:768, 
+    lg:992, 
+    xl:1200, 
+    xxl:1400,
+);
+
+@each $name,$breakpoint in $breakpoints {
+    @media screen and (min-width: #{$breakpoint}px) {
+        @include column($name);
+    }
+}

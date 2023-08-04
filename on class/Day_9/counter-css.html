@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="songs">
+      <div class="song-item">
+        <h1>Bài hát 1</h1>
+        <p>Ca sỹ:abc</p>
+      </div>
+      <div class="song-item">
+        <h1>Bài hát 2</h1>
+        <p>Ca sỹ:abc</p>
+      </div>
+      <div class="song-item">
+        <h1>Bài hát 3</h1>
+        <p>Ca sỹ:abc</p>
+      </div>
+      <div class="song-item">
+        <h1>Bài hát 4</h1>
+        <p>Ca sỹ:abc</p>
+      </div>
+    </div>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .songs {
+        width: 300px;
+        border: 1px solid red;
+        margin: 30px auto;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        counter-reset: song-item;
+      }
+      .songs .song-item {
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+        counter-increment: song-item;
+      }
+      .songs .song-item::before {
+        content: "#" counter(song-item);
+        width: 30px;
+        height: 30px;
+        display: block;
+        float: left;
+        background: red;
+        color: #fff;
+        border-radius: 50%;
+        line-height: 30px;
+        text-align: center;
+        margin-right: 5px;
+      }
+    </style>
+  </body>
+</html>
+<!-- 
+    1. Khởi tạo bộ đếm mới
+    counter-reset: tenbodem;
+    2. Thực hiện đếm
+    counter-increment: tenbodem;
+    3. Hiển thị giá trị đếm:
+    counter(tenbodem)
+ -->

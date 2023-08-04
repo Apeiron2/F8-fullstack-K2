@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div id="foo" style="transform: translateY(22px) translateX(-24px)"></div>
+    </main>
+    <style></style>
+    <script>
+      var f = document.getElementById("foo");
+      document.addEventListener(
+        "click",
+        function (ev) {
+          f.style.transform = "translateY(" + (ev.clientY - 25) + "px)";
+          f.style.transform += "translateX(" + (ev.clientX - 25) + "px)";
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

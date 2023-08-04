@@ -1,0 +1,45 @@
+@import 'variables';
+@import 'fonts';
+@import 'mixins';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+// .box{
+//     &-1{
+//         @include size(100px,200px);
+//         @include center("left");
+//         @include rounded(10px,20px,30px,40px);
+//         background: orange;
+//     }
+//     &-2{
+//         width: 200px;
+//         height: 200px;
+//         background: green;
+//     }
+// }
+// .container{
+//     display: none;
+//     @include grid(3,10px);
+//     margin-top: 20px;
+//     .item{
+//         background-color: orange;
+//         text-align: center;
+//         padding: 10px;
+//         border-radius: 99px;
+//     }
+// }
+.products{
+    border: 1px solid red;
+    @include size(200px, 200px);
+    margin-top: 20px;
+    @include align(display);
+    .product{
+        @include size(80px, 80px);
+        background-color: orange;
+        padding: 10px;
+        border-radius: 5px;
+    }
+}

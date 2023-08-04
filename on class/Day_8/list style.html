@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../homework/fontawesome-free-6.4.0-web/" />
+    <title>List Style</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+      }
+      .box {
+        border: 1px solid black;
+        width: 300px;
+        margin: 30px auto;
+      }
+      .box ul {
+        list-style: none;
+      }
+      .box ul li {
+        clear: both;
+      }
+      .box ul li::before {
+        content: "";
+        display: block;
+        width: 16px;
+        height: 16px;
+        background-image: url("./magnifying-glass-solid.svg") no-repeat left
+          center / 16px;
+        float: left;
+      }
+      .test h2 {
+        display: list-item;
+        list-style: inside decimal-leading-zero;
+      }
+    </style>
+    <div class="box">
+      <ul class="products">
+        <li class="product">product 1</li>
+        <li class="product">product 2</li>
+        <li class="product">product 3</li>
+        <li class="product">product 4</li>
+        <li class="product">product 5</li>
+      </ul>
+    </div>
+    <div class="test">
+      <h2>Bài hát số 1</h2>
+      <h2>Bài hát số 2</h2>
+      <h2>Bài hát số 3</h2>
+      <h2>Bài hát số 4</h2>
+      <h2>Bài hát số 5</h2>
+    </div>
+  </body>
+</html>

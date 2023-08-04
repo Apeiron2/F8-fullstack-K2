@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.products {
+  border: 1px solid red;
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.products .product {
+  width: 80px;
+  height: 80px;
+  background-color: orange;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=style.css.map */

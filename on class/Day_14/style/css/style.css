@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+}
+
+:root {
+  --font-size: 10px;
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: #2c2c2c;
+  font-family: Inter, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #2c2c2c;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1 {
+  font-size: 6.8rem;
+}
+
+h2 {
+  font-size: 5.2rem;
+}
+
+h3 {
+  font-size: 3.8rem;
+}
+
+h4 {
+  font-size: 2.8rem;
+}
+
+h5 {
+  font-size: 2rem;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 20px 0;
+  color: #2c2c2c;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+:root {
+  --grey-1000: #3d3c3c;
+  --grey-900: #515151;
+  --grey-800: #656565;
+  --grey-700: #7a7a7a;
+  --grey-600: #8e8e8e;
+  --grey-500: #a3a3a3;
+  --grey-400: #b7b7b7;
+  --grey-300: #cbcbcb;
+  --grey-200: #e0e0e0;
+  --grey-100: #f4f4f4;
+  --green-1000: #216000;
+  --green-900: #2e8900;
+  --green-800: #46b20f;
+  --green-700: #63db25;
+  --green-600: #81ff41;
+  --green-500: #98ff64;
+  --green-400: #aeff86;
+  --green-300: #c5ffa8;
+  --green-200: #dcffca;
+  --green-100: #f2ffec;
+  --orange-1000: #662400;
+  --orange-900: #8e3300;
+  --orange-800: #b74200;
+  --orange-700: #e05000;
+  --orange-600: #ff6916;
+  --orange-500: #ff8440;
+  --orange-400: #ff9f6a;
+  --orange-300: #ffba94;
+  --orange-200: #ffd5bd;
+  --orange-100: #fff0e7;
+  --main-color: var(--green-800);
+  --content: #2c2c2c;
+  --white: #fff;
+  --max-width: 1440px;
+}
+
+.container {
+  --container-width: 1200px;
+}
+
+header {
+  display: block;
+  height: 108.33px;
+  margin: 0 auto;
+  box-shadow: 0 1px 5px 1px rgb(230, 230, 230);
+  position: relative;
+  z-index: 999;
+}
+header .header-logo {
+  display: flex;
+  height: 100%;
+  width: fit-content;
+  align-items: center;
+}
+header .header-logo a {
+  display: block;
+  height: 100%;
+  width: fit-content;
+}
+header .header-logo a img {
+  display: block;
+  max-height: 108.33px;
+}
+header .header-right {
+  display: flex;
+  height: 100%;
+  gap: 50px;
+  align-items: center;
+  justify-content: flex-end;
+}
+header .header-right .menu ul {
+  display: flex;
+  gap: 50px;
+}
+header .header-right .menu ul li a {
+  font-weight: bold;
+  color: #2c2c2c;
+  position: relative;
+}
+header .header-right .menu ul li a::after {
+  content: "";
+  display: none;
+  height: 2px;
+  width: 100%;
+  background-color: #46b20f;
+  position: absolute;
+  top: calc(54.165px + var(--font-size));
+}
+header .header-right .menu ul li a:hover {
+  color: #46b20f;
+}
+header .header-right .menu ul li a:hover::after {
+  display: block;
+}
+header .header-right .cart-icon a {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+header .header-right .cart-icon a span {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--orange-700);
+  color: var(--white);
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: -1rem;
+  top: -1rem;
+}
+
+.home .row {
+  display: flex;
+  height: 708.333px;
+  flex-wrap: nowrap;
+}
+.home .row article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home .row article h2 {
+  font-size: 36.67px;
+  line-height: 131.523%;
+  font-weight: 800;
+  width: 514px;
+}
+.home .row article h1 {
+  font-size: 43.33px;
+  line-height: normal;
+  font-weight: 800;
+}
+.home .row article p {
+  width: 450px;
+}
+.home .row .back-drop {
+  width: 50vw;
+  height: 100%;
+  background-color: var(--green-200);
+  position: relative;
+  border-radius: 16.667px 0px 0px 16.667px;
+  flex-shrink: 0;
+  margin-left: 100px;
+}
+.home .row .back-drop img {
+  width: 717.4px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  translate: -22% -50%;
+}
+.home .row .back-drop p {
+  color: var(--green-1000);
+  font-weight: bolder;
+  font-size: 166.67px;
+  line-height: normal;
+  opacity: 0.150000006;
+  writing-mode: vertical-rl;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  translate: 0 -50%;
+  text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+/*# sourceMappingURL=style.css.map */

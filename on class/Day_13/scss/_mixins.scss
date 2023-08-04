@@ -1,0 +1,22 @@
+@mixin dropdown($selector) {
+    position: relative;
+    #{$selector}{
+        position: absolute;
+        display: none;
+    }
+    &:hover #{$selector}{
+        display: block;
+    }
+}
+@mixin column($name:"") {
+    $prefix:".col-";
+    @for $i from 1 through 12 {
+        $selector: $prefix + #{$i};
+        @if ($name != "")  {
+            $selector: $prefix + #{$name} + "-" + #{$i}
+        }
+        #{$selector}{
+            --column-size: #{$i};
+        }
+    }
+}

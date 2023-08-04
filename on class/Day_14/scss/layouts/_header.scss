@@ -1,0 +1,82 @@
+header{
+    display: block;
+    height: 108.33px;
+    margin: 0 auto;
+    box-shadow: 0 1px 5px 1px rgb(230, 230, 230);
+    position: relative;
+    z-index: 999;
+    .header-logo{
+        display: flex;
+        height: 100%;
+        width: fit-content;
+        align-items: center;
+        a{
+            display: block;
+            height: 100%;
+            width: fit-content;
+            img{
+                display: block;
+                max-height: 108.33px;
+            }
+        }
+    }
+    .header-right{
+        display: flex;
+        height: 100%;
+        gap: 50px;
+        align-items: center;
+        justify-content: flex-end;
+        .menu{
+            ul{
+                display: flex;
+                gap: 50px;
+                li{
+                    a{
+                        font-weight: bold;
+                        color: $textColor;
+                        position: relative;
+                        &::after{
+                            content:"";
+                            display: none;
+                            height: 2px;
+                            width: 100%;
+                            background-color: $primaryColor;
+                            position: absolute;
+                            top: calc(108.33px / 2 + var(--font-size));
+                            
+                        }
+                        &:hover{
+                            color: $primaryColor;
+                        }
+                        &:hover::after{
+                            display: block;
+                        }
+                    }
+                }
+
+            }
+        }
+        .cart-icon{
+            a{
+                display: block;
+                width: fit-content;
+                height: fit-content;
+                position: relative;
+                span{
+                    display: flex;
+                    width: 2rem;
+                    height:2rem;
+                    border-radius: 50%;
+                    background-color: var(--orange-700);
+                    color: var(--white);
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    right: -1rem;
+                    top: -1rem;
+                }
+            }
+
+        }
+    }
+}

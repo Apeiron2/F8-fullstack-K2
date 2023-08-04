@@ -1,0 +1,14 @@
+@import "mixins";
+%box {
+    padding: 30px 0;
+    background: gray;
+}
+$property:"box";
+.news{
+    box-shadow: 5px 5px 5px #ccc;
+    @extend  #{"%" + $property};
+}
+.products{
+    width: 200px;
+    @include dropdown(".item")
+}

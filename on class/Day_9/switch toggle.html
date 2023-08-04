@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="switch">
+      <input type="checkbox" id="btn" />
+      <label for="btn"></label>
+      <div class="bg"></div>
+    </div>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .switch {
+        display: block;
+        background-color: gray;
+        height: 40px;
+        width: 100px;
+        margin: 100px auto;
+        border-radius: 99px;
+        position: relative;
+        box-shadow: 1px 0px 10px 2px gray;
+      }
+      .switch input {
+        display: none;
+      }
+      .switch label {
+        display: block;
+        width: 40px;
+        height: 40px;
+        border-radius: 99px;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 0.5s ease;
+        transition-property: left, rotate;
+        cursor: pointer;
+        z-index: 1;
+        box-shadow: 1px 0px 10px 2px gray;
+        border: 2px dashed gray;
+        rotate: 0deg;
+      }
+      .bg {
+        display: inline-block;
+        background-color: green;
+        height: 40px;
+        width: 40px;
+        margin: 30px auto;
+        border-radius: 99px;
+        cursor: pointer;
+        position: absolute;
+        top: -30px;
+        left: 0;
+        transition: width 0.5s ease;
+        overflow: hidden;
+      }
+      #btn:checked ~ label {
+        left: calc(100% - 40px);
+        rotate: 90deg;
+      }
+      #btn:checked ~ .bg {
+        width: 100px;
+      }
+    </style>
+  </body>
+</html>
