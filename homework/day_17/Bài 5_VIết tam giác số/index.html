@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vẽ tam giác số</title>
+  </head>
+  <body>
+    <style>
+      .box {
+        border: 2px double black;
+        padding: 10px;
+        margin: 10px auto;
+        width: fit-content;
+        max-width: 100vw;
+      }
+      button {
+        display: block;
+        margin-top: 20px;
+      }
+    </style>
+    <h1>Vẽ tam giác số</h1>
+    <form id="getNumberRow">
+      <label for="numberRow">Nhập số dòng:</label>
+      <input type="number" min="0" step="1" id="numberRow" required />
+      <button>Vẽ</button>
+    </form>
+    <div class="box"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
