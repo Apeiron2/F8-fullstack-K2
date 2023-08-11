@@ -1,0 +1,76 @@
+#array được built từ object
+    array bao gồm:
+    -index: 1 số tăng dần đều
+    - element: giá trị của các phần tử
+
+    Kết hợp tên mảng + index => element
+
+    1. Khai báo mảng
+        * var array=[];
+        * var array=new Array();
+    2. Cách hoạt động
+        - Các thao tác: thêm, sửa, xóa, duyệt
+        - Các hàm xử lý
+        - Làm bài tập
+# Các hàm xử lý
+    1. length: lấy số lượng phần tử
+    2. Array[i]: truy cập phần tử i của mảng Array
+    3. Array[i]=\phần tử mới\:thêm phần tử mới vào mảng
+        user[user.length]=\phần tử mới\ --> sẽ thêm tuần tự vào cuối mảng
+    4. Duyệt mảng: 
+                - dùng for
+                - dùng for in (for var user in users){
+                    console.log(users[user])
+                } --> user được trả về trong for in có giá trị là String
+                - dùng forEach
+    5. Xóa mảng:
+        + Xác định index cần xóa --> gán vào biến
+        + newArr=[] rồi dùng for in để duyệt
+    6. Chú ý:
+        var arr = [];
+        arr["a"] = "Hoàng An";
+        arr["b"] = "Dương";
+        arr["c"] = "Đại Thế";
+        console.log(arr);
+        for (var key in arr) {
+        console.log(arr[key]);
+        }
+#Các phương thức làm việc với mảng
+    1.concat(): nối mảng
+    2.indexOf(): tìm vị trí của element
+    3.lastIndexOf()
+    4.includes(): tìm phần tử trong mảng và trả về true/false
+    5.slice(start,end): trả về 1 mảng bao gồm các phần tử từ start đến (end-1) 
+    6.join(): gộp các phần tử trong mảng thành 1 chuỗi
+    7. push(): thêm phần tử vào cuối mảng và trả về số lượng sau khi thêm
+    8. unshift(): thêm phần tử đầu mảng
+    9. pop(): xóa phần tử cuối mảng và trả về phần tử vừa xóa
+    10. shift(): xóa phần tử đầu mảng
+    11. reverse()
+    12. sort(): so sánh string ( nếu dùng sắp xếp số sẽ sai)
+        Array.sort(function (a, b) {
+            return a - b;
+            //a-b => tăng dần
+            //b-a => giảm dần
+            });
+    13. fill(): thay thế tất cả các phần tử thành 1 giá trị
+    14.forEach()
+        - Không trả về dữ liệu
+        - Không break, không return
+    15. map(): duyệt mảng như forEach nhưng trả về giá trị là 1 mảng giá trị các element là các giá trị đc return trong call back function
+        Ví dụ:
+        user.map((user,index)=>{
+            return `<h3>${user}</h3>`
+        })
+    16.some(): trả về true nếu có 1 phần tử return về true; false nếu không có phần tử nào return về true
+        ví dụ: user.some((user)=>{
+            if (user == "Tài") return true;
+        })
+    17. every(): trả về true nếu tất cả là true; trả về false nếu 1 phần tử trả về false
+    18. filter(): 
+        - Trả về 1 mảng
+        - Lấy ra các phần tử mà được return true;
+    19. find():
+        - trả về 1 phần tử của mảng
+        - thỏa mãn điều kiện phần tử đầu tiên return true
+    20. findLast()

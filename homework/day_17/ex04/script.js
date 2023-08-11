@@ -1,26 +1,10 @@
-var checkNumber = (testNumber) => {
-  var result = true;
-  if (testNumber <= 1) result = false;
-  else {
-    for (i = 2; i <= Math.sqrt(testNumber); i++) {
-      if (testNumber % i === 0) {
-        result = false;
-        break;
-      }
-    }
+function isPrime(n) {
+  if (n <= 1) return false;
+  if (n <= 3) return true;
+  if (n % 2 === 0 || n % 3 === 0) return false;
+  for (let i = 5; i * i <= n; i += 6) {
+    if (n % i === 0 || n % (i + 2) === 0) return false;
   }
-  return result;
-};
-
-document.getElementById("getTestNumber").addEventListener("submit", (event) => {
-  event.preventDefault();
-  var n = +document.getElementById("testNumber").value;
-  var result = (function (testNumber) {
-    if (checkNumber(testNumber)) {
-      return "Đây là số nguyên tố!";
-    } else {
-      return "Đây không phải số nguyên tố!";
-    }
-  })(n);
-  document.getElementById("show-result").innerText = result;
-});
+  return true;
+}
+console.log("isPrime(number)", isPrime(9007199254740881));
