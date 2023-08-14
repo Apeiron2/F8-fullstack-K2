@@ -1,0 +1,13 @@
+#Object
+
+- Thuộc tính: đặc điểm, tính chất
+- Phương thức: hành động
+
+2 cách khai báo
+
+- Object literal
+- Function constructor (Hàm tạo)
+
+Truy cập vào key của Object dùng dấu . thôi
+
+
