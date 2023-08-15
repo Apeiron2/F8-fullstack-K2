@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+article {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  border-top: 2px solid gray;
+  padding: 20px;
+  margin: 10px auto;
+}
+article:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+img {
+  margin: 10px;
+  max-width: 300px;
+}
+.article-content {
+  display: inline-block;
+  margin-left: 20px;
+  width: 80%;
+}
+.article-content h3 {
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+.article-content a {
+  font-size: 24px;
+  color: black;
+  text-decoration: none;
+}

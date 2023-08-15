@@ -1,0 +1,16 @@
+object.prototype.combine=function(){
+
+}
+
+Kiểm tra 1 đối tượng được tạo từ hàm tạo nào: .constructor.name
+---> Để tạo các hàm như isNaN, isArray
+
+Person.isPerson=function(variable){
+    return variable && variable.constructor.name==="Person";
+}
+
+//Lưu ý với null và undefined
+
+//Tạo object không có prototype
+
+object.create(null)
