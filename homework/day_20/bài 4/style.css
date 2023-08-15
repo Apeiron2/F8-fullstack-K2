@@ -4,10 +4,23 @@
   padding: 0;
   outline: none;
 }
+h1 {
+  margin: 20px;
+}
+h2 {
+  margin: 30px;
+}
+a {
+  display: block;
+  margin: 50px;
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
+}
 article {
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 60%;
   border-top: 2px solid gray;
   padding: 20px;
   margin: 10px auto;
@@ -16,7 +29,6 @@ article:nth-of-type(even) {
   flex-direction: row-reverse;
 }
 img {
-  margin: 10px;
   max-width: 300px;
 }
 .article-content {
