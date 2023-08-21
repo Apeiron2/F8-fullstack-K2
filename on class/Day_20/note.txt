@@ -14,3 +14,14 @@ Person.isPerson=function(variable){
 //Tạo object không có prototype
 
 object.create(null)
+
+//Tham chiếu trong Object
+    /Sao chép Object 
+
+        1. b=Object.assign({}, a); --> Sao chép chỉ được 1 cấp
+        2. b={...a}; --> Sao chép chỉ được 1 cấp
+        3. b=JSON.parse(JSON.stringify(a)); --> Sao chép được tất cả các cấp
+
+// Option Chaining (?.)
+Có thể dùng với phương thức hoặc với thuộc tính, nếu không truy cập được vào dữ liệu sẽ trả về undefined mà không bị lỗi.
+

@@ -24,10 +24,11 @@ Articles[Articles.length] = new Article(
   "Hãy khám phá bộ sưu tập hình ảnh này và mang vẻ đẹp tự nhiên tới cuộc sống của bạn. Trải nghiệm những khoảnh khắc bình yên và thư thái, và để tâm trí bạn được thả lỏng trong không gian tuyệt vời của những hình ảnh chất lượng cao 4K.",
   "https://pgdphurieng.edu.vn/hon-999-hinh-anh-dep-bo-suu-tap-hinh-anh-binh-yen-day-du-chat-luong-cao-4k/"
 );
-var textHTML = Articles.reduce((preV, current) => {
-  return (
-    preV +
-    `<article>
+var textHTML = Articles?.length
+  ? Articles.reduce?.((preV, current) => {
+      return (
+        preV +
+        `<article>
     <a href="${current.link}" target="_blank">
     <img src="${current.img}"></a>
     <div class="article-content">
@@ -35,6 +36,7 @@ var textHTML = Articles.reduce((preV, current) => {
     <a href="${current.link}" target="_blank">${current.content}</a>
     </div>
     </article>`
-  );
-}, "");
+      );
+    }, "")
+  : "Không có bài viết nào";
 document.write(textHTML);

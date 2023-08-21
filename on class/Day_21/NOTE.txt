@@ -1,0 +1,1 @@
+Number là kiểu dữ liệu nguyên thủy

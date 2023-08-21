@@ -1,0 +1,57 @@
+#DOM
+
+## DOM Element
+- Truy xuất vào các thẻ HTML => Tạo ra Node(Nút)
+- node là object
+
+## DOM HTML
+
+- Thay đổi nội dung và thuộc tính HTML
+- Thêm, sửa, xóa, đọc
+
+## DOM CSS
+
+- Thay đổi CSS inline
+
+## DOM Navigation
+
+- Thực hiện truy xuất vào các thẻ html theo phân cấp cha con
+
+## DOM Event
+
+- Gán sự kiện vào thẻ HTML
+
+## DOM Event Listener
+
+- Giúp lắng nghe các sự kiện
+
+## DOM Node
+
+- Thao tác với các Element thông qua object 
+
+
+#Bổ sung
+
+##DOM Element trong form
+
+có thể . trực tiếp
+Ví dụ:
+//HTML
+    <form action="" name="register">
+      <input type="text" name="fullname" placeholder="aaaa..." />
+    </form> 
+//JS
+    var title = document.register.fullname;
+
+
+###Tìm hiểu
+DOM Event
+DOM Event Listener
+DOM HTML
++innerHTML
++innerText
++outerHTML
++outerText
++Attribute
++Data Attribute
++ClassList
