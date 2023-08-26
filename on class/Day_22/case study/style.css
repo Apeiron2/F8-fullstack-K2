@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.content {
+  margin-top: 20px;
+  width: 1000px;
+  box-shadow: 0px 0px 5px 1px gray;
+  position: fixed;
+  z-index: 3;
+  left: 50%;
+  translate: -50% -50vh;
+  transition-duration: 1s;
+  visibility: hidden;
+}
+.content.active {
+  transition-duration: 1s;
+  translate: -50% 0;
+  visibility: unset;
+}
+h1,
+h2 {
+  padding: 20px;
+  background-color: red;
+  color: white;
+}
+.cancer {
+  font-size: 24px;
+  color: white;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+}
+.content p {
+  padding: 20px;
+  background-color: white;
+}
+.overlay {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0;
+  position: fixed;
+  z-index: 2;
+}
+.overlay.active {
+  display: block;
+  opacity: 0.3;
+}
+.btn {
+  margin: 50px;
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  background-color: #04aa6d;
+  color: white;
+  align-content: center;
+  cursor: pointer;
+}

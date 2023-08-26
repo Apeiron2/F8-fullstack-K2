@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+:root {
+  --button-color: #eeeeee;
+}
+
+header {
+  display: flex;
+  width: 1128px;
+  height: 39px;
+  justify-content: space-between;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  translate: -50% -50%;
+}
+header .logo img {
+  height: 39px;
+}
+header .rightHeader .account {
+  display: flex;
+  cursor: pointer;
+}
+header .rightHeader .account i {
+  margin-left: 12px;
+}
+
+.accountForm {
+  display: flex;
+  width: 460px;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 40px 30px 40px;
+  border-radius: 5px 5px 5px 5px;
+  background-color: white;
+  position: fixed;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.accountForm .action {
+  display: flex;
+  margin-bottom: 20px;
+}
+.accountForm .action label {
+  display: block;
+  width: 230px;
+  height: 56px;
+  background-color: #EEEEEE;
+  cursor: pointer;
+}
+.accountForm .action label p {
+  line-height: 56px;
+  text-align: center;
+  font-size: 18px;
+}
+.accountForm .action .login {
+  border-radius: 5px 0 0 0;
+}
+.accountForm .action .register {
+  border-radius: 0 5px 0 0;
+}
+.accountForm > input {
+  display: none;
+}
+.accountForm > input:checked + div {
+  display: flex;
+}
+.accountForm form input {
+  display: block;
+  width: 380px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 12px 16px 10px 16px;
+  margin: 10px 0 10px 0;
+}
+.accountForm form > button {
+  display: block;
+  width: 380px;
+  border: none;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
+  font-size: 16px;
+  line-height: 44px;
+  cursor: pointer;
+}
+.accountForm .loginForm {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+}
+.accountForm .loginForm > p {
+  text-align: center;
+}
+.accountForm .loginForm .social {
+  display: flex;
+  gap: 10px;
+}
+.accountForm .loginForm .social button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 45px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.accountForm .loginForm .social button span {
+  margin-left: 4px;
+}
+.accountForm .loginForm form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.accountForm .loginForm form > a {
+  margin-left: auto;
+  font-style: italic;
+  color: gray;
+  text-decoration: none;
+}
+.accountForm .registerForm {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+}
+.accountForm .registerForm > p {
+  text-align: center;
+}
+.accountForm .registerForm > form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.accountForm .registerForm > form > p {
+  width: 380px;
+}
+.accountForm .registerForm > form > p span a {
+  color: #007aff;
+  text-decoration: none;
+}
+.accountForm .password {
+  position: relative;
+  z-index: 3;
+}
+.accountForm .password i {
+  position: absolute;
+  z-index: 4;
+  right: 12px;
+  top: 40px;
+  cursor: pointer;
+}
+.accountForm form > div > p {
+  color: red;
+  font-style: italic;
+}
+
+.overlay {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 2;
+  background-color: black;
+  opacity: 0.4;
+}
+
+.error {
+  border: 1px solid red !important;
+}
+
+.active {
+  background-color: white !important;
+}
+
+.none {
+  display: none !important;
+}
+
+/*# sourceMappingURL=style.css.map */

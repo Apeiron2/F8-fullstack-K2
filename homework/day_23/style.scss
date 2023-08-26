@@ -1,0 +1,185 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+:root{
+    --button-color: #eeeeee;
+}
+
+header{
+    display: flex;
+    width: 1128px;
+    height: 39px;
+    justify-content: space-between;
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    translate: -50% -50%;
+    .logo img{
+        height: 39px;
+    }
+    .rightHeader{
+        .account{
+            display: flex;
+            cursor: pointer;
+            i{
+                margin-left: 12px;
+            }
+        }
+    }
+}
+.accountForm{
+    display: flex;
+    width: 460px;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 40px 30px 40px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: white;
+    position: fixed;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    .action{
+        display: flex;
+        margin-bottom: 20px;
+        label{
+            display: block;
+            width: 230px;
+            height: 56px;
+            background-color: #EEEEEE;
+            cursor: pointer;
+            p{
+                line-height: 56px;
+                text-align: center;
+                font-size: 18px;
+            }
+        }
+        .login{
+            border-radius: 5px 0 0 0;
+        }
+        .register{
+            border-radius: 0 5px 0 0;
+        }
+    }
+    &>input{
+        display: none;
+        &:checked + div{
+            display: flex;
+        }
+    }
+    form{  
+        input{
+            display: block;
+            width: 380px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 12px 16px 10px 16px;
+            margin: 10px 0 10px 0;
+        }
+        &>button{
+            display: block;
+            width: 380px;
+            border:none;
+            border-radius: 5px;
+            background-color: green;
+            color: white;
+            font-size: 16px;
+            line-height: 44px;
+            cursor: pointer;
+        }
+    }
+    .loginForm{
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        &>p{
+            text-align: center;
+        }
+        .social{
+            display: flex;
+            gap: 10px;
+            button{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 180px;
+                height: 45px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                span{
+                    margin-left: 4px;
+                }
+            }
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            &>a{
+                margin-left: auto;
+                font-style: italic;
+                color: gray;
+                text-decoration: none;
+            }
+        }
+    }
+    .registerForm{
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        &>p{
+            text-align: center;
+        }
+        &>form{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            &>p{
+                width: 380px;
+                span a{
+                    color: #007aff;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    .password{
+        position: relative;
+        z-index: 3;
+        i{
+            position:absolute;
+            z-index: 4;
+            right: 12px;
+            top: 40px;
+            cursor: pointer;
+        }
+    }
+    & form>div>p{
+        color: red;
+        font-style: italic;
+    }
+}
+.overlay{
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 2;
+    background-color: black;
+    opacity: 0.4;
+}
+.error{
+    border: 1px solid red !important;
+}
+.active{
+    background-color: white !important;
+}
+.none{
+    display: none !important;
+}
