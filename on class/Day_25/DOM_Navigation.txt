@@ -1,0 +1,5 @@
+Chọn được Element dựa vào 1 element khác:
+- lên cha (.parentElement)
+- xuống con (.children) --> Lấy danh sách các element con trực tiếp
+- kế tiếp (.nextElementSibling)
+- lùi lại (.previousElementSibling)

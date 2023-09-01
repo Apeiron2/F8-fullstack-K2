@@ -1,7 +1,5 @@
 var actionLogin = document.querySelector(".action .login");
 var actionRegister = document.querySelector(".action .register");
-var registerForm = document.querySelector(".registerForm");
-var loginForm = document.querySelector(".loginForm");
 var inforList = document.querySelectorAll("form>div");
 var password = document.querySelectorAll(".password");
 
@@ -14,16 +12,13 @@ function createErrorNode() {
 actionLogin.addEventListener("click", function () {
   actionLogin.classList.add("active");
   actionRegister.classList.remove("active");
+  document.querySelector(".loginForm").reset();
 });
 actionRegister.addEventListener("click", function () {
   actionRegister.classList.add("active");
   actionLogin.classList.remove("active");
+  document.querySelector(".registerForm").reset();
 });
-
-function addEvents() {
-  addBlurEvent();
-  addErrorEvent();
-}
 
 inforList.forEach(function (infor) {
   infor.querySelector("input").addEventListener("blur", function () {

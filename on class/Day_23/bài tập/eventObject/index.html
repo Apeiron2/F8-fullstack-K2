@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        outline: none;
+      }
+      .btn {
+        display: block;
+        height: 60px;
+        width: 300px;
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 2;
+      }
+      .box {
+        display: block;
+        height: 60px;
+        width: 300px;
+        border: 1px dashed red;
+        border-radius: 5px;
+        position: relative;
+        left: 1200px;
+        top: 300px;
+        z-index: 1;
+      }
+    </style>
+    <button class="btn">Đăng ký khóa học</button>
+    <hr />
+    <input type="text" class="name" placeholder="Tên..." />
+    <div class="box"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
