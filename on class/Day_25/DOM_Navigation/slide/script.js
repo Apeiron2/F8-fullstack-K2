@@ -32,7 +32,7 @@ for (let i = 0; i < carouselItem.length; i++) {
 
 var dotFirst = carousel.querySelector(".dot");
 dotFirst.style.background = "orange";
-var dots = carousel.querySelectorAll(".dot");
+var dots = carouselDots.querySelectorAll(".dot");
 
 //Gán sự kiện cho các dot
 dots.forEach(function (dot) {
@@ -64,5 +64,51 @@ prevBtn.addEventListener("click", function () {
     var nextDot = Math.abs(position) / itemWidth;
     dots[nextDot].style.background = "orange";
     dots[nextDot].nextElementSibling.style.background = "white";
+  }
+});
+
+var activeMove = false;
+var current = 0;
+var startMove = 0;
+carouselInner.addEventListener("mousedown", function (e) {
+  e.preventDefault();
+  this.style.cursor = "move";
+  activeMove = true;
+  current = e.offsetX;
+  startMove = e.clientX;
+});
+document.addEventListener("mousemove", function (e) {
+  if (activeMove == true) {
+    position += e.offsetX - current;
+    current = e.offsetX;
+    if (Math.abs(position) > totalWidth - itemWidth)
+      position = itemWidth - totalWidth;
+
+    if (position > 0) position = 0;
+
+    carouselInner.style.translate = `${position}px`;
+  }
+});
+document.addEventListener("mouseup", function (e) {
+  carouselInner.style.cursor = "default";
+  activeMove = false;
+  var range = ((Math.abs(position) % itemWidth) / itemWidth) * 100;
+  if (range <= 10 || range >= 90) {
+    // Điều kiện vuốt sang phải
+    if (e.clientX - startMove > 0)
+      position = Math.floor(position / itemWidth) * itemWidth;
+    else position = Math.ceil(position / itemWidth) * itemWidth;
+  } else {
+    if (e.clientX - startMove > 0)
+      position = Math.ceil(position / itemWidth) * itemWidth;
+    else position = Math.floor(position / itemWidth) * itemWidth;
+  }
+  carouselInner.style.translate = `${position}px`;
+  for (let i in dots) {
+    if (i == Math.abs(position) / itemWidth) {
+      dots[i].style.background = "orange";
+      continue;
+    }
+    dots[i].style.background = "white";
   }
 });
