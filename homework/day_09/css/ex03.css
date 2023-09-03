@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+article {
+  text-align: center;
+  margin: 50px auto;
+}
+
+form {
+  display: flex;
+  width: 1000px;
+  justify-content: center;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+form input, form select {
+  width: 40%;
+  height: 50px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px 10px 5px 10px;
+  position: relative;
+  font-size: 16px;
+}
+form input::placeholder, form select::placeholder {
+  position: absolute;
+  margin-top: 7.5px;
+}
+form select {
+  padding: 10px;
+  color: gray;
+}
+form textarea {
+  width: calc(80% + 10px);
+  padding: 10px;
+  font-family: "Space Grotesk", sans-serif;
+}
+form textarea::placeholder {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+}
+form button {
+  width: 20%;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+form input:focus::placeholder {
+  position: absolute;
+  vertical-align: top;
+  font-size: 12px;
+  transition: 0.5s ease;
+  margin-top: -3px;
+}
+
+/*# sourceMappingURL=ex03.css.map */

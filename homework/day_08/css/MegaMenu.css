@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Poppins:wght@200;400;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+}
+
+body {
+  background-color: #F8F8FA;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  height: 80px;
+}
+header .right-header {
+  display: flex;
+  width: 20%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+header .left-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  width: 80%;
+  height: 100%;
+}
+header .left-header .menu > ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  height: 80px;
+}
+header .left-header .menu > ul a {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
+header .left-header .menu > ul li {
+  list-style: none;
+}
+header .left-header .menu > ul > li {
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+header .left-header .menu > ul > li:hover {
+  color: gray;
+}
+header .left-header .menu > ul > li:hover > ul {
+  display: flex !important;
+}
+header .left-header .menu > ul > li::after {
+  content: ">";
+  display: inline-block;
+  margin-left: 5px;
+  transform: rotate(90deg);
+}
+header .left-header .menu > ul > li.documentation {
+  position: relative;
+}
+header .left-header .menu > ul > li.documentation > ul {
+  display: none;
+  flex-direction: column;
+  align-content: space-around;
+  flex-wrap: wrap;
+  width: 1000px;
+  height: 450px;
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 5px gray;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: -40vw;
+  top: 25px;
+  cursor: default;
+}
+header .left-header .menu > ul > li.documentation > ul:hover {
+  display: flex !important;
+}
+header .left-header .menu > ul > li.documentation > ul span {
+  font-size: 16px;
+  color: black;
+}
+header .left-header .menu > ul > li.documentation > ul .usage {
+  width: 25%;
+}
+header .left-header .menu > ul > li.documentation > ul .usage > ul {
+  display: flex;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+header .left-header .menu > ul > li.documentation > ul .usage > ul > li {
+  width: 50%;
+  text-align: left;
+  padding: 10px 0;
+}
+header .left-header .menu > ul > li.documentation > ul .styleguide {
+  width: 25%;
+  margin-top: 20px;
+}
+header .left-header .menu > ul > li.documentation > ul .styleguide > ul {
+  display: flex;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+header .left-header .menu > ul > li.documentation > ul .styleguide > ul > li {
+  width: 50%;
+  text-align: left;
+  padding: 10px 0;
+}
+header .left-header .menu > ul > li.documentation > ul .elements {
+  width: 75%;
+  border-left: 1px solid rgb(201, 201, 201);
+  padding-left: 10px;
+}
+header .left-header .menu > ul > li.documentation > ul .elements > ul {
+  display: flex;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+header .left-header .menu > ul > li.documentation > ul .elements > ul > li {
+  width: 33%;
+  text-align: left;
+  padding: 10px 0;
+}
+header .left-header .icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+header .left-header .icon-button a {
+  text-decoration: none;
+  color: initial;
+}
+
+main {
+  display: block;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  background-image: url("https://fastly.picsum.photos/id/620/1920/1080.jpg?hmac=6PZ3hwiV7NsPhqd3GdOzXEyBa9TKG-BptkJ7qAzp3CI");
+}
+
+/*# sourceMappingURL=MegaMenu.css.map */

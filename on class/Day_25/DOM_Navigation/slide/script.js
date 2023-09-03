@@ -104,11 +104,11 @@ document.addEventListener("mouseup", function (e) {
     else position = Math.floor(position / itemWidth) * itemWidth;
   }
   carouselInner.style.translate = `${position}px`;
-  for (let i in dots) {
+  dots.forEach(function (dot, i) {
     if (i == Math.abs(position) / itemWidth) {
-      dots[i].style.background = "orange";
-      continue;
+      dot.style.background = "orange";
+      return;
     }
     dots[i].style.background = "white";
-  }
+  });
 });

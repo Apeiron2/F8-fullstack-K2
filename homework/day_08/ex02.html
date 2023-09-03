@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/ShoppingCartMini.css" />
+    <title>Shopping Cart Mini</title>
+  </head>
+  <body>
+    <div class="cart-mini">
+      <div class="header">
+        <h1>Shopping Cart</h1>
+        <div class="cancer"></div>
+      </div>
+      <!--Products-->
+      <div class="products">
+        <div class="product">
+          <img
+            src="https://www.pngmart.com/files/15/Apple-iPhone-12-Transparent-Images-PNG.png"
+            alt="product"
+          />
+          <div class="info-product">
+            <p class="name">Iphone 12</p>
+            <div class="cal-price">
+              <button class="quantity-btn">1</button>
+              <p class="price">1x</p>
+            </div>
+          </div>
+        </div>
+        <div class="product">
+          <img src="https://pngimg.com/d/iphone_14_PNG6.png" alt="product" />
+          <div class="info-product">
+            <p class="name">Iphone 14</p>
+            <div class="cal-price">
+              <button class="quantity-btn">1</button>
+              <p class="price">1x</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End. products-->
+
+      <!--Bill-->
+      <div class="bill">
+        <div class="sub-total">
+          <p>Subtotal</p>
+          <p class="total-price">$920.00</p>
+        </div>
+        <p>Taxes and shipping calculated at checkout</p>
+        <button class="view-cart">View Cart</button>
+        <button class="add-to-cart">Add To Cart</button>
+      </div>
+      <!--End Bill-->
+
+      <!--Shipping-->
+      <div class="shipping">
+        <img src="./css/img/Ship.png" alt="Ship" />
+        <p>Spend $ 499.00 to Free Shipping</p>
+      </div>
+      <!--End Shipping-->
+    </div>
+  </body>
+</html>

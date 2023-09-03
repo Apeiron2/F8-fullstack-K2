@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  margin: 50px auto;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.item {
+  display: flex;
+  gap: 20px;
+}
+.item .content {
+  display: flex;
+  width: 350px;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 20px;
+}
+.item .content article {
+  font-size: 24px;
+  font-weight: bold;
+}
+.item .content p {
+  font-family: "Inter", sans-serif;
+  color: gray;
+}
+.item .content button {
+  display: block;
+  border: none;
+  border-radius: 99px;
+  padding: 5px 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  color: gray;
+}
+.item .content button:hover {
+  background-color: #a26f5a;
+  color: white;
+  transition: 2s ease;
+  cursor: pointer;
+}
+.item .node {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: #449789;
+  border: 5px solid #EDF6F4;
+  border-radius: 50%;
+}
+.item .node::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 120px;
+  background-color: rgb(221, 221, 221);
+  margin: 25px 0 0 4px;
+}
+
+/*# sourceMappingURL=ex01.css.map */
