@@ -23,24 +23,39 @@
       </p>
     </article>
     <form>
-      <input type="text" class="firstName" placeholder="First Name" />
-      <input type="text" class="lastName" placeholder="Last Name" />
-      <input type="text" class="email" placeholder="Email" />
-      <select name="department" placeholder="Sales">
-        <option value="1" disabled style="color: initial">
-          Select a department
-        </option>
-        <option value="2" selected>Sales</option>
-        <option value="3">Marketing</option>
-        <option value="4">Customer Support</option>
-      </select>
-      <textarea
-        name="message"
-        id="message"
-        cols="30"
-        rows="10"
-        placeholder="Message"
-      ></textarea>
+      <div class="input-tag">
+        <input type="text" class="firstName" value="" required />
+        <span>First Name</span>
+      </div>
+      <div class="input-tag">
+        <input type="text" class="lastName" value="" required />
+        <span>Last Name</span>
+      </div>
+      <div class="input-tag">
+        <input type="text" class="email" value="" required />
+        <span>Email</span>
+      </div>
+      <div class="input-tag">
+        <select name="department">
+          <option value="1" disabled style="color: initial">
+            Select a department
+          </option>
+          <option value="2" selected>Sales</option>
+          <option value="3">Marketing</option>
+          <option value="4">Customer Support</option>
+        </select>
+      </div>
+      <div class="textarea-tag">
+        <textarea
+          name="message"
+          id="message"
+          cols="30"
+          rows="10"
+          value=""
+          required
+        ></textarea>
+        <span>Message</span>
+      </div>
       <button>Send message</button>
     </form>
   </body>

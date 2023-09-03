@@ -12,57 +12,103 @@ html {
 }
 
 article {
+  font-size: 20px;
   text-align: center;
-  margin: 50px auto;
+  margin: 40px auto;
+}
+article h1 {
+  margin: 10px;
+}
+article p {
+  font-size: 16px;
 }
 
 form {
   display: flex;
   width: 1000px;
   justify-content: center;
-  margin: 20px auto;
+  margin: 10px auto;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
 }
-form input, form select {
+form .input-tag {
   width: 40%;
+  position: relative;
+  cursor: context-menu;
+}
+form .input-tag input, form .input-tag select {
+  width: 100%;
   height: 50px;
   border: 1px solid gray;
   border-radius: 5px;
-  padding: 10px 10px 5px 10px;
-  position: relative;
+  padding: 15px 10px 5px 10px;
   font-size: 16px;
 }
-form input::placeholder, form select::placeholder {
-  position: absolute;
-  margin-top: 7.5px;
-}
-form select {
+form .input-tag select {
   padding: 10px;
   color: gray;
 }
-form textarea {
-  width: calc(80% + 10px);
-  padding: 10px;
-  font-family: "Space Grotesk", sans-serif;
+form .input-tag span {
+  top: 15px;
+  left: 10px;
 }
-form textarea::placeholder {
+form .textarea-tag {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  cursor: context-menu;
+}
+form .textarea-tag textarea {
+  width: calc(80% + 20px);
+  height: 150px;
+  border-radius: 5px;
+  padding: 20px 10px 10px 10px;
   font-family: "Space Grotesk", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+}
+form .textarea-tag span {
+  top: 15px;
+  left: 100px;
+}
+form span {
+  position: absolute;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+form span::after {
+  content: "*";
+  margin-left: 5px;
 }
 form button {
-  width: 20%;
   height: 50px;
   border: none;
-  border-radius: 5px;
+  border-radius: 99px;
+  background-color: #4d76d9;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
 }
-form input:focus::placeholder {
-  position: absolute;
-  vertical-align: top;
+
+form div > *:not(select):focus {
+  border: 1px solid #4d76d9;
+}
+form div > *:not(select):focus + span {
   font-size: 12px;
-  transition: 0.5s ease;
-  margin-top: -3px;
+  margin-top: -10px;
+  transition: font-size 0.5s ease;
+}
+form div > *:not(select):valid {
+  background-color: #EEF0FF;
+  border: 1px solid #4d76d9;
+}
+form div > *:not(select):valid + span {
+  font-size: 12px;
+  margin-top: -10px;
+  transition: font-size 0.5s ease;
 }
 
 /*# sourceMappingURL=ex03.css.map */
