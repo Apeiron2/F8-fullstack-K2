@@ -1,0 +1,11 @@
+@keyframes flip {
+    from{
+        transform: rotateX(0deg);
+    }
+    50%{
+        transform: rotateX(-45deg);
+    }
+    to{
+        transform: rotateX(-90deg);
+    }
+}

@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+:root {
+  --main-color: #31a8fc;
+}
+
+body {
+  background-color: var(--main-color);
+  overflow: hidden;
+}
+
+.menu-btn {
+  display: block;
+  position: relative;
+  top: 20px;
+  left: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.menu-btn input {
+  display: none;
+}
+.menu-btn input:checked + label i {
+  transform: rotate(-180deg);
+  transition: transform 0.5s ease;
+  font-size: 0px;
+}
+.menu-btn input#on:checked ~ .menu {
+  width: 100vw;
+  height: 100vh;
+  transition: 1s ease;
+  top: -20px;
+  left: -20px;
+  border-radius: 0;
+}
+.menu-btn input#on:checked ~ .menu ul {
+  display: block;
+}
+.menu-btn label i {
+  font-size: 28px;
+  color: var(--main-color);
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+  transition: 0.5s ease;
+}
+
+.menu {
+  display: block;
+  width: 200px;
+  height: 200px;
+  border-radius: 0 20% 100% 20%;
+  background-color: white;
+  box-shadow: 1px 1px 10px 1px gray;
+  position: absolute;
+  z-index: 1;
+  top: -100px;
+  left: -100px;
+  transition: 1s ease;
+}
+.menu ul {
+  display: none;
+  width: 200px;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  list-style: none;
+}
+.menu ul li {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+}
+.menu ul li a {
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--main-color);
+}
+.menu ul li:target {
+  background-color: rgb(233, 232, 232);
+  transition: 0.5s ease;
+}
+.menu ul li:target a {
+  color: black;
+  transition: 0.5s ease;
+}
+
+.content {
+  position: absolute;
+  right: 20%;
+  top: 40%;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: right;
+}
+.content h1 {
+  font-size: 48px;
+}
+.content p {
+  vertical-align: middle;
+  margin-top: 50px;
+  font-size: 24px;
+}
+.content p span {
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+/*# sourceMappingURL=ex01.css.map */
