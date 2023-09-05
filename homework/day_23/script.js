@@ -1,28 +1,41 @@
+var openAccountForm = document.querySelector("header .account p");
 var actionLogin = document.querySelector(".action .login");
 var actionRegister = document.querySelector(".action .register");
-var inforList = document.querySelectorAll("form>div");
+var inputList = document.querySelectorAll("form>div");
 var password = document.querySelectorAll(".password");
+var accountForm = document.querySelector(".accountForm");
+var loginForm = document.querySelector(".loginForm form");
+var registerForm = document.querySelector(".registerForm form");
+var overlay = document.querySelector(".overlay");
 
 function createErrorNode() {
   var node = document.createElement("p");
   node.innerText = "Vui lòng nhập thông tin";
   return node;
 }
+function resetCssInput() {
+  inputList.forEach(function (infor) {
+    infor.querySelector("p")?.remove();
+    infor.querySelector("input").classList.remove("error");
+  });
+}
 
 actionLogin.addEventListener("click", function () {
   actionLogin.classList.add("active");
   actionRegister.classList.remove("active");
-  document.querySelector(".loginForm").reset();
+  loginForm.reset();
+  resetCssInput();
 });
 actionRegister.addEventListener("click", function () {
   actionRegister.classList.add("active");
   actionLogin.classList.remove("active");
-  document.querySelector(".registerForm").reset();
+  registerForm.reset();
+  resetCssInput();
 });
 
-inforList.forEach(function (infor) {
+inputList.forEach(function (infor) {
   infor.querySelector("input").addEventListener("blur", function () {
-    inforList.forEach(function (infor) {
+    inputList.forEach(function (infor) {
       if (
         infor.querySelector("input").value === "" &&
         infor.querySelector("p") === null
@@ -48,4 +61,12 @@ password.forEach(function (item) {
       item.querySelector("input").setAttribute("type", "password");
     }
   });
+});
+openAccountForm.addEventListener("click", function () {
+  accountForm.style.display = "flex";
+  overlay.style.display = "block";
+});
+overlay.addEventListener("click", function () {
+  accountForm.style.display = "none";
+  this.style.display = "none";
 });
