@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 50px auto;
+}
+.container .progress-bar {
+  position: relative;
+  height: 10px;
+  background-color: gray;
+  cursor: pointer;
+}
+.container .progress-bar .progress {
+  position: absolute;
+  background-color: red;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 0px 5px 5px 0px;
+}
+.container .progress-bar .progress span {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: -50%;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: blue;
+  translate: 50% 0;
+}
+
+/*# sourceMappingURL=ex01.css.map */
