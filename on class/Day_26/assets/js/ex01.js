@@ -114,6 +114,7 @@ audio.addEventListener("ended", function () {
   playerBtn.innerHTML = playBtnIcon;
 });
 
+// Làm preview time
 progressBar.addEventListener("mousemove", function (e) {
   if (!isDrag) {
     previewTime.style.display = "block";
