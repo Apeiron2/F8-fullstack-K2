@@ -46,18 +46,19 @@
                 background-color: blue;
                 translate: 50% 0;
             }
-            .preview-time{
-                display: none;
-                position: absolute;
-                right: -40px;
-                top:-40px;
-                border: none;
-                border-radius: 5px;
-                padding: 5px;
-                background-color: black;
-                color: white;
-                
-            }
+        }
+        .preview-time{
+            display: none;
+            position: absolute;
+            left: 0;
+            top:-20px;
+            translate: -50% -50%;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            background-color: black;
+            color: white;
+            
         }
     }
 }

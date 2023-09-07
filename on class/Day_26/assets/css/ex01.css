@@ -54,11 +54,12 @@
   background-color: blue;
   translate: 50% 0;
 }
-.container .progress-bar .progress .preview-time {
+.container .progress-bar .preview-time {
   display: none;
   position: absolute;
-  right: -40px;
-  top: -40px;
+  left: 0;
+  top: -20px;
+  translate: -50% -50%;
   border: none;
   border-radius: 5px;
   padding: 5px;

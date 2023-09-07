@@ -57,18 +57,16 @@ progressSpan.addEventListener("mouseup", function (e) {
     audio.currentTime = (initialValue * durationTime) / 100;
     isDrag = false;
     audio.addEventListener("timeupdate", updateTime);
-    previewTime.style.display = "none";
   }
 });
 document.addEventListener("mousemove", function (e) {
+  e.stopPropagation();
   if (isDrag) {
     moveWidth = ((e.clientX - position) / progressBarWidth) * 100;
     if (value + moveWidth > 100) initialValue = 100;
     else if (value + moveWidth < 0) initialValue = 0;
     else initialValue = value + moveWidth;
     handleUpdateValue(initialValue);
-    previewTime.style.display = "block";
-    previewTime.innerText = getTime((initialValue * audio.duration) / 100);
   }
 });
 
@@ -79,7 +77,6 @@ document.addEventListener("mouseup", function (e) {
     audio.currentTime = (initialValue * durationTime) / 100;
     value = initialValue;
     isDrag = false;
-    previewTime.style.display = "none";
   }
 });
 
@@ -89,7 +86,7 @@ var player = document.querySelector(".player");
 var playerBtn = player.querySelector(".player-btn");
 var currentTimeShow = player.querySelector(".start");
 var stillTimeShow = player.querySelector(".end");
-var previewTime = progress.querySelector(".preview-time");
+var previewTime = progressBar.querySelector(".preview-time");
 var durationTime;
 var pauseBtnIcon = `<i class="fa-solid fa-pause"></i>`;
 var playBtnIcon = `<i class="fa-solid fa-play"></i>`;
@@ -115,4 +112,20 @@ audio.addEventListener("ended", function () {
   handleUpdateValue(0);
   updateTime();
   playerBtn.innerHTML = playBtnIcon;
+});
+
+progressBar.addEventListener("mousemove", function (e) {
+  if (!isDrag) {
+    previewTime.style.display = "block";
+    var subTime = (e.offsetX / progressBarWidth) * audio.duration;
+    previewTime.innerText = getTime(subTime);
+    previewTime.style.left = `${e.offsetX}px`;
+  }
+});
+progressBar.addEventListener("mouseleave", function () {
+  previewTime.style.display = "none";
+});
+progressSpan.addEventListener("mousemove", function (e) {
+  e.stopPropagation();
+  previewTime.style.display = "none";
 });
