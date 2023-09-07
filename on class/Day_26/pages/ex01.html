@@ -4,15 +4,34 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="../assets/css/ex01.css" />
     <title>Document</title>
   </head>
   <body>
+    <audio
+      controls
+      src="../assets/music/Về Quê  Mikelodic  Team Thái VG  Rap Việt 2023 MV Lyrics.mp3"
+    style="display: none;"></audio>
     <div class="container">
-      <div class="progress-bar">
-        <div class="progress">
-          <span></span>
+      <div class="player">
+        <div class="player-btn">
+          <i class="fa-solid fa-play"></i>
         </div>
+        <span class="start">00:00</span>
+        <div class="progress-bar">
+          <div class="progress">
+            <span></span>
+            <p class="preview-time"></p>
+          </div>
+        </div>
+        <span class="end">00:00</span>
       </div>
     </div>
     <script src="../assets/js/ex01.js"></script>

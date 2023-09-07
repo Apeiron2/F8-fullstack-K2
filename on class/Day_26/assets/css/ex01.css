@@ -7,12 +7,31 @@
 
 .container {
   width: 80%;
-  margin: 50px auto;
+  margin: 0px auto;
+}
+.container .player {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  margin: 200px 0;
+  position: relative;
+}
+.container .player .player-btn {
+  position: absolute;
+  text-align: center;
+  translate: 0 -100%;
+  font-size: 4rem;
+  cursor: pointer;
 }
 .container .progress-bar {
   position: relative;
+  width: 100%;
   height: 10px;
   background-color: gray;
+  flex-shrink: 0;
   cursor: pointer;
 }
 .container .progress-bar .progress {
@@ -34,6 +53,17 @@
   border-radius: 50%;
   background-color: blue;
   translate: 50% 0;
+}
+.container .progress-bar .progress .preview-time {
+  display: none;
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: black;
+  color: white;
 }
 
 /*# sourceMappingURL=ex01.css.map */
