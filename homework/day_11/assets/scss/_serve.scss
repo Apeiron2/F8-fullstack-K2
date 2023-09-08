@@ -77,8 +77,8 @@
             }
             .item:hover+.behind{
                 background-color: #FE6A6A;
-                transition: 2s ease;
-                transform-origin: top left;
+                transition: 0.5s ease;
+                transform-origin: top center;
                 rotate: -3deg;
             }
         }
