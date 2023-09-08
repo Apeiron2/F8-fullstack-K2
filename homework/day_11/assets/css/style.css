@@ -1,23 +1,498 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
-* {
-  box-sizing: border-box;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
-  outline: none;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 :root {
-  --background-color:#fefef5;
+  --background-color:#fef5f5;
   --button-color: #F86061;
   --p-color: #676767;
   --header-article-color: #f55556;
   --section-1-article-color: #f54748;
   --section-2-article-color: #03a66b;
   --section-3-article-color:#f9ba45;
+  --article-color: #2e2e2e;
+}
+
+header {
+  height: 850px;
+  width: 1200px;
+  margin: 30px auto;
+}
+header .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .header .header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 200px;
+}
+header .header .header-right nav ul {
+  display: flex;
+  gap: 40px;
+}
+header .header .header-right nav ul li a {
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: black;
+}
+header .header .header-right nav ul li:hover > a {
+  color: var(--header-article-color);
+}
+header .header .header-right .features {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+}
+header .header .header-right .features .search i {
+  color: var(--p-color);
+  margin-right: 4px;
+}
+header .header .header-right .features .search input::placeholder {
+  color: black;
+}
+header .header .header-right .features .cart {
+  display: block;
+  border-left: 2px solid rgb(230, 230, 230);
+  padding-left: 10px;
+  position: relative;
+}
+header .header .header-right .features .cart::after {
+  content: "2";
+  display: block;
+  padding: 5px 8px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 1px rgba(128, 128, 128, 0.267);
+  background-color: var(--section-1-article-color);
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+  position: absolute;
+  right: -25px;
+  top: -25px;
+}
+header .container-content {
+  display: flex;
+  padding: 80px 0;
+}
+header .container-content .content {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  gap: 50px;
+}
+header .container-content .content .more-than-faster {
+  display: flex;
+  width: fit-content;
+  padding: 12px 16px;
+  align-items: center;
+  border-radius: 23px;
+  background-color: #fdecec;
+}
+header .container-content .content .more-than-faster img {
+  margin-left: 4px;
+}
+header .container-content .content .more-than-faster p {
+  width: fit-content;
+  font-size: 1.6rem;
+  color: var(--header-article-color);
+}
+header .container-content .content h1 {
+  font-size: 7.4rem;
+  font-weight: 700;
+}
+header .container-content .content h1 span {
+  color: var(--section-1-article-color);
+}
+header .container-content .content > p {
+  width: 80%;
+  color: var(--p-color);
+}
+header .container-content .content .action {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-weight: 500;
+  font-size: 2rem;
+}
+header .container-content .content .action img {
+  cursor: pointer;
+}
+header .container-content .content .action a {
+  color: #2e2e2e;
+  cursor: pointer;
+}
+header .container-content > img {
+  width: 50%;
+  height: auto;
+}
+
+.serve {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 0;
+  background-color: var(--background-color);
+}
+.serve article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.serve article h5 {
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: var(--section-1-article-color);
+  margin-bottom: 10px;
+}
+.serve article h2 {
+  width: 35%;
+  font-weight: 700;
+  font-size: 4rem;
+  color: var(--article-color);
+}
+.serve .services {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.serve .services .service {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  position: relative;
+}
+.serve .services .service .item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  margin: 20px;
+  padding: 50px 28px;
+  background-color: white;
+  border-radius: 12px;
+}
+.serve .services .service img {
+  height: 60px;
+  width: auto;
+  margin-bottom: 50px;
+}
+.serve .services .service h3 {
+  font-weight: 600;
+  font-size: 2.2rem;
+  color: var(--article-color);
+}
+.serve .services .service p {
+  width: 228px;
+  font-size: 1.4rem;
+  color: var(--p-color);
+}
+.serve .services .service .behind {
+  display: block;
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border-radius: 12px;
+  background-color: transparent;
+  rotate: 0;
+  z-index: 0;
+}
+.serve .services .service .item:hover + .behind {
+  background-color: #FE6A6A;
+  transition: 2s ease;
+  transform-origin: top left;
+  rotate: -3deg;
+}
+
+.choose-us {
+  display: flex;
+  width: 1200px;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.choose-us .content {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+.choose-us .content h5 {
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: var(--section-2-article-color);
+  margin-bottom: 10px;
+}
+.choose-us .content h2 {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 5.4rem;
+  color: var(--article-color);
+}
+.choose-us .content p {
+  width: 80%;
+  font-weight: 400;
+  font-size: 1.8rem;
+  margin: 40px 0;
+  color: var(--p-color);
+  line-height: 3rem;
+}
+.choose-us img {
+  width: 60%;
+  height: auto;
+  padding-right: 50px;
+}
+
+.delivery {
+  display: flex;
+  width: 1200px;
+  align-items: center;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.delivery .content {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.delivery .content h5 {
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: var(--section-3-article-color);
+  margin-bottom: 10px;
+}
+.delivery .content h2 {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 5.4rem;
+  color: var(--article-color);
+}
+.delivery .content p {
+  width: 80%;
+  font-weight: 400;
+  font-size: 1.8rem;
+  margin: 40px 0;
+  color: var(--p-color);
+  line-height: 3rem;
+}
+.delivery img {
+  width: 50%;
+  height: auto;
+  padding-left: 100px;
+}
+
+.container {
+  padding: 100px 0;
+  background-color: var(--background-color);
+}
+.container .app {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 1200px;
+  margin: 0 auto;
+}
+.container .app .content {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+.container .app .content h5 {
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: var(--section-1-article-color);
+  margin-bottom: 10px;
+}
+.container .app .content h2 {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 5.4rem;
+  color: var(--article-color);
+}
+.container .app .content > p {
+  width: 80%;
+  font-weight: 400;
+  font-size: 1.8rem;
+  margin: 40px 0;
+  color: var(--p-color);
+  line-height: 3rem;
+}
+.container .app .content .store {
+  display: flex;
+  gap: 12px;
+}
+.container .app .content .store > a {
+  display: flex;
+  width: 180px;
+  justify-content: space-around;
+  align-items: center;
+  padding: 18px 2px;
+  color: var(--article-color);
+  border: 1px solid rgb(196, 194, 194);
+  border-radius: 12px;
+}
+.container .app .content .store > a > * {
+  line-height: 2rem;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.footer {
+  display: flex;
+  width: 1200px;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 100px 0 0 0;
+  gap: 100px;
+}
+.footer > div {
+  display: flex;
+  flex-direction: column;
+}
+.footer > div > *:first-child {
+  margin-bottom: 30px;
+}
+.footer > div > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.footer > div > p:first-child {
+  font-weight: 700;
+}
+.footer .logo {
+  width: 30%;
+}
+.footer .get-in-touch {
+  width: 20%;
+}
+.footer .get-in-touch p + p {
+  line-height: 3rem;
+}
+.footer a, .footer .logo p, .footer .get-in-touch > p + p {
+  color: var(--p-color);
+}
+
+.bottom {
+  display: flex;
+  width: 1200px;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 100px 0 20px 0;
+}
+.bottom p {
+  color: var(--p-color);
+}
+.bottom .condititon {
+  display: flex;
+  gap: 20px;
+}
+.bottom .condititon a {
+  color: var(--p-color);
+}
+.bottom .condititon a:hover {
+  color: var(--article-color);
 }
 
 html {
+  font-size: 10px;
   font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+input, button, textarea, select {
+  font-family: inherit;
+  outline: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  color: white;
+  background-color: var(--button-color);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 20px 25px;
+  font-size: 2rem;
+  font-weight: 500;
+  width: fit-content;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: transparent;
+  border: 1px solid var(--button-color);
+  color: var(--button-color);
+  transition: 0.5s ease;
 }
 
 /*# sourceMappingURL=style.css.map */
