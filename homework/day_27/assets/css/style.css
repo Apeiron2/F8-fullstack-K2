@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+.container {
+  padding: 20px;
+}
+.container > button {
+  margin: 5px;
+}
+
+.products {
+  border-collapse: collapse;
+  margin: 30px auto;
+  width: 95vw;
+}
+.products thead th:nth-of-type(1) {
+  width: 10%;
+}
+.products thead th:nth-of-type(2) {
+  width: 70%;
+}
+.products thead th:nth-of-type(3) {
+  width: 10%;
+}
+.products thead th:nth-of-type(4) {
+  width: 10%;
+}
+.products thead th {
+  padding: 0 8px;
+  border: 2px solid black;
+}
+.products tbody tr td {
+  border: 2px solid black;
+  padding: 2px 5px;
+}
+.products tbody tr td:last-of-type {
+  width: 100%;
+}
+.products tbody tr td:last-of-type > * {
+  margin: 2px auto;
+}
+.products tbody tr td:last-of-type input {
+  display: block;
+  width: 100%;
+}
+.products tbody tr td:last-of-type button {
+  display: block;
+  width: 100%;
+}
+
+.cart {
+  border-collapse: collapse;
+  margin: 30px auto;
+  width: 95vw;
+}
+.cart thead th:nth-of-type(1) {
+  width: 5%;
+}
+.cart thead th:nth-of-type(2) {
+  width: 30%;
+}
+.cart thead th:nth-of-type(3) {
+  width: 20%;
+}
+.cart thead th:nth-of-type(4) {
+  width: 10%;
+}
+.cart thead th:nth-of-type(5) {
+  width: 20%;
+}
+.cart thead th:nth-of-type(6) {
+  width: 5%;
+}
+.cart thead th {
+  border: 2px solid black;
+}
+.cart tbody tr td {
+  padding: 2px 5px;
+  border: 2px solid black;
+}
+.cart tbody tr td > input {
+  width: 100%;
+}
+.cart tbody tr td > button {
+  width: 100%;
+}
+
+.null {
+  display: block;
+}
+
+.have-product {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */

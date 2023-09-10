@@ -273,7 +273,7 @@ header .container-content > img {
   width: 1200px;
   flex-direction: row-reverse;
   align-items: center;
-  padding: 100px 0;
+  padding: 100px 0px;
   margin: 0 auto;
 }
 .choose-us .content {
@@ -311,7 +311,7 @@ header .container-content > img {
   display: flex;
   width: 1200px;
   align-items: center;
-  padding: 100px 0;
+  padding: 100px 0px;
   margin: 0 auto;
 }
 .delivery .content {
