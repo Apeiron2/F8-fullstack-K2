@@ -1,0 +1,13 @@
+//Import Partials
+@import "./partials/variables";
+@import "./partials/fonts";
+@import "./partials/reset";
+@import "./partials/mixins";
+@import "./partials/base";
+// Import Layouts
+@import "./layouts/header";
+@import "./layouts/footer";
+// Import Pages
+
+// 1. Home
+@import "./pages/home/hero";
