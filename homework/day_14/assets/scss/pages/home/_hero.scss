@@ -1,5 +1,6 @@
 .hero {
   color: $contentColor;
+  margin: 0 auto;
   .hero-text {
     h1 {
       font-size: 3.6rem;
@@ -17,7 +18,7 @@
   }
   .img-chop {
     display: flex;
-    gap: 0;
+    align-items: center;
     width: 49.5vw;
     background-color: $green-200;
     border-radius: 1.6rem 0 0 1.6rem;
@@ -26,15 +27,53 @@
       translate: -22%;
     }
     span {
-      transform: rotate(90deg);
+      writing-mode: vertical-rl;
       font-size: 16.6rem;
       color: $green-1000;
       opacity: 0.15;
       font-weight: 800;
       line-height: 1;
-      position: absolute;
-      top: calc(60px + 100px);
-      right: -10%;
+      translate: -90%;
+    }
+  }
+}
+@media screen and (max-width: 1500px) {
+  .hero {
+    .img-chop {
+      span {
+        font-size: 10vw;
+        translate: -100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991.98px) {
+  .hero {
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .img-chop {
+      width: 97vw;
+      margin: 20px 0;
+      border-radius: 1.6rem;
+      flex-direction: column-reverse;
+      img {
+        translate: 0;
+        max-width: 80%;
+      }
+      span {
+        writing-mode: inherit;
+        font-size: 10rem;
+        translate: 0;
+        text-align: center;
+        margin-top: 20px;
+      }
     }
   }
 }
