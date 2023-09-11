@@ -22,3 +22,11 @@ $orange-300: #ffba94;
 $orange-500: #ff8440;
 $orange-600: #ff6916;
 $orange-700: #e05000;
+
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);

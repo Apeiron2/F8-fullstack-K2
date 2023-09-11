@@ -1,0 +1,40 @@
+.hero {
+  color: $contentColor;
+  .hero-text {
+    h1 {
+      font-size: 3.6rem;
+      font-weight: 800;
+    }
+    h2 {
+      width: 70%;
+      font-size: 4.3rem;
+      font-weight: 800;
+    }
+    p {
+      width: 78%;
+      font-weight: 400;
+    }
+  }
+  .img-chop {
+    display: flex;
+    gap: 0;
+    width: 49.5vw;
+    background-color: $green-200;
+    border-radius: 1.6rem 0 0 1.6rem;
+    position: relative;
+    img {
+      translate: -22%;
+    }
+    span {
+      transform: rotate(90deg);
+      font-size: 16.6rem;
+      color: $green-1000;
+      opacity: 0.15;
+      font-weight: 800;
+      line-height: 1;
+      position: absolute;
+      top: calc(60px + 100px);
+      right: -10%;
+    }
+  }
+}
