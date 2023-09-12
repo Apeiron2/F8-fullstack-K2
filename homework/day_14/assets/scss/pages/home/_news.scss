@@ -77,3 +77,28 @@
     }
   }
 }
+@media screen and (max-width: 991.98px) {
+  .news {
+    .header {
+      margin-top: 100px;
+    }
+    .content {
+      display: block;
+      margin: 20px 0;
+      height: 280px;
+      overflow-y: hidden;
+      img {
+        float: left;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .news {
+    .content {
+      display: flex;
+      height: auto;
+    }
+  }
+}

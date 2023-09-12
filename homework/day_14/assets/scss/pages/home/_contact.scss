@@ -1,0 +1,51 @@
+.contact {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  .contact-form {
+    h2 {
+      width: 100%;
+    }
+    form {
+      & > input {
+        border-radius: 6.667px;
+        border: 0.833px solid $gray-500;
+        padding: 13.333px;
+        font-family: Inter;
+        font-size: 1.6rem;
+      }
+      #name {
+        width: 95%;
+        margin-bottom: 20px;
+      }
+      #email {
+        width: 45%;
+      }
+      #tel {
+        width: 45%;
+        margin-left: 4%;
+      }
+      #content {
+        width: 95%;
+        border-radius: 6.667px;
+        border: 0.833px solid $gray-500;
+        padding: 13.333px;
+        margin-top: 20px;
+        font-family: Inter;
+        font-size: 1.6rem;
+      }
+      button {
+        display: block;
+        margin-left: auto;
+        margin-right: 40px;
+        margin-top: 20px;
+        padding: 13.333px 50px;
+        border-radius: 6.667px;
+        background-color: $green-800;
+        color: white;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+    }
+  }
+}

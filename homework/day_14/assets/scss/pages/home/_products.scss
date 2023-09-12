@@ -81,11 +81,39 @@
     position: relative;
     .row {
       margin-top: 200px;
-      flex-direction: column;
-      gap: 200px;
-      align-items: center;
+      // flex-direction: column;
+      justify-content: space-around;
+      align-items: end;
       &:nth-of-type(3) {
         display: none;
+      }
+      &.combo-big {
+        margin-top: 0;
+      }
+      &.combo-small {
+        margin-top: 0;
+      }
+      .col-lg-4 {
+        & > div {
+          justify-content: space-between;
+          height: 600px;
+          width: 20vw;
+          .img-product {
+            .name {
+              height: 175px;
+              overflow-y: hidden;
+            }
+            .circle {
+              display: none;
+            }
+            .price {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
       }
     }
 
