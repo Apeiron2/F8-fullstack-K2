@@ -483,6 +483,9 @@ header .container-content .img img {
   }
 }
 @media screen and (min-width: 992px) {
+  .serve {
+    margin-top: 600px;
+  }
   .serve .container {
     width: 992px;
   }
@@ -784,6 +787,35 @@ header .container-content .img img {
 @media screen and (min-width: 992px) {
   .footer .infor {
     flex-direction: row;
+    align-items: start;
+    gap: 100px;
+  }
+  .footer .infor .logo {
+    align-items: start;
+  }
+  .footer .infor .logo p {
+    text-align: left;
+  }
+  .footer .infor .company {
+    align-items: start;
+  }
+  .footer .infor .company ul li {
+    text-align: left;
+  }
+  .footer .infor .services {
+    align-items: start;
+  }
+  .footer .infor .services ul li {
+    text-align: left;
+  }
+  .footer .infor .get-in-touch {
+    align-items: start;
+  }
+  .footer .infor .get-in-touch p {
+    text-align: left;
+  }
+  .footer .infor .get-in-touch p:last-child {
+    line-height: 1.625;
   }
 }
 html {

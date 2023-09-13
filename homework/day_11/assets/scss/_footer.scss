@@ -96,6 +96,41 @@
   .footer {
     .infor {
       flex-direction: row;
+      align-items: start;
+      gap: 100px;
+      .logo {
+        align-items: start;
+
+        p {
+          text-align: left;
+        }
+      }
+      .company {
+        align-items: start;
+        ul {
+          li {
+            text-align: left;
+          }
+        }
+      }
+      .services {
+        align-items: start;
+        ul {
+          li {
+            text-align: left;
+          }
+        }
+      }
+      .get-in-touch {
+        align-items: start;
+
+        p {
+          text-align: left;
+          &:last-child {
+            line-height: 1.625;
+          }
+        }
+      }
     }
   }
 }
