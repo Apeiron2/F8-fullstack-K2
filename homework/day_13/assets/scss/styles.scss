@@ -1,0 +1,229 @@
+@import "./parts/reset";
+
+.wrapper {
+  .wrapper-inner {
+    margin: 0 auto;
+    width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "side-bar header header header header"
+      "side-bar main main main main"
+      "side-bar main main main main"
+      "side-bar main main main main"
+      "side-bar main main main main";
+
+    .side-bar {
+      grid-area: side-bar;
+      padding: 60px 40px 60px 60px;
+      width: 300px;
+      position: relative;
+      .logo {
+        img {
+          height: 50px;
+          width: auto;
+        }
+      }
+      .menu {
+        span {
+          display: block;
+          font-size: 3.2rem;
+          font-weight: 800;
+          margin: 60px 0;
+        }
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          }
+        }
+      }
+      .help-center {
+        display: flex;
+        flex-wrap: nowrap;
+        width: fit-content;
+        gap: 5px;
+        flex-direction: row;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        translate: -50%;
+        a {
+          width: 90px !important;
+          font-size: 1.4rem;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .header {
+      grid-area: header;
+      display: flex;
+      justify-content: space-between;
+      height: 150px;
+      label {
+        display: none;
+      }
+      form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+        input {
+          font-size: 1.8rem;
+          font-weight: 500;
+        }
+      }
+      nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 50px;
+        ul {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 40px;
+          li {
+            padding: 20px 0;
+            border: 2px solid transparent;
+            a {
+              font-weight: 1.8rem;
+              font-weight: 600;
+            }
+            &:hover {
+              border-bottom: 2px solid black;
+            }
+          }
+        }
+        .icon {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 20px;
+        }
+      }
+    }
+
+    .main {
+      grid-area: main;
+      img {
+        width: 100%;
+        border-radius: 16px;
+      }
+    }
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 16px 16px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "img-1 img-1 img-3 img-4"
+    "img-2 img-2 img-3 img-4"
+    "img-5 img-6 img-7 img-7"
+    "img-5 img-6 img-8 img-8";
+}
+
+.img-1 {
+  grid-area: img-1;
+}
+
+.img-2 {
+  grid-area: img-2;
+}
+
+.img-3 {
+  grid-area: img-3;
+}
+
+.img-4 {
+  grid-area: img-4;
+}
+
+.img-5 {
+  grid-area: img-5;
+}
+
+.img-6 {
+  grid-area: img-6;
+}
+
+.img-7 {
+  grid-area: img-7;
+}
+
+.img-8 {
+  grid-area: img-8;
+}
+
+@media screen and (max-width: 575px) {
+  .wrapper {
+    .wrapper-inner {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      gap: 0px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "header header"
+        "main main"
+        "main main"
+        "main main"
+        "main main"
+        "main main"
+        "main main"
+        "main main"
+        "main main";
+      position: relative;
+      .side-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .header {
+        flex-direction: column;
+      }
+      .main {
+        .img-1,
+        .img-2,
+        .img-7,
+        .img-8 {
+          width: 100vw;
+        }
+        .img-3,
+        .img-4,
+        .img-5,
+        .img-6 {
+          width: 50vw;
+        }
+      }
+    }
+  }
+  .main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "img-1 img-1"
+      "img-2 img-2"
+      "img-3 img-4"
+      "img-3 img-4"
+      "img-7 img-7"
+      "img-8 img-8"
+      "img-5 img-6 "
+      "img-5 img-6 ";
+  }
+}

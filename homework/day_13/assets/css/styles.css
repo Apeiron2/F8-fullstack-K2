@@ -1,0 +1,217 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: none;
+}
+
+html {
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+.wrapper .wrapper-inner {
+  margin: 0 auto;
+  width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "side-bar header header header header" "side-bar main main main main" "side-bar main main main main" "side-bar main main main main" "side-bar main main main main";
+}
+.wrapper .wrapper-inner .side-bar {
+  grid-area: side-bar;
+  padding: 60px 40px 60px 60px;
+  width: 300px;
+  position: relative;
+}
+.wrapper .wrapper-inner .side-bar .logo img {
+  height: 50px;
+  width: auto;
+}
+.wrapper .wrapper-inner .side-bar .menu span {
+  display: block;
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin: 60px 0;
+}
+.wrapper .wrapper-inner .side-bar .menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.wrapper .wrapper-inner .side-bar .menu ul li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.wrapper .wrapper-inner .side-bar .help-center {
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+  gap: 5px;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  translate: -50%;
+}
+.wrapper .wrapper-inner .side-bar .help-center a {
+  width: 90px !important;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.wrapper .wrapper-inner .header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
+}
+.wrapper .wrapper-inner .header label {
+  display: none;
+}
+.wrapper .wrapper-inner .header form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+}
+.wrapper .wrapper-inner .header form input {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.wrapper .wrapper-inner .header nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+}
+.wrapper .wrapper-inner .header nav ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+.wrapper .wrapper-inner .header nav ul li {
+  padding: 20px 0;
+  border: 2px solid transparent;
+}
+.wrapper .wrapper-inner .header nav ul li a {
+  font-weight: 1.8rem;
+  font-weight: 600;
+}
+.wrapper .wrapper-inner .header nav ul li:hover {
+  border-bottom: 2px solid black;
+}
+.wrapper .wrapper-inner .header nav .icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+.wrapper .wrapper-inner .main {
+  grid-area: main;
+}
+.wrapper .wrapper-inner .main img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 16px 16px;
+  grid-auto-flow: row;
+  grid-template-areas: "img-1 img-1 img-3 img-4" "img-2 img-2 img-3 img-4" "img-5 img-6 img-7 img-7" "img-5 img-6 img-8 img-8";
+}
+
+.img-1 {
+  grid-area: img-1;
+}
+
+.img-2 {
+  grid-area: img-2;
+}
+
+.img-3 {
+  grid-area: img-3;
+}
+
+.img-4 {
+  grid-area: img-4;
+}
+
+.img-5 {
+  grid-area: img-5;
+}
+
+.img-6 {
+  grid-area: img-6;
+}
+
+.img-7 {
+  grid-area: img-7;
+}
+
+.img-8 {
+  grid-area: img-8;
+}
+
+@media screen and (max-width: 575px) {
+  .wrapper .wrapper-inner {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas: "header header" "main main" "main main" "main main" "main main" "main main" "main main" "main main" "main main";
+    position: relative;
+  }
+  .wrapper .wrapper-inner .side-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .wrapper .wrapper-inner .header {
+    flex-direction: column;
+  }
+  .wrapper .wrapper-inner .main .img-1,
+  .wrapper .wrapper-inner .main .img-2,
+  .wrapper .wrapper-inner .main .img-7,
+  .wrapper .wrapper-inner .main .img-8 {
+    width: 100vw;
+  }
+  .wrapper .wrapper-inner .main .img-3,
+  .wrapper .wrapper-inner .main .img-4,
+  .wrapper .wrapper-inner .main .img-5,
+  .wrapper .wrapper-inner .main .img-6 {
+    width: 50vw;
+  }
+  .main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas: "img-1 img-1" "img-2 img-2" "img-3 img-4" "img-3 img-4" "img-7 img-7" "img-8 img-8" "img-5 img-6 " "img-5 img-6 ";
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
