@@ -1,40 +1,61 @@
-// .delivery{
-//     display: flex;
-//     width: 1200px;
-//     align-items: center;
-//     padding: 100px 0px;
-//     margin: 0 auto;
-//     .content{
-//         display: flex;
-//         flex-direction: column;
-//         width: 60%;
-//         h5{
-//             font-weight: 500;
-//             font-size: 1.8rem;
-//             color:var(--section-3-article-color) ;
-//             margin-bottom: 10px;
-//         }
-//         h2{
-//             font-weight: 700;
-//             font-size:4rem;
-//             line-height: 5.4rem;
-//             color: var(--article-color);
-//         }
-//         p{
-//             width: 80%;
-//             font-weight: 400;
-//             font-size: 1.8rem;
-//             margin: 40px 0;
-//             color: var(--p-color);
-//             line-height: 3rem;
-//         }
-//     }
-//     img{
-//         width:50%;
-//         height: auto;
-//         padding-left: 100px;
-//     }
-// }
-// @media screen and (min-width:992px) and (max-width:1199px) {
+.delivery {
+  margin: 50px 0;
+  .row {
+    flex-direction: row-reverse;
+  }
+  .img {
+    img {
+      width: 100%;
+    }
+  }
+  .content {
+    margin-top: 40px;
+    text-align: center;
+    h2 {
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--section-3-article-color);
+      margin-bottom: 8px;
+    }
+    h5 {
+      font-size: 3.2rem;
+      color: var(--article-color);
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+    p {
+      margin: 40px 0;
+      color: var(--p-color);
+    }
+    .btn {
+      font-size: 1.6rem;
+      padding: 18px 20px;
+      width: 180px;
+    }
+  }
+}
 
-// }
+@media screen and (min-width: 768px) {
+  .delivery {
+    .container {
+      width: 696px;
+    }
+    .content {
+      text-align: start;
+    }
+  }
+}
+@media screen and (min-width: 992px) {
+  .delivery {
+    .container {
+      width: 960px;
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .delivery {
+    .container {
+      width: 1200px;
+    }
+  }
+}

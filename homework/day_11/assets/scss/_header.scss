@@ -166,6 +166,10 @@ header {
             font-size: 1.6rem;
             padding: 25px 20px;
           }
+          a {
+            font-size: 1.6rem;
+            font-weight: 500;
+          }
         }
       }
     }
@@ -221,10 +225,6 @@ header {
         }
       }
     }
-    .container-content {
-      .content {
-      }
-    }
   }
 }
 
@@ -233,6 +233,18 @@ header {
     width: 1200px;
     .header {
       padding: 0 20px;
+    }
+    .container-content {
+      .content {
+        .action {
+          .btn {
+            font-size: 2rem;
+          }
+          a {
+            font-size: 2rem;
+          }
+        }
+      }
     }
   }
 }
