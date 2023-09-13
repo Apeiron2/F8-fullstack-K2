@@ -1,86 +1,86 @@
-.serve{
-    display: flex;
-    width: 100vw;
-    flex-direction: column;
-    justify-content: center;
-    padding: 100px 0;
-    background-color: var(--background-color);
-    article{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 60px;
-        h5{
-            font-weight: 500;
-            font-size: 1.8rem;
-            color:var(--section-1-article-color) ;
-            margin-bottom: 10px;
-        }
-        h2{
-            width: 35%;
-            font-weight: 700;
-            font-size:4rem;
-            color: var(--article-color);
-        }
-    }
-    .services{
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        .service{
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            text-align: center;
-            position: relative;
-            .item{
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-                position: relative;
-                z-index: 2;
-                margin: 20px;
-                padding: 50px 28px;
-                background-color: white;
-                border-radius: 12px;
-            }
-            img{
-                height: 60px;
-                width: auto;
-                margin-bottom: 50px;
-            }
-            h3{
-                font-weight: 600;
-                font-size: 2.2rem;
-                color: var(--article-color);
-            }
-            p{
-                width: 228px;
-                font-size: 1.4rem;
-                color: var(--p-color);
-            }
-            .behind{
-                display: block;
-                width: 90%;
-                height: 90%;
-                position: absolute;
-                top: 20px;
-                left: 20px;
-                border-radius: 12px;
-                background-color: transparent;
-                rotate: 0;
-                z-index: 0;
-                
-            }
-            .item:hover+.behind{
-                background-color: #FE6A6A;
-                transition: 0.5s ease;
-                transform-origin: top center;
-                rotate: -3deg;
-            }
-        }
-    }
-}
+// .serve{
+//     display: flex;
+//     width: 100vw;
+//     flex-direction: column;
+//     justify-content: center;
+//     padding: 100px 0;
+//     background-color: var(--background-color);
+//     article{
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         align-items: center;
+//         text-align: center;
+//         margin-bottom: 60px;
+//         h5{
+//             font-weight: 500;
+//             font-size: 1.8rem;
+//             color:var(--section-1-article-color) ;
+//             margin-bottom: 10px;
+//         }
+//         h2{
+//             width: 35%;
+//             font-weight: 700;
+//             font-size:4rem;
+//             color: var(--article-color);
+//         }
+//     }
+//     .services{
+//         display: flex;
+//         justify-content: center;
+//         gap: 20px;
+//         .service{
+//             display: flex;
+//             flex-direction: column;
+//             gap: 20px;
+//             text-align: center;
+//             position: relative;
+//             .item{
+//                 display: flex;
+//                 flex-direction: column;
+//                 gap: 20px;
+//                 text-align: center;
+//                 position: relative;
+//                 z-index: 2;
+//                 margin: 20px;
+//                 padding: 50px 28px;
+//                 background-color: white;
+//                 border-radius: 12px;
+//             }
+//             img{
+//                 height: 60px;
+//                 width: auto;
+//                 margin-bottom: 50px;
+//             }
+//             h3{
+//                 font-weight: 600;
+//                 font-size: 2.2rem;
+//                 color: var(--article-color);
+//             }
+//             p{
+//                 width: 228px;
+//                 font-size: 1.4rem;
+//                 color: var(--p-color);
+//             }
+//             .behind{
+//                 display: block;
+//                 width: 90%;
+//                 height: 90%;
+//                 position: absolute;
+//                 top: 20px;
+//                 left: 20px;
+//                 border-radius: 12px;
+//                 background-color: transparent;
+//                 rotate: 0;
+//                 z-index: 0;
+
+//             }
+//             .item:hover+.behind{
+//                 background-color: #FE6A6A;
+//                 transition: 0.5s ease;
+//                 transform-origin: top center;
+//                 rotate: -3deg;
+//             }
+//         }
+//     }
+// }
