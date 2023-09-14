@@ -465,9 +465,13 @@ body {
   }
   .form-login {
     display: flex;
+    transition: translate 1s ease 0.5;
+    transition: visibility 0.1s ease;
   }
   .form-register {
     display: flex;
+    transition: translate 1s ease 0.5;
+    transition: visibility 0.1s ease;
   }
   #login:checked ~ .container .form-action .form-login {
     visibility: visible;
@@ -480,14 +484,6 @@ body {
     translate: -100%;
     transition: translate 1s ease 0.5;
     transition: visibility 0.1s ease;
-  }
-  #login:checked ~ .container .form-toggle .login {
-    background-color: white;
-    color: #3e3f5e;
-  }
-  #login:checked ~ .container .form-toggle .register {
-    background-color: transparent;
-    color: white;
   }
   #register:checked ~ .container .form-action .form-login {
     visibility: hidden;
