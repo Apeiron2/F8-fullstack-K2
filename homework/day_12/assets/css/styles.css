@@ -1,3 +1,527 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
 
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+html {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 10px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-size: 1.6rem;
+}
+
+.form-register form .name,
+.form-register form .password,
+.form-register form .re-password,
+.form-register form .email, .form-login form .name,
+.form-login form .password {
+  position: relative;
+}
+.form-register form .name input,
+.form-register form .password input,
+.form-register form .re-password input,
+.form-register form .email input, .form-login form .name input,
+.form-login form .password input {
+  width: 356px;
+  height: 54px;
+  border: 1px solid #dedeea;
+  transition: border-color 0.2s ease-in-out;
+  color: #3e3f5e;
+  border-radius: 12px;
+  font-weight: 700;
+  padding: 0 18px;
+}
+.form-register form .name input:focus,
+.form-register form .password input:focus,
+.form-register form .re-password input:focus,
+.form-register form .email input:focus, .form-login form .name input:focus,
+.form-login form .password input:focus {
+  border-color: #615dfa;
+}
+.form-register form .name input:focus + label,
+.form-register form .password input:focus + label,
+.form-register form .re-password input:focus + label,
+.form-register form .email input:focus + label, .form-login form .name input:focus + label,
+.form-login form .password input:focus + label {
+  top: -6px;
+  left: 12px;
+  font-size: 1.2rem;
+  padding: 0 6px;
+  background-color: white;
+}
+
+.form-register form .name label,
+.form-register form .password label,
+.form-register form .re-password label,
+.form-register form .email label, .form-login form .name label,
+.form-login form .password label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  transition: all 0.3s ease;
+  color: #adafca;
+}
+
+body {
+  width: 100vw;
+  height: 100%;
+  padding-top: 60px;
+  padding-bottom: 100px;
+  background-image: url("../img/landing-background.jpg");
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.logo {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo img {
+  height: 60px;
+  flex-grow: 0;
+}
+.logo h2 {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+.logo h1 {
+  text-align: center;
+  font-size: 10.4rem;
+  font-weight: 900;
+}
+.logo p {
+  display: none;
+}
+
+.form-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: max-content;
+}
+.form-action > div {
+  position: relative;
+  transition: transalte 0.4s ease;
+}
+.form-action > div > img {
+  display: block;
+  width: 160px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  translate: -50% -50%;
+}
+
+.form-login {
+  display: flex;
+  max-width: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 64px;
+  background-color: white;
+  border-radius: 12px;
+}
+.form-login h2 {
+  text-align: center;
+}
+.form-login form {
+  margin-top: 76px;
+  width: 356px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-login form .bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.form-login form .remember #remember:checked ~ label .custom-checkbox {
+  background-color: #23d2e2;
+  border-color: #23d2e2;
+}
+.form-login form .remember #remember:checked ~ label .custom-checkbox span {
+  visibility: visible;
+}
+.form-login form .remember label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.form-login form .remember label .custom-checkbox {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid #dedeea;
+}
+.form-login form .remember label .custom-checkbox .box {
+  width: 100%;
+  height: 100%;
+}
+.form-login form .remember label .custom-checkbox span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  color: white;
+  visibility: hidden;
+}
+.form-login form .remember label span {
+  color: #3e3f5e;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+.form-login form .forgot a {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #adafca;
+}
+.form-login form .btn {
+  background-color: #615dfa;
+  box-shadow: 4px 7px 12px 0 rgba(97, 93, 250, 0.2);
+  height: 54px;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.form-login .line-text {
+  margin-top: 40px;
+  color: #3e3f5e;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.form-login .line-text::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 1px;
+  background-color: #adafca;
+}
+.form-login .line-text::before {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 1px;
+  background-color: #adafca;
+}
+.form-login .social {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.form-login .social > div {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.form-login .social > div i {
+  color: white;
+}
+.form-login .social .facebook {
+  background-color: #615dfa;
+}
+.form-login .social .twitter {
+  background-color: #1abcff;
+}
+.form-login .social .twitch {
+  background-color: #7b5dfa;
+}
+.form-login .social .youtube {
+  background-color: #fd434f;
+}
+
+.form-register {
+  display: none;
+  max-width: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 64px;
+  background-color: white;
+  border-radius: 12px;
+}
+.form-register h2 {
+  text-align: center;
+}
+.form-register form {
+  margin-top: 76px;
+  width: 356px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-register form .send-mail #send-mail:checked ~ label .custom-checkbox {
+  background-color: #23d2e2;
+  border-color: #23d2e2;
+}
+.form-register form .send-mail #send-mail:checked ~ label .custom-checkbox span {
+  visibility: visible;
+}
+.form-register form .send-mail label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.form-register form .send-mail label .custom-checkbox {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid #dedeea;
+}
+.form-register form .send-mail label .custom-checkbox .box {
+  width: 100%;
+  height: 100%;
+}
+.form-register form .send-mail label .custom-checkbox span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  color: white;
+  visibility: hidden;
+}
+.form-register form .send-mail label span {
+  color: #3e3f5e;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+.form-register form .btn {
+  background-color: #00c7d9;
+  box-shadow: 4px 7px 12px 0 rgba(97, 93, 250, 0.2);
+  height: 54px;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.form-register .contact {
+  width: 356px;
+  font-size: 1.4rem;
+  padding: 0 12px;
+  margin-top: 30px;
+  font-weight: 500;
+}
+.form-register .contact a {
+  color: #00c7d9;
+  font-weight: 600;
+}
+
+.form-toggle {
+  display: flex;
+}
+.form-toggle label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  font-weight: 700;
+  line-height: 3.375;
+  transition: 0.3 ease;
+  cursor: pointer;
+}
+.form-toggle label::selection {
+  background-color: white;
+}
+.form-toggle .login {
+  border-radius: 12px 0 0 12px;
+}
+.form-toggle .register {
+  border-radius: 0 12px 12px 0;
+}
+
+#login:checked ~ .container .form-action .form-login {
+  display: flex;
+}
+#login:checked ~ .container .form-action .form-register {
+  display: none;
+}
+#login:checked ~ .container .form-toggle .login {
+  background-color: white;
+  color: #3e3f5e;
+}
+#login:checked ~ .container .form-toggle .register {
+  background-color: transparent;
+  color: white;
+}
+
+#register:checked ~ .container .form-action .form-login {
+  display: none;
+}
+#register:checked ~ .container .form-action .form-register {
+  display: flex;
+}
+#register:checked ~ .container .form-toggle .register {
+  background-color: white;
+  color: #3e3f5e;
+}
+#register:checked ~ .container .form-toggle .login {
+  background-color: transparent;
+  color: white;
+}
+
+@media screen and (max-width: 576px) {
+  .form-login {
+    padding: 10px;
+  }
+  .form-login form {
+    width: 100%;
+  }
+  .form-register {
+    padding: 10px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .form-action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .form-action > div {
+    position: relative;
+    transition: transalte 0.4s ease;
+  }
+  .form-action > div > img {
+    display: block;
+    width: 160px;
+    position: absolute;
+    top: 70px;
+    left: -10px;
+    translate: -50% -50%;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+  }
+  .logo {
+    grid-area: 1/1/2/2;
+  }
+  .logo p {
+    display: flex;
+    width: 55%;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  .logo {
+    grid-area: 1/1/2/2;
+  }
+  .form-toggle {
+    grid-area: 2/1/3/2;
+    justify-content: center;
+  }
+  .form-action {
+    grid-area: 1/2/3/3;
+    translate: 10% 7%;
+  }
+  .form-login {
+    display: flex;
+  }
+  .form-register {
+    display: flex;
+  }
+  #login:checked ~ .container .form-action .form-login {
+    visibility: visible;
+    translate: 0;
+    transition: translate 1s ease 0.5;
+    transition: visibility 0.1s ease;
+  }
+  #login:checked ~ .container .form-action .form-register {
+    visibility: hidden;
+    translate: -100%;
+    transition: translate 1s ease 0.5;
+    transition: visibility 0.1s ease;
+  }
+  #login:checked ~ .container .form-toggle .login {
+    background-color: white;
+    color: #3e3f5e;
+  }
+  #login:checked ~ .container .form-toggle .register {
+    background-color: transparent;
+    color: white;
+  }
+  #register:checked ~ .container .form-action .form-login {
+    visibility: hidden;
+    translate: 100%;
+    transition: translate 0.5s ease;
+    transition: visibility 0.1s ease 0.1;
+  }
+  #register:checked ~ .container .form-action .form-register {
+    visibility: visible;
+    translate: 0;
+    transition: translate 0.5s ease;
+    transition: visibility 0.1s ease 0.1;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .container .landing-decoration {
+    width: 64%;
+    height: 140%;
+    border-radius: 50%;
+    background: url("https://hoanganf8.github.io/htmlcss_project02/image/dot-texture.png") repeat 0 0 #fff;
+    position: absolute;
+    top: -20%;
+    right: -32%;
+    pointer-events: none;
+  }
+  .form-action {
+    position: relative;
+    top: 10%;
+    left: -20%;
+    height: 708px;
+  }
+  .form-action > div {
+    box-shadow: 0 0 60px 0 rgba(94, 92, 154, 0.12);
+  }
+}
 
 /*# sourceMappingURL=styles.css.map */

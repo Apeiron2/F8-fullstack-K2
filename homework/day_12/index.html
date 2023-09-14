@@ -5,10 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <input
+      type="radio"
+      name="toggle"
+      id="login"
+      checked
+      style="display: none"
+    />
+    <input type="radio" name="toggle" id="register" style="display: none" />
+    <div class="container">
+      <div class="landing-decoration"></div>
+      <div class="logo">
+        <img src="./assets/img/viking.png" alt="" />
+        <h2>WELCOME TO</h2>
+        <h1>VIKINGER</h1>
+        <p>
+          The next generation social network & community! Connect with your
+          friends and play with our quests and badges gamification system!
+        </p>
+      </div>
+      <div class="form-toggle">
+        <label for="login" class="login">Login</label>
+        <label for="register" class="register">Register</label>
+      </div>
+      <div class="form-action">
+        <div class="form-login">
+          <img src="./assets/img/rocket.png" alt="" />
+          <h2>Account Login</h2>
+          <form action="#">
+            <div class="name">
+              <input type="text" id="name-login" />
+              <label for="name-login">User or Email</label>
+            </div>
+            <div class="password">
+              <input type="password" id="password-login" />
+              <label for="password">Password</label>
+            </div>
+            <div class="bottom">
+              <div class="remember">
+                <input type="checkbox" id="remember" style="display: none" />
+                <label for="remember"
+                  ><div class="custom-checkbox">
+                    <div class="box"></div>
+                    <span><i class="fa-solid fa-xmark"></i></span>
+                  </div>
+                  <span>Remember me</span></label
+                >
+              </div>
+              <div class="forgot">
+                <a href="#">Forgot Password?</a>
+              </div>
+            </div>
+            <button class="btn">Login to your Account!</button>
+          </form>
+          <p class="line-text">Login with Social Account</p>
+          <div class="social">
+            <div class="facebook">
+              <i class="fa-brands fa-square-facebook"></i>
+            </div>
+            <div class="twitter">
+              <i class="fa-brands fa-twitter"></i>
+            </div>
+            <div class="twitch">
+              <i class="fa-brands fa-twitch"></i>
+            </div>
+            <div class="youtube">
+              <i class="fa-brands fa-youtube"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-register">
+          <img src="./assets/img/rocket.png" alt="" />
+          <h2>Create your Account!</h2>
+          <form action="#">
+            <div class="email">
+              <input type="text" id="email" />
+              <label for="email">Your Email</label>
+            </div>
+            <div class="name">
+              <input type="text" id="name" />
+              <label for="name">Username</label>
+            </div>
+            <div class="password">
+              <input type="text" id="password" />
+              <label for="password">Password</label>
+            </div>
+            <div class="re-password">
+              <input type="text" id="re-password" />
+              <label for="re-password">Repeat Password</label>
+            </div>
+            <div class="send-mail">
+              <input type="checkbox" id="send-mail" style="display: none" />
+              <label for="send-mail">
+                <div class="custom-checkbox">
+                  <div class="box"></div>
+                  <span><i class="fa-solid fa-xmark"></i></span>
+                </div>
+                <span>Send me news and updates via email</span>
+              </label>
+            </div>
+            <button class="btn">Register Now!</button>
+          </form>
+          <div class="contact">
+            <p>
+              You'll receive a confirmation email in your inbox with a link to
+              activate your account. If you have any problems,
+              <a href="#">contact us</a>!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

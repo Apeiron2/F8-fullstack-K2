@@ -1,0 +1,493 @@
+@import "./parts/variables";
+@import "./parts/fonts";
+@import "./parts/reset";
+@import "./parts/base";
+body {
+  width: 100vw;
+  height: 100%;
+  padding-top: 60px;
+  padding-bottom: 100px;
+  background-image: url("../img/landing-background.jpg");
+  background-size: cover;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.logo {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    height: 60px;
+    flex-grow: 0;
+  }
+  h2 {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 500;
+  }
+  h1 {
+    text-align: center;
+    font-size: 10.4rem;
+    font-weight: 900;
+  }
+  p {
+    display: none;
+  }
+}
+.form-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: max-content;
+  & > div {
+    position: relative;
+    transition: transalte 0.4s ease;
+    & > img {
+      display: block;
+      width: 160px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      translate: -50% -50%;
+    }
+  }
+}
+
+.form-login {
+  display: flex;
+  max-width: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 64px;
+  background-color: white;
+  border-radius: 12px;
+  h2 {
+    text-align: center;
+  }
+  form {
+    margin-top: 76px;
+    width: 356px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .name,
+    .password {
+      @extend %input;
+    }
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+    }
+    .remember {
+      #remember:checked {
+        & ~ label .custom-checkbox {
+          background-color: $mainColor;
+          border-color: $mainColor;
+          span {
+            visibility: visible;
+          }
+        }
+      }
+      label {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .custom-checkbox {
+          width: 20px;
+          height: 20px;
+          position: relative;
+          border-radius: 5px;
+          border: 1px solid #dedeea;
+          .box {
+            width: 100%;
+            height: 100%;
+          }
+          span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            color: white;
+            visibility: hidden;
+          }
+        }
+        span {
+          color: $textColor;
+          font-weight: 700;
+          font-size: 1.4rem;
+        }
+      }
+    }
+    .forgot {
+      a {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: $placeholderColor;
+      }
+    }
+    .btn {
+      background-color: #615dfa;
+      box-shadow: 4px 7px 12px 0 rgba(97, 93, 250, 0.2);
+      height: 54px;
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 700;
+      color: white;
+      border-radius: 10px;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+  }
+  .line-text {
+    margin-top: 40px;
+    color: $textColor;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    &::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 1px;
+      background-color: $placeholderColor;
+    }
+    &::before {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 1px;
+      background-color: $placeholderColor;
+    }
+  }
+  .social {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    & > div {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      i {
+        color: white;
+      }
+    }
+    .facebook {
+      background-color: #615dfa;
+    }
+    .twitter {
+      background-color: #1abcff;
+    }
+    .twitch {
+      background-color: #7b5dfa;
+    }
+    .youtube {
+      background-color: #fd434f;
+    }
+  }
+}
+
+.form-register {
+  display: none;
+  max-width: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 64px;
+  background-color: white;
+  border-radius: 12px;
+  h2 {
+    text-align: center;
+  }
+  form {
+    margin-top: 76px;
+    width: 356px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .name,
+    .password,
+    .re-password,
+    .email {
+      @extend %input;
+    }
+    .send-mail {
+      #send-mail:checked {
+        & ~ label .custom-checkbox {
+          background-color: $mainColor;
+          border-color: $mainColor;
+          span {
+            visibility: visible;
+          }
+        }
+      }
+      label {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .custom-checkbox {
+          width: 20px;
+          height: 20px;
+          position: relative;
+          border-radius: 5px;
+          border: 1px solid #dedeea;
+          .box {
+            width: 100%;
+            height: 100%;
+          }
+          span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            color: white;
+            visibility: hidden;
+          }
+        }
+        span {
+          color: $textColor;
+          font-weight: 700;
+          font-size: 1.4rem;
+        }
+      }
+    }
+    .btn {
+      background-color: #00c7d9;
+      box-shadow: 4px 7px 12px 0 rgba(97, 93, 250, 0.2);
+      height: 54px;
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 700;
+      color: white;
+      border-radius: 10px;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+  }
+  .contact {
+    width: 356px;
+    font-size: 1.4rem;
+    padding: 0 12px;
+    margin-top: 30px;
+    font-weight: 500;
+    a {
+      color: #00c7d9;
+      font-weight: 600;
+    }
+  }
+}
+
+.form-toggle {
+  display: flex;
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    font-weight: 700;
+    line-height: calc(54 / 16);
+    transition: 0.3 ease;
+    cursor: pointer;
+    &::selection {
+      background-color: white;
+    }
+  }
+  .login {
+    border-radius: 12px 0 0 12px;
+  }
+  .register {
+    border-radius: 0 12px 12px 0;
+  }
+}
+
+#login:checked ~ .container {
+  .form-action {
+    & .form-login {
+      display: flex;
+    }
+    & .form-register {
+      display: none;
+    }
+  }
+  .form-toggle {
+    .login {
+      background-color: white;
+      color: $textColor;
+    }
+    .register {
+      background-color: transparent;
+      color: white;
+    }
+  }
+}
+#register:checked ~ .container {
+  .form-action {
+    & .form-login {
+      display: none;
+    }
+    & .form-register {
+      display: flex;
+    }
+  }
+  .form-toggle {
+    .register {
+      background-color: white;
+      color: $textColor;
+    }
+    .login {
+      background-color: transparent;
+      color: white;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .form-login {
+    padding: 10px;
+    form {
+      width: 100%;
+    }
+  }
+  .form-register {
+    padding: 10px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .form-action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    & > div {
+      position: relative;
+      transition: transalte 0.4s ease;
+      & > img {
+        display: block;
+        width: 160px;
+        position: absolute;
+        top: 70px;
+        left: -10px;
+        translate: -50% -50%;
+      }
+    }
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+  }
+
+  .logo {
+    grid-area: 1 / 1 / 2 / 2;
+    p {
+      display: flex;
+      width: 55%;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+  }
+
+  .logo {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .form-toggle {
+    grid-area: 2 / 1 / 3 / 2;
+    justify-content: center;
+  }
+
+  .form-action {
+    grid-area: 1 / 2 / 3 / 3;
+    translate: 10% 7%;
+  }
+  .form-login {
+    display: flex;
+  }
+  .form-register {
+    display: flex;
+  }
+  #login:checked ~ .container {
+    .form-action {
+      & .form-login {
+        visibility: visible;
+        translate: 0;
+        transition: translate 1s ease 0.5;
+        transition: visibility 0.1s ease;
+      }
+      & .form-register {
+        visibility: hidden;
+        translate: -100%;
+        transition: translate 1s ease 0.5;
+        transition: visibility 0.1s ease;
+      }
+    }
+    .form-toggle {
+      .login {
+        background-color: white;
+        color: $textColor;
+      }
+      .register {
+        background-color: transparent;
+        color: white;
+      }
+    }
+  }
+  #register:checked ~ .container {
+    .form-action {
+      & .form-login {
+        visibility: hidden;
+        translate: 100%;
+        transition: translate 0.5s ease;
+        transition: visibility 0.1s ease 0.1;
+      }
+      & .form-register {
+        visibility: visible;
+        translate: 0;
+        transition: translate 0.5s ease;
+        transition: visibility 0.1s ease 0.1;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  .container {
+    .landing-decoration {
+      width: 64%;
+      height: 140%;
+      border-radius: 50%;
+      background: url("https://hoanganf8.github.io/htmlcss_project02/image/dot-texture.png")
+        repeat 0 0 #fff;
+      position: absolute;
+      top: -20%;
+      right: -32%;
+      pointer-events: none;
+    }
+  }
+  .form-action {
+    position: relative;
+    top: 10%;
+    left: -20%;
+    height: 708px;
+    & > div {
+      box-shadow: 0 0 60px 0 rgba(94, 92, 154, 0.12);
+    }
+  }
+}

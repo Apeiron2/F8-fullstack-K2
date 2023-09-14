@@ -1,0 +1,47 @@
+html {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 10px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-size: 1.6rem;
+}
+
+%input {
+  position: relative;
+  input {
+    width: 356px;
+    height: 54px;
+    border: 1px solid #dedeea;
+    transition: border-color 0.2s ease-in-out;
+    color: $textColor;
+    border-radius: 12px;
+    font-weight: 700;
+    padding: 0 18px;
+  }
+  label {
+    @extend %placeholder;
+  }
+  input:focus {
+    border-color: #615dfa;
+    & + label {
+      top: -6px;
+      left: 12px;
+      font-size: 1.2rem;
+      padding: 0 6px;
+      background-color: white;
+    }
+  }
+}
+
+%placeholder {
+  font-size: 1.6rem;
+  font-weight: 600;
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  transition: all 0.3s ease;
+  color: $placeholderColor;
+}
