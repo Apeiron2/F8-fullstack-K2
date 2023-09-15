@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="play-btn">
+        <i class="fa-solid fa-play"></i>
+      </div>
+      <div class="player">
+        <span>00:00</span>
+        <div class="progress-bar">
+          <div class="progress">
+            <span></span>
+          </div>
+          <span class="time-preview">00:00</span>
+        </div>
+        <span>00:00</span>
+      </div>
+      <label for="karaoke" class="karaoke-toggle">Hát karaoke</label>
+    </div>
+    <input type="checkbox" id="karaoke" style="display: none" />
+    <div class="karaoke">
+      <div class="container">
+        <div class="header">
+          <h1>KARAOKE</h1>
+          <label for="karaoke"><i class="fa-solid fa-angle-down"></i></label>
+        </div>
+        <div class="lyrics">
+          <p class="line-1">Đã lỡ yêu em nhiều</p>
+          <p class="line-2">Ca sĩ: Justatee</p>
+        </div>
+      </div>
+    </div>
+
+    <audio class="audio" src="./assets/music/Đã lỡ yêu em nhiều.mp3"></audio>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
