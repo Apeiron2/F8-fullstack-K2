@@ -1,0 +1,27 @@
+@import "./parts/variables";
+@import "./parts/reset";
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+.container {
+  background-color: $borderColor;
+  padding: 1rem;
+  width: 500px;
+  & > div {
+    border: 1px solid white;
+    padding: 0.5rem;
+    margin: 4px 0;
+  }
+  .module {
+    background-color: $moduleColor;
+  }
+  .ex {
+    background-color: $exColor;
+  }
+}

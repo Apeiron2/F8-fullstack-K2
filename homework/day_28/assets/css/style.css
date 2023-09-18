@@ -25,15 +25,15 @@
   .progress-bar {
     width: 100%;
     position: relative;
-    height: 20px;
+    height: 10px;
     background: gray;
     margin: 0 20px;
     cursor: pointer;
   }
   
-  .progress-bar:hover {
-    background: greenyellow;
-  }
+  /* .progress-bar:hover {
+    background: rgb(47, 255, 168);
+  } */
   
   .progress-bar .progress {
     position: absolute;
@@ -48,8 +48,8 @@
     right: 0;
     top: 50%;
     bottom: 0;
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
     display: block;
     border-radius: 50%;
     background: blueviolet;
@@ -89,13 +89,26 @@
     top: 0;
     transition:top 0.5s ease;
   }
-
+  #karaoke:checked~.container>div{
+    position: fixed;
+    bottom: 20%;
+    right: auto;
+    left: auto;
+    z-index: 1000;
+    width: 80vw;
+    color: white;
+    transition:0.4s ease 0.4s;
+  }
+  #karaoke:checked~.container>div .progress span{
+    background-color: #fff;
+  }
   .karaoke{
     background-color: blueviolet;
     color: #fff;
     width: 100vw;
     height: 100vh;
     position: fixed;
+    z-index: 3;
     top: 100vh;
     left: 0;
     transition:top 0.5s ease;
@@ -129,5 +142,17 @@
     text-align: center;
     font-size: 32px;
     font-weight: 600;
-    padding: 20px 0;
+    position: relative;
+    white-space: nowrap;
+  }
+  .karaoke .lyrics p span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    color: yellow;
+    text-align: left;
+    width: 0;
   }

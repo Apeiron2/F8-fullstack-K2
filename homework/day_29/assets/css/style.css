@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+.container {
+  background-color: #4286f4;
+  padding: 1rem;
+  width: 500px;
+}
+.container > div {
+  border: 1px solid white;
+  padding: 0.5rem;
+  margin: 4px 0;
+}
+.container .module {
+  background-color: #ff6f00;
+}
+.container .ex {
+  background-color: #8bb3f4;
+}
+
+/*# sourceMappingURL=style.css.map */

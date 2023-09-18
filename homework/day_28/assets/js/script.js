@@ -901,13 +901,13 @@ var sentences = [
 ];
 
 var karaoke = document.querySelector(".karaoke");
-
+var lyricsDiv = karaoke.querySelector(".lyrics");
 var line1 = karaoke.querySelector(".line-1");
 var line1Text = line1.innerText;
 var line2 = karaoke.querySelector(".line-2");
 var line2Text = line2.innerText;
 var audio = document.querySelector("audio");
-var indexLyric = 1;
+var currentScreen = 0;
 //Yêu cầu: Chuyển đổi hết thành phần trăm (%)
 
 var handleUpdateValue = function (value) {
@@ -929,7 +929,6 @@ progressBar.addEventListener("mousedown", function (e) {
     initialClientX = e.clientX;
     isDrag = true;
     handleUpdateValue(value);
-    handleIndexLyric(audio.currentTime);
     var currentTime = (value / 100) * audio.duration;
 
     currentTimeEl.innerText = getTime(currentTime);
@@ -961,7 +960,6 @@ document.addEventListener("mousemove", function (e) {
     }
 
     handleUpdateValue(value);
-    handleIndexLyric(audio.currentTime);
     var currentTime = (value / 100) * audio.duration;
 
     currentTimeEl.innerText = getTime(currentTime);
@@ -1027,16 +1025,6 @@ function sentence(index) {
   return { startTime: startTime, endTime: endTime, lyric: words.join(" ") };
 }
 
-function handleIndexLyric(currentTime) {
-  var time = getTimeSentence(currentTime);
-  for (let i = 1; i <= sentences.length; i++) {
-    if (sentence(i).startTime <= time && time <= sentence(i).endTime) {
-      indexLyric = i % 2 ? i : i - 1;
-      break;
-    }
-  }
-}
-
 //Lắng nghe sự kiện load xong nhạc
 audio.addEventListener("loadeddata", function () {
   durationEl.innerText = getTime(audio.duration);
@@ -1060,16 +1048,6 @@ audio.addEventListener("timeupdate", function () {
     currentTimeEl.innerText = getTime(audio.currentTime);
 
     handleUpdateValue(value);
-    handleIndexLyric(audio.currentTime);
-  }
-  // Chức năng lyrics
-
-  if (indexLyric < sentences.length) {
-    if (getTimeSentence(audio.currentTime) >= sentence(indexLyric).startTime) {
-      line1.innerText = sentence(indexLyric).lyric;
-      line2.innerText = sentence(indexLyric + 1)?.lyric;
-      indexLyric += 2;
-    }
   }
 });
 
@@ -1103,3 +1081,83 @@ audio.addEventListener("play", function () {
 audio.addEventListener("pause", function () {
   playBtn.innerHTML = playBtnIcon;
 });
+
+audio.addEventListener("timeupdate", function () {
+  var currentTime = getTimeSentence(audio.currentTime);
+
+  var index = sentences.findIndex(function (sentence) {
+    sentence = sentence.words;
+    return (
+      currentTime >= sentence[0].startTime &&
+      currentTime <= sentence[sentence.length - 1].endTime
+    );
+  });
+  if (
+    currentTime - sentences[0].words[0].startTime > -2000 &&
+    currentTime - sentences[0].words[0].startTime < 0
+  )
+    index = 0;
+  if (index !== -1) {
+    handleColor(currentTime);
+    var screen = Math.floor(index / 2 + 1);
+    if (screen != currentScreen) {
+      var offset = (screen - 1) * 2;
+      if (index >= offset && index < offset + 2) {
+        var ptag = "";
+        for (var i = offset; i < offset + 2; i++) {
+          var sentence = sentences[i].words
+            .map(function (item) {
+              return item.data;
+            })
+            .join(" ");
+          ptag += `<p data-start-time="${
+            sentences[i].words[0].startTime
+          }" data-end-time="${
+            sentences[i].words[sentences[i].words.length - 1].endTime
+          }" data-words=${JSON.stringify(
+            sentences[i].words
+          )} >${sentence}<span>${sentence}</span></p>`;
+        }
+        lyricsDiv.innerHTML = ptag;
+      }
+      currentScreen = screen;
+    }
+  }
+});
+
+function handleColor(currentTime) {
+  var sentenceEL = lyricsDiv.children;
+  Array.from(sentenceEL).forEach(function (sentence) {
+    var startTime = sentence.dataset.startTime;
+    var endTime = sentence.dataset.endTime;
+
+    if (startTime && endTime && currentTime >= startTime) {
+      var words = JSON.parse(sentence.dataset.words);
+      var i = words[0];
+      var nextWord = words[1];
+      words.forEach(function (item, index) {
+        if (currentTime > item.startTime) {
+          i = item;
+          nextWord = words?.[index + 1];
+          console.log(nextWord);
+        }
+      });
+
+      var sentenceTime = endTime - startTime;
+
+      var time = nextWord
+        ? nextWord.startTime - startTime
+        : i.endTime - startTime;
+      var rate = (time * 100) / sentenceTime;
+
+      var currenWidth = +sentence.children[0].style.width.slice(0, -1);
+      if (currenWidth < rate) {
+        sentence.children[0].style.transition = `width ${
+          i.endTime - i.startTime
+        }ms linear`;
+        sentence.children[0].style.width = `${rate}%`;
+        if (rate !== 100) sentence.children[0].style.width = `${rate}%`;
+      }
+    }
+  });
+}
