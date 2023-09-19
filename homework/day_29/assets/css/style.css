@@ -24,12 +24,14 @@ body {
 .container {
   background-color: #4286f4;
   padding: 1rem;
-  width: 500px;
+  width: fit-content;
 }
 .container > div {
   border: 1px solid white;
   padding: 0.5rem;
   margin: 4px 0;
+  user-select: none;
+  width: 500px;
 }
 .container .module {
   background-color: #ff6f00;

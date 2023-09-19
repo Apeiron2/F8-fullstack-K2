@@ -12,11 +12,13 @@ body {
 .container {
   background-color: $borderColor;
   padding: 1rem;
-  width: 500px;
+  width: fit-content;
   & > div {
     border: 1px solid white;
     padding: 0.5rem;
     margin: 4px 0;
+    user-select: none;
+    width: 500px;
   }
   .module {
     background-color: $moduleColor;
