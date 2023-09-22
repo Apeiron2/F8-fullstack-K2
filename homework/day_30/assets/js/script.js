@@ -14,7 +14,6 @@ var colorBtn = control.querySelector("input[type='color']");
 
 //Content
 var content = container.querySelector(".content");
-content.innerText = localStorage.getItem(`text`);
 
 //Counter
 var counter = container.querySelector(".counter");
