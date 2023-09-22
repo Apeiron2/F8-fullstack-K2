@@ -18,14 +18,12 @@ function updateTable() {
 }
 
 function addEventDrag(element) {
-  var innerX;
   var innerY;
   element.addEventListener("drag", function (e) {
     this.style.opacity = 0.3;
     actionDrag(element, e, innerY);
   });
   element.addEventListener("dragstart", function (e) {
-    innerX = e.offsetX;
     innerY = e.offsetY;
   });
   element.addEventListener("dragend", function (e) {
@@ -55,8 +53,6 @@ function actionDrag(element, e, innerY) {
       }
     });
   }
-
   container.insertBefore(element, currentIndex);
-
   updateTable();
 }

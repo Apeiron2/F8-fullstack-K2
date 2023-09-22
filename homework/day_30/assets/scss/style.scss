@@ -1,0 +1,116 @@
+@import "./reset";
+
+.container {
+  width: 1200px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  .line-throungh {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: gray;
+  }
+  .control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    & > div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .left {
+      .menu-dropdown {
+        position: relative;
+        button.type {
+          padding: 10px 10px;
+          background-color: #0a58ca;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .type-dropdown {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          width: 200px;
+          position: absolute;
+          left: 0;
+          top: 40px;
+          border: 1px solid gray;
+          border-radius: 12px;
+          button {
+            text-align: left;
+            border: none;
+            padding: 10px 20px;
+            width: 100%;
+            background-color: white;
+            cursor: pointer;
+            &:nth-child(1) {
+              border-radius: 12px 12px 0 0;
+            }
+            &:nth-child(3) {
+              border-radius: 0 0 12px 12px;
+            }
+            &:hover {
+              color: white;
+              background-color: black;
+            }
+          }
+          &.show {
+            display: flex;
+          }
+        }
+      }
+      input {
+        padding: 8px 0;
+      }
+    }
+    .right {
+      & > * {
+        cursor: pointer;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: black;
+        color: white;
+        font-size: 16px;
+        border: none;
+        &.bold {
+          font-weight: bolder;
+        }
+        &.underline {
+          text-decoration: underline;
+        }
+        &.italic {
+          font-style: italic;
+        }
+        &:hover {
+          color: black;
+          background-color: rgb(199, 199, 199);
+        }
+      }
+      input {
+        height: 40px;
+      }
+    }
+  }
+  .content {
+    display: block;
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid gray;
+    padding: 20px;
+    margin-top: 50px;
+    box-shadow: 0 0 5px 1px gray;
+  }
+  .counter {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    padding: 20px 0;
+  }
+}

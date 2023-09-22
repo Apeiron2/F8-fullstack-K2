@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Doc Editor</h1>
+      <div class="line-throungh"></div>
+      <div class="control">
+        <div class="left">
+          <div class="menu-dropdown">
+            <button class="type">File <span>▼</span></button>
+            <div class="type-dropdown">
+              <button class="new-file">New</button>
+              <button class="txt-file">Save as TXT</button>
+              <button class="pdf-file">Save as PDF</button>
+            </div>
+          </div>
+
+          <input type="text" value="untitled" />
+        </div>
+        <div class="right">
+          <button class="bold">b</button>
+          <button class="underline">u</button>
+          <button class="italic">i</button>
+          <input type="color" />
+        </div>
+      </div>
+      <div class="content" contenteditable="true"></div>
+      <div class="counter">
+        <p class="letters">Số ký tự: <span>0</span></p>
+        <p class="words">Số từ: <span>0</span></p>
+      </div>
+      <img
+        src="https://i.stack.imgur.com/oAvKi.jpg"
+        alt=""
+        style="margin: 20px auto; width: 30%"
+      />
+    </div>
+  </body>
+
+  <script src="./assets/js/script.js"></script>
+</html>
