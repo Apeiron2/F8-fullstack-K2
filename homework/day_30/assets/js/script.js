@@ -2,9 +2,10 @@ var container = document.querySelector(".container");
 
 //Control
 var control = container.querySelector(".control");
-var typeDropdown = control.querySelector(".type-dropdown");
-var dropDownBtn = control.querySelector(".menu-dropdown button");
-
+var menuDropDown = container.querySelector(".menu-dropdown");
+var typeDropdown = menuDropDown.querySelector(".type-dropdown");
+var dropDownBtn = menuDropDown.children[0];
+var textName = control.children[0].children[1];
 //Style Button
 var botlBtn = control.querySelector("button.bold");
 var italicBtn = control.querySelector("button.italic");
@@ -26,11 +27,11 @@ var txtBtn = typeDropdown.querySelector(".txt-file");
 var pdfBtn = typeDropdown.querySelector(".pdf-file");
 
 //Event Menu Dropdown
-dropDownBtn.addEventListener("click", function () {
+dropDownBtn.addEventListener("click", function (e) {
+  e.stopPropagation();
   typeDropdown.classList.toggle("show");
 });
-
-dropDownBtn.addEventListener("blur", function () {
+window.addEventListener("click", function () {
   typeDropdown.classList.remove("show");
 });
 // End menu dropdown
@@ -58,3 +59,26 @@ colorBtn.addEventListener("input", function (e) {
   document.execCommand("foreColor", false, color);
 });
 //End font style
+
+//Event new & download
+newBtn.addEventListener("click", function () {
+  content.innerHTML = "";
+});
+txtBtn.addEventListener("click", function () {
+  var blob = new Blob([content.innerText], { type: "text/plan" });
+  var blobURL = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.style.display = "none";
+  a.href = blobURL;
+  a.download = `${textName.value}.txt`;
+  a.click();
+  a.remove();
+});
+pdfBtn.addEventListener("click", function () {
+  var opt = {
+    margin: 1,
+    filename: `${textName.value}.pdf`,
+  };
+  html2pdf(content, opt);
+});
+//End new & download
