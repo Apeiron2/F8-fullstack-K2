@@ -46,7 +46,8 @@ function startCount() {
   }
   countSecond();
 }
+// End hàm đếm ngược
+
 document.addEventListener("DOMContentLoaded", function () {
   startCount();
 });
-// End hàm đếm ngược
