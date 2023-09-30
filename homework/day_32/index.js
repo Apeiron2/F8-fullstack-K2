@@ -16,3 +16,13 @@ F8.component("counter-app", {
 F8.component("header-component", {
   template: `<h1>HEADER</h1>`,
 });
+
+F8.component("test-code", {
+  data: () => ({
+    isfocus: "Nhấn vào ô bên ⇓ để nhập",
+  }),
+  template: `
+  <label style="display:block;margin-top:90px">{{ isfocus }}</label>
+  <input style="display: block;margin-top:90px" v-on:focus="isfocus='Nhập đi'" v-on:blur="isfocus='Xong rồi à?'" v-on:mousemove="isfocus='Đúng rồi! Nhập ở ô đấy'" v-on:mouseout="isfocus='Nhấn vào ô bên ⇓ để nhập'">
+  `,
+});
