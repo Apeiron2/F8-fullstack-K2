@@ -46,6 +46,17 @@ class F8 {
               let action = attr.value;
               EL.addEventListener(eventName, function () {
                 eval(action);
+                variables.forEach((i) => {
+                  let variable = i.match(/{{(.+?)}}/);
+                  let nameVariable = variable[1].trim();
+                  let spanEList = this.parentElement.querySelectorAll(
+                    `#${nameVariable}`
+                  );
+                  Array.from(spanEList).forEach((span) => {
+                    if (window[nameVariable] != span.innerText)
+                      span.innerText = window[nameVariable];
+                  });
+                });
               });
             });
           });
