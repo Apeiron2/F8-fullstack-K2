@@ -41,12 +41,8 @@ class F8 {
               let indexEvent = attr.name.indexOf(":") + 1;
               let eventName = attr.name.slice(indexEvent);
               let action = attr.value;
-
               EL.addEventListener(eventName, function () {
-                let script = document.createElement("script");
-                script.innerHTML = action;
-                document.body.appendChild(script);
-                script.remove();
+                eval(action);
               });
             });
           });
