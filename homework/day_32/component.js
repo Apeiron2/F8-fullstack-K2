@@ -21,21 +21,24 @@ class F8 {
           let templateEL = document.createElement("template");
           templateEL.innerHTML = obj.template;
           //Clone template
-          var template = templateEL.content.cloneNode(true);
+          let template = templateEL.content.cloneNode(true);
+          // Tìm các biến trong template
           let variables = obj.template.match(/{{.+?}}/g);
           if (variables) {
             variables.forEach((i) => {
               let variable = i.match(/{{(.+?)}}/);
               Array.from(template.children).forEach((Element) => {
+                let nameVariable = variable[1].trim();
                 Element.innerHTML = Element.innerHTML.replaceAll(
                   variable[0],
-                  window[variable[1].trim()]
+                  `<span id=${nameVariable}>${window[nameVariable]}</span>`
                 );
-                console.log(Element);
               });
             });
           }
-          //Lấy các attribute v-on:
+          //End Tìm các biến trong template
+
+          //Lấy các attribute, add event v-on:
           Array.from(template.children).forEach((EL) => {
             Array.from(EL.attributes).forEach((attr) => {
               let indexEvent = attr.name.indexOf(":") + 1;
@@ -46,6 +49,7 @@ class F8 {
               });
             });
           });
+          // End Lấy các attribute, add event v-on:
           this.append(template);
         }
       }

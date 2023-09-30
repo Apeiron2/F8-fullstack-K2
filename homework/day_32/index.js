@@ -6,8 +6,10 @@ F8.component("counter-app", {
   template: `
   <h1>{{ title }}</h1>
   <h2>Đã đếm: {{ count }} lần</h2>
-  <button v-on:click="count--" v-on:dblclick="title='Vũ Đức Tài'">-</button>
+  <button v-on:click="count--" >-</button>
   <button v-on:click="count++">+</button>
+  <button v-on:dblclick="title='Vũ Đức Tài'">Change title</button>
+  <button v-on:mousemove="console.log('đang di chuột')">Test chuột</button>
   `,
 });
 
