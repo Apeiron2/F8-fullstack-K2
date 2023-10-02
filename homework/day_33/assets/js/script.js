@@ -33,9 +33,10 @@ function openWeb(transcript) {
   let url;
   notification.style.display = "block";
   notification.textContent = `Đang thực hiện: ${transcript}`;
+
   switch (transcript.toLowerCase()) {
     case "google":
-      url = "https://www.google.com.vn/";
+      url = "https://www.google.com/";
       break;
     case "facebook":
       url = "https://www.facebook.com/";
@@ -47,10 +48,10 @@ function openWeb(transcript) {
       url = "https://www.google.com/drive/";
       break;
     case "google maps":
-      url = "https://www.google.com/maps/@9.779349,105.6189045,11z?hl=vi-VN";
+      url = "https://www.google.com/maps";
       break;
     case "bản đồ":
-      url = "https://www.google.com/maps/@9.779349,105.6189045,11z?hl=vi-VN";
+      url = "https://www.google.com/maps";
       break;
     default:
       url = processURL(transcript);
@@ -78,7 +79,7 @@ function classify(transcript) {
   // Bộ từ khóa các loại tìm kiếm
   let types = {
     video: ["video", "clip"],
-    music: ["bài hát", "mở bài", "mở nhạc"],
+    music: ["bài hát", "mở bài hát", "mở nhạc", "nghe bài"],
     map: [
       "chỉ đường tới",
       "chỉ đường",
@@ -90,6 +91,7 @@ function classify(transcript) {
     ],
   };
 
+  //Check loại yêu cầu và keyword
   let type;
   let index = transcript.length;
   let keyWordType;
