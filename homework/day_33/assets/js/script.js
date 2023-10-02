@@ -73,36 +73,55 @@ function sendMess(text, color) {
 
 //Hàm phân loại yêu cầu
 function classify(transcript) {
+  transcript = transcript.toLowerCase();
+
+  // Bộ từ khóa các loại tìm kiếm
   let types = {
-    video: transcript.indexOf("video"),
-    bai_hat: transcript.indexOf("bài hát"),
-    map: transcript.indexOf("tới"),
+    video: ["video", "clip"],
+    music: ["bài hát", "mở bài", "mở nhạc"],
+    map: [
+      "chỉ đường tới",
+      "chỉ đường",
+      "tới",
+      "chỉ đường đến",
+      "đến",
+      "đường về",
+      "về",
+    ],
   };
+
   let type;
   let index = transcript.length;
+  let keyWordType;
   Object.keys(types).forEach((key) => {
-    let i = types[key];
-    if (i >= 0 && i < index) {
-      type = key;
-      index = i;
-    }
+    let keywords = types[key];
+    keywords.forEach((keyword) => {
+      let i = transcript.indexOf(keyword);
+      if (i >= 0 && i < index) {
+        type = key;
+        index = i;
+        keyWordType = keyword;
+      }
+    });
   });
-  return { type, index };
+  return { type, index, keyWordType };
 }
+
 // Tạo URL tìm kiếm
 function processURL(params) {
-  let type = classify(params.toLowerCase()).type;
-  let index = classify(params.toLowerCase()).index;
+  let type = classify(params).type;
+  let index = classify(params).index;
+  let key = classify(params).keyWordType;
   let url;
-  if (type && index) {
-    let content = params.slice(index + type.length).trim();
+  if (type && index >= 0) {
+    let content = params.slice(index + key.length).trim();
     switch (type) {
       case "video":
         url = `https://www.youtube.com/results?search_query=${encodeURIComponent(
           content
         )}`;
         break;
-      case "bai_hat":
+      case "music":
         url = `https://zingmp3.vn/tim-kiem/tat-ca?q=${encodeURIComponent(
           content
         )}`;
