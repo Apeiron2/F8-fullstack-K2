@@ -30,6 +30,8 @@ handleScaleChange();
 // Hành động zoom
 active.addEventListener("mousemove", function (e) {
   e.stopPropagation();
+  display.style.visibility = "visible";
+  overlay.style.visibility = "visible";
   let x = e.layerX - overlay.clientWidth / 2;
   let y = e.layerY - overlay.clientHeight / 2;
 
@@ -55,7 +57,10 @@ active.addEventListener("mousemove", function (e) {
   overlay.style.top = y + "px";
   showImg(x, y);
 });
-
+active.addEventListener("mouseout", function () {
+  display.style.visibility = "hidden";
+  overlay.style.visibility = "hidden";
+});
 function showImg(x, y) {
   // Dịch chuyển (x,y)=(0,0) về tâm của imgShow
   x -= img.clientWidth / 2 - overlay.clientWidth / 2;
