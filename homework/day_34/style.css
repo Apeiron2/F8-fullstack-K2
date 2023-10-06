@@ -1,0 +1,61 @@
+.container{
+    display: flex;
+    gap: 2vw;
+}
+.picture{
+    display: flex;
+    border: 2px solid red;
+    width: 49vw;
+    position: relative;
+    box-sizing: border-box;
+}
+.picture img{
+    display: flex;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 1;
+}
+.picture .overlay{
+    display: block;
+    background-color: rgb(201, 201, 201);
+    opacity: 0.5;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.picture .active{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    cursor: crosshair;
+}
+.display{
+    display: flex;
+    width: 49vw;
+    position: relative;
+    overflow: hidden;
+}
+.display img{
+    display: flex;
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+.scale{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 50px auto;
+}
+.scale button{
+    cursor: pointer;
+}
