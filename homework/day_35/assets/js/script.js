@@ -33,13 +33,16 @@ cancelBtn.addEventListener("click", function () {
   hiddenAddForm();
 });
 saveBtn.addEventListener("click", function () {
-  client.post("/todos", {
-    content: newTodo.value,
-    status: 0,
-  });
-  hiddenAddForm();
-  newTodo.value = "";
-  handleTodosList();
+  client
+    .post("/todos", {
+      content: newTodo.value,
+      status: 0,
+    })
+    .then(() => {
+      hiddenAddForm();
+      newTodo.value = "";
+      handleTodosList();
+    });
 });
 const todoComponent = (data) => {
   const { content, id, status } = data;
@@ -134,9 +137,14 @@ function addFeature(todo) {
   });
   completeBtn.addEventListener("click", function () {
     const id = todo.id;
-    if (this.classList.contains("done"))
-      client.patch(`/todos/${id}`, { status: 0 });
-    else client.patch(`/todos/${id}`, { status: 1 });
-    handleTodosList();
+    if (this.classList.contains("done")) {
+      client.patch(`/todos/${id}`, { status: 0 }).then(() => {
+        handleTodosList();
+      });
+    } else {
+      client.patch(`/todos/${id}`, { status: 1 }).then(() => {
+        handleTodosList();
+      });
+    }
   });
 }
