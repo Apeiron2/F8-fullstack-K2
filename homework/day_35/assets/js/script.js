@@ -21,6 +21,7 @@ addTodoBtn.addEventListener("click", function () {
 function hiddenAddForm() {
   addTodoForm.style.display = "none";
   overlay.style.display = "none";
+  newTodo.value = "";
 }
 function showAddForm() {
   addTodoForm.style.display = "flex";
@@ -33,16 +34,27 @@ cancelBtn.addEventListener("click", function () {
   hiddenAddForm();
 });
 saveBtn.addEventListener("click", function () {
-  client
-    .post("/todos", {
-      content: newTodo.value,
-      status: 0,
-    })
-    .then(() => {
-      hiddenAddForm();
-      newTodo.value = "";
-      handleTodosList();
-    });
+  if (addTodoForm.classList.contains("edit")) {
+    client
+      .patch(`/todos/${addTodoForm.id}`, {
+        content: newTodo.value,
+      })
+      .then(() => {
+        hiddenAddForm();
+        handleTodosList();
+        addTodoForm.classList.remove("edit");
+      });
+  } else {
+    client
+      .post("/todos", {
+        content: newTodo.value,
+        status: 0,
+      })
+      .then(() => {
+        hiddenAddForm();
+        handleTodosList();
+      });
+  }
 });
 const todoComponent = (data) => {
   const { content, id, status } = data;
@@ -116,6 +128,8 @@ function addFeature(todo) {
   const delBtn = feature.querySelector(".del");
   const editBtn = feature.querySelector(".edit");
   const completeBtn = feature.querySelector(".complete");
+
+  //Chức năng xóa
   delBtn.addEventListener("click", function () {
     const id = todo.id;
     client
@@ -130,11 +144,18 @@ function addFeature(todo) {
         console.log(err);
       });
   });
+  // Xong. Chức năng xóa
+
+  // Chức năng chỉnh sửa
   editBtn.addEventListener("click", function () {
     newTodo.value = todo.querySelector(".content").innerText;
     showAddForm();
-    console.log("nhận");
+    addTodoForm.classList.add("edit");
+    addTodoForm.id = todo.id;
   });
+  // Xong. Chức năng chỉnh sửa.
+
+  // Chức năng hoàn thành
   completeBtn.addEventListener("click", function () {
     const id = todo.id;
     if (this.classList.contains("done")) {
@@ -147,4 +168,5 @@ function addFeature(todo) {
       });
     }
   });
+  // Xong. Chức năng hoàn thành
 }
