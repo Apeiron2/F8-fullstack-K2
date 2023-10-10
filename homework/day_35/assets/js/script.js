@@ -21,10 +21,12 @@ function hiddenAddForm() {
   addTodoForm.style.display = "none";
   overlay.style.display = "none";
   newTodo.value = "";
+  addTodoForm.classList.remove("edit");
 }
 function showAddForm() {
   addTodoForm.style.display = "flex";
   overlay.style.display = "block";
+  newTodo.focus();
 }
 addTodoBtn.addEventListener("click", function () {
   showAddForm();
