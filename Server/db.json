@@ -1,11 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "User 1",
-      "email": "user1@gmail.com"
-    },
-    {
       "id": 2,
       "name": "User 2",
       "email": "user2@gmail.com"
@@ -14,6 +9,52 @@
       "id": 3,
       "name": "User 3",
       "email": "user3@gmail.com"
+    },
+    {
+      "name": "user 4",
+      "email": "apeironisme@gmail.com",
+      "id": 4
+    },
+    {
+      "name": "Vũ Đức Tài",
+      "email": "apeironisme@gmail.com",
+      "id": 5
+    },
+    {
+      "name": "Vũ Đức Tài",
+      "email": "apeironisme@gmail.com",
+      "id": 6
+    },
+    {
+      "name": "Vũ Đức Tài",
+      "email": "apeironisme@gmail.com",
+      "id": 7
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Tiêu đề bài viết 1",
+      "excerpt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptas quidem commodi est at. Officiis in omnis",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptas quidem commodi est at. Officiis in omnis reprehenderit reiciendis rerum, inventore temporibus commodi? Quibusdam sunt nam totam, animi sint magnam."
+    },
+    {
+      "id": 2,
+      "title": "Tiêu đề bài viết 2",
+      "excerpt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptas quidem commodi est at. Officiis in omnis",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptas quidem commodi est at. Officiis in omnis reprehenderit reiciendis rerum, inventore temporibus commodi? Quibusdam sunt nam totam, animi sint magnam."
+    },
+    {
+      "id": 3,
+      "title": "Tiêu đề bài viết 3",
+      "excerpt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptas quidem commodi est at. Officiis in omnis",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptas quidem commodi est at. Officiis in omnis reprehenderit reiciendis rerum, inventore temporibus commodi? Quibusdam sunt nam totam, animi sint magnam."
+    },
+    {
+      "id": 4,
+      "title": "Tiêu đề bài viết 4",
+      "excerpt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptas quidem commodi est at. Officiis in omnis",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptas quidem commodi est at. Officiis in omnis reprehenderit reiciendis rerum, inventore temporibus commodi? Quibusdam sunt nam totam, animi sint magnam."
     }
   ]
 }

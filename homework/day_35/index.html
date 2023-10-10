@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Smatyx Todos</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1><span>Smatyx</span> Todos App</h1>
+      <div class="search-add-container">
+        <div class="search">
+          <input type="text" placeholder="Search Todos" id="search" />
+          <label><i class="fa-solid fa-magnifying-glass"></i></label>
+        </div>
+        <div class="add">
+          <button>Add Todos</button>
+        </div>
+      </div>
+      <div class="todos list"></div>
+      <div class="show-done">
+        <button>
+          Completed Todos <span class="quantity">0</span>
+          <i class="fa-solid fa-circle-right"></i>
+        </button>
+      </div>
+      <div class="todos-done list"></div>
+      <div class="add-todo-form">
+        <input type="text" placeholder="Add" />
+        <div class="line"></div>
+        <div class="action">
+          <button class="save">Save</button>
+          <button class="cancel">Cancel</button>
+        </div>
+      </div>
+      <div class="overlay"></div>
+    </div>
+    <script type="module" src="./assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "content": "Minh's next task",
+      "status": 0
+    },
+    {
+      "id": 2,
+      "content": "Smatyx Todos App",
+      "status": 0
+    },
+    {
+      "id": 3,
+      "content": "Minh's next task",
+      "status": 1
+    },
+    {
+      "id": 6,
+      "content": "Smatyx Todos App",
+      "status": 1
+    },
+    {
+      "content": "Smatyx Todos App khó quá",
+      "status": 0,
+      "id": 7
+    }
+  ]
+}

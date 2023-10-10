@@ -1,0 +1,254 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900;6..12,1000&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+html {
+  font-family: Nunito Sans;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70vw;
+  max-width: 700px;
+  margin: 50px auto;
+  gap: 50px;
+}
+.container h1 span {
+  background-image: linear-gradient(90deg, #5da5f5, #07966d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.container .search-add-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.container .search-add-container .search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 80%;
+  border: 1px solid gray;
+  border-radius: 12px;
+  padding: 10px;
+  height: 60px;
+}
+.container .search-add-container .search input {
+  border: none;
+  width: 100%;
+  font-family: Nunito Sans;
+  font-size: 16px;
+}
+.container .search-add-container .search label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 40px;
+  color: white;
+  background-color: #1d4ed8;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.container .search-add-container .search label:hover {
+  background-color: #1e40af;
+}
+.container .search-add-container .add {
+  margin-left: 20px;
+  width: 20%;
+}
+.container .search-add-container .add button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 12px;
+  background-color: #047857;
+  color: white;
+  height: 50px;
+  font-family: Nunito Sans;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+.container .search-add-container .add button:hover {
+  background-color: #065f46;
+}
+.container .list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+.container .list > div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 12px;
+  padding: 20px;
+  gap: 10px;
+}
+.container .list > div p {
+  border: none;
+  width: 70%;
+  height: fit-content;
+  text-wrap: wrap;
+  text-align: justify;
+}
+.container .list.todos-done {
+  display: none;
+}
+.container .list.todos-done.todos-done.show {
+  display: flex;
+}
+.container .show-done {
+  width: 100%;
+}
+.container .show-done button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 4px solid transparent;
+  background-color: #9ca3af;
+  padding: 10px;
+  border-radius: 12px;
+  font-family: Nunito Sans;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.container .show-done button:hover {
+  background-color: #6b7280;
+}
+.container .show-done button .fa-circle-right {
+  transition: all 0.2s ease;
+}
+.container .show-done button.active {
+  background-color: #047857;
+}
+.container .show-done button.active:focus {
+  border: 4px solid #6ee7b7;
+}
+.container .show-done button.active .fa-circle-right {
+  rotate: 90deg;
+  transition: all 0.2s ease;
+}
+.container .feature {
+  display: flex;
+  gap: 10px;
+}
+.container .feature > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  color: white;
+  cursor: pointer;
+}
+.container .feature > div.del {
+  background-color: #be123c;
+}
+.container .feature > div.del:hover {
+  background-color: #9f1239;
+}
+.container .feature > div.edit {
+  background-color: #1d4ed8;
+}
+.container .feature > div.edit:hover {
+  background-color: #1e40af;
+}
+.container .feature > div.complete {
+  background-color: #9ca3af;
+}
+.container .feature > div.complete:hover {
+  background-color: #065f46;
+}
+.container .feature > div.complete.done {
+  background-color: #047857;
+}
+.container .feature > div.complete.done:hover {
+  background-color: #065f46;
+}
+.container .add-todo-form {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 50vw;
+  max-width: 400px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: none;
+  border-radius: 12px;
+  background-color: white;
+  padding: 12px;
+  z-index: 2;
+}
+.container .add-todo-form input {
+  width: 100%;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid gray;
+  font-family: Nunito Sans;
+  font-size: 16px;
+}
+.container .add-todo-form .line {
+  height: 1px;
+  width: 100%;
+  background-color: gray;
+}
+.container .add-todo-form .action {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.container .add-todo-form .action button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: Nunito Sans;
+  font-size: 16px;
+  cursor: pointer;
+}
+.container .add-todo-form .action button.save {
+  background-color: #047857;
+  color: white;
+}
+.container .add-todo-form .action button.save:hover {
+  background-color: #065f46;
+}
+.container .add-todo-form .action button.cancel {
+  border: 1px solid gray;
+  background-color: White;
+}
+.container .add-todo-form .action button.cancel:hover {
+  background-color: #f3f4f6;
+}
+.container .overlay {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/*# sourceMappingURL=style.css.map */
