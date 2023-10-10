@@ -2,7 +2,6 @@ import { client } from "./client.js";
 
 const container = document.querySelector(".container");
 const searchAddDiv = container.querySelector(".search-add-container");
-const searchBtn = searchAddDiv.querySelector(".search label");
 const addTodoBtn = searchAddDiv.querySelector(".add button");
 const todosList = container.querySelector(".todos");
 const todosDoneList = container.querySelector(".todos-done");
@@ -15,9 +14,8 @@ const newTodo = addTodoForm.querySelector("input");
 const saveBtn = addTodoForm.querySelector(".action .save");
 const cancelBtn = addTodoForm.querySelector(".action .cancel");
 const overlay = container.querySelector(".overlay");
-addTodoBtn.addEventListener("click", function () {
-  showAddForm();
-});
+
+// Bật, tắt form todo
 function hiddenAddForm() {
   addTodoForm.style.display = "none";
   overlay.style.display = "none";
@@ -27,9 +25,15 @@ function showAddForm() {
   addTodoForm.style.display = "flex";
   overlay.style.display = "block";
 }
+addTodoBtn.addEventListener("click", function () {
+  showAddForm();
+});
 overlay.addEventListener("click", function () {
   hiddenAddForm();
 });
+//
+
+// Làm việc với form todos
 cancelBtn.addEventListener("click", function () {
   hiddenAddForm();
 });
@@ -56,6 +60,9 @@ saveBtn.addEventListener("click", function () {
       });
   }
 });
+//
+
+// Tạo giao diện todo
 const todoComponent = (data) => {
   const { content, id, status } = data;
   const todo = document.createElement("div");
@@ -78,12 +85,15 @@ const todoComponent = (data) => {
   addFeature(todo);
   return todo;
 };
+//
 
+// Show completed todos
 showDoneBtn.addEventListener("click", function () {
   this.classList.toggle("active");
   todosDoneList.classList.toggle("show");
 });
 
+// Hàm Cập nhật danh sách Todos
 function handleTodosList() {
   todosList.innerHTML = "";
   todosDoneList.innerHTML = "";
@@ -105,7 +115,6 @@ function handleTodosList() {
       console.log(err);
     });
 }
-
 function handleCompleted() {
   client
     .get("/todos")
@@ -121,8 +130,9 @@ function handleCompleted() {
     .catch((err) => console.log(err));
 }
 handleTodosList();
-//feature
+//
 
+//Thao tác với todo object
 function addFeature(todo) {
   const feature = todo.querySelector(".feature");
   const delBtn = feature.querySelector(".del");
