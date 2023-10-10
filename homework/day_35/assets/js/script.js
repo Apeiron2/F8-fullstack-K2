@@ -2,6 +2,7 @@ import { client } from "./client.js";
 
 const container = document.querySelector(".container");
 const searchAddDiv = container.querySelector(".search-add-container");
+const searchInput = searchAddDiv.querySelector(".search input");
 const addTodoBtn = searchAddDiv.querySelector(".add button");
 const todosList = container.querySelector(".todos");
 const todosDoneList = container.querySelector(".todos-done");
@@ -97,6 +98,7 @@ showDoneBtn.addEventListener("click", function () {
 function handleTodosList() {
   todosList.innerHTML = "";
   todosDoneList.innerHTML = "";
+  newTodo.value = "";
   client
     .get("/todos")
     .then(({ data }) => {
@@ -116,18 +118,7 @@ function handleTodosList() {
     });
 }
 function handleCompleted() {
-  client
-    .get("/todos")
-    .then(({ data }) => {
-      const doneList = data.filter((todo) => {
-        if (todo.status) return todo;
-      });
-      return doneList;
-    })
-    .then((doneList) => {
-      quantityDone.innerHTML = doneList.length;
-    })
-    .catch((err) => console.log(err));
+  quantityDone.innerHTML = todosDoneList.childNodes.length;
 }
 handleTodosList();
 //
@@ -180,3 +171,22 @@ function addFeature(todo) {
   });
   // Xong. Chức năng hoàn thành
 }
+
+//Chức năng search
+
+searchInput.addEventListener("input", function () {
+  const results = container.querySelectorAll(".todo");
+  let count = 0;
+  Array.from(results).forEach((todo) => {
+    const content = todo.querySelector(".content").innerText;
+    if (content.startsWith(this.value)) {
+      todo.style.display = "flex";
+      if (todo.parentNode == todosDoneList) {
+        count++;
+      }
+    } else {
+      todo.style.display = "none";
+    }
+  });
+  quantityDone.innerHTML = count;
+});
