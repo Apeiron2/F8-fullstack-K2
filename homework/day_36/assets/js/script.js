@@ -11,26 +11,6 @@ window.addEventListener("load", () => {
   }, 2000);
 });
 
-const getPosts = async () => {
-  // Start load
-  isloading = true;
-
-  //Loading ...
-  await client.get("/posts").then(({ data }) => {
-    data.forEach(async (post) => {
-      let userHTML = await getUserHTML(post);
-      let contentHTML = await getContentHTML(post);
-      let postDiv = document.createElement("div");
-      postDiv.classList.add("post");
-      postDiv.innerHTML = userHTML + contentHTML;
-      posts.append(postDiv);
-    });
-  });
-  // Done
-  isloading = false;
-};
-getPosts();
-
 const getUserHTML = async (post) => {
   let html = await client
     .get(`/users/${post.userID}`)
@@ -69,6 +49,26 @@ const getContentHTML = async (post) => `
           </figcaption>
         </div>
 `;
+
+const getPosts = async () => {
+  // Start load
+  isloading = true;
+
+  //Loading ...
+  await client.get("/posts").then(({ data }) => {
+    data.forEach(async (post) => {
+      let userHTML = await getUserHTML(post);
+      let contentHTML = await getContentHTML(post);
+      let postDiv = document.createElement("div");
+      postDiv.classList.add("post");
+      postDiv.innerHTML = userHTML + contentHTML;
+      posts.append(postDiv);
+    });
+  });
+  // Done
+  isloading = false;
+};
+getPosts();
 
 window.addEventListener("scroll", async (e) => {
   if (
