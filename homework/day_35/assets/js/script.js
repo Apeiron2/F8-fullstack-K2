@@ -8,13 +8,17 @@ const todosList = container.querySelector(".todos");
 const todosDoneList = container.querySelector(".todos-done");
 const showDoneBtn = container.querySelector(".show-done button");
 const quantityDone = showDoneBtn.querySelector(".quantity");
-
+const loading = container.querySelector(".loading");
 //add Todo
 const addTodoForm = container.querySelector(".add-todo-form");
 const newTodo = addTodoForm.querySelector("input");
 const saveBtn = addTodoForm.querySelector(".action .save");
 const cancelBtn = addTodoForm.querySelector(".action .cancel");
 const overlay = container.querySelector(".overlay");
+
+window.addEventListener("load", function () {
+  loading.style.display = "none";
+});
 
 // Bật, tắt form todo
 function hiddenAddForm() {
@@ -101,6 +105,7 @@ function handleTodosList() {
   todosList.innerHTML = "";
   todosDoneList.innerHTML = "";
   newTodo.value = "";
+  loading.style.display = "flex";
   client
     .get("/todos")
     .then(({ data }) => {

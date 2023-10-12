@@ -250,5 +250,19 @@ html {
   opacity: 0.3;
   z-index: 0;
 }
+.container .loading {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+}
+.container .loading img {
+  width: 10%;
+  height: auto;
+}
 
 /*# sourceMappingURL=style.css.map */

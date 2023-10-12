@@ -1,37 +1,4 @@
 {
-  "users": [
-    {
-      "id": 2,
-      "name": "User 2",
-      "email": "user2@gmail.com"
-    },
-    {
-      "id": 3,
-      "name": "User 3",
-      "email": "user3@gmail.com"
-    },
-    {
-      "name": "user 4",
-      "email": "apeironisme@gmail.com",
-      "id": 4
-    },
-    {
-      "name": "Vũ Đức Tài",
-      "email": "apeironisme@gmail.com",
-      "id": 5
-    },
-    {
-      "name": "Vũ Đức Tài",
-      "email": "apeironisme@gmail.com",
-      "id": 6
-    },
-    {
-      "name": "Vũ Đức Tài",
-      "email": "apeironisme@gmail.com",
-      "id": 7
-    }
-  ],
-
   "posts": [
     {
       "id": 1,
@@ -53,24 +20,6 @@
     },
     {
       "id": 4,
-      "title": "Nông Thúy Hằng mặc váy cưới, tình tứ bên 'bạn trai' Hiền Hồ",
-      "excerpt": "Hoa hậu Nông Thúy Hằng chính thức lên tiếng về hình ảnh cô diện váy cưới đang gây xôn xao trên mạng xã hội.",
-      "content": "Anh từng gây ấn tượng khi xuất hiện trong nhiều MV ca nhạc như Mãi bên nhau bạn nhé của Miu Lê, Khóc giữa trời sao - Cao Thái Sơn, Gặp nhưng không ở lại - Hiền Hồ, Đáp án cuối cùng - Quân AP... Nam diễn viên sinh năm 1994 còn đóng cùng Quốc Trường, Kiều Minh Tuấn, Mạc Văn Khoa trong phim Kẻ ẩn danh."
-    },
-    {
-      "id": 5,
-      "title": "Nông Thúy Hằng mặc váy cưới, tình tứ bên 'bạn trai' Hiền Hồ",
-      "excerpt": "Hoa hậu Nông Thúy Hằng chính thức lên tiếng về hình ảnh cô diện váy cưới đang gây xôn xao trên mạng xã hội.",
-      "content": "Anh từng gây ấn tượng khi xuất hiện trong nhiều MV ca nhạc như Mãi bên nhau bạn nhé của Miu Lê, Khóc giữa trời sao - Cao Thái Sơn, Gặp nhưng không ở lại - Hiền Hồ, Đáp án cuối cùng - Quân AP... Nam diễn viên sinh năm 1994 còn đóng cùng Quốc Trường, Kiều Minh Tuấn, Mạc Văn Khoa trong phim Kẻ ẩn danh."
-    },
-    {
-      "id": 6,
-      "title": "Nông Thúy Hằng mặc váy cưới, tình tứ bên 'bạn trai' Hiền Hồ",
-      "excerpt": "Hoa hậu Nông Thúy Hằng chính thức lên tiếng về hình ảnh cô diện váy cưới đang gây xôn xao trên mạng xã hội.",
-      "content": "Anh từng gây ấn tượng khi xuất hiện trong nhiều MV ca nhạc như Mãi bên nhau bạn nhé của Miu Lê, Khóc giữa trời sao - Cao Thái Sơn, Gặp nhưng không ở lại - Hiền Hồ, Đáp án cuối cùng - Quân AP... Nam diễn viên sinh năm 1994 còn đóng cùng Quốc Trường, Kiều Minh Tuấn, Mạc Văn Khoa trong phim Kẻ ẩn danh."
-    },
-    {
-      "id": 7,
       "title": "Nông Thúy Hằng mặc váy cưới, tình tứ bên 'bạn trai' Hiền Hồ",
       "excerpt": "Hoa hậu Nông Thúy Hằng chính thức lên tiếng về hình ảnh cô diện váy cưới đang gây xôn xao trên mạng xã hội.",
       "content": "Anh từng gây ấn tượng khi xuất hiện trong nhiều MV ca nhạc như Mãi bên nhau bạn nhé của Miu Lê, Khóc giữa trời sao - Cao Thái Sơn, Gặp nhưng không ở lại - Hiền Hồ, Đáp án cuối cùng - Quân AP... Nam diễn viên sinh năm 1994 còn đóng cùng Quốc Trường, Kiều Minh Tuấn, Mạc Văn Khoa trong phim Kẻ ẩn danh."
