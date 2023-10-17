@@ -8,11 +8,20 @@ const currentQuestionEL = container.querySelector(".current-question");
 const question = container.querySelector(".question");
 const questionContent = question.querySelector(".content p");
 const questionAnswer = question.querySelectorAll(".answer p");
+
+const timeCounter = container.querySelector(".time-container");
+const timeInner = timeCounter.querySelector(".time");
+
 const streakEL = container.querySelector(".streak");
 const scoreEL = container.querySelector(".score span");
 //
 //Đếm thời gian
-
+const time = 30;
+timeInner.style.animationDuration = `${time}s`;
+let scoreTime;
+let startTimeCounter = () => {
+  const startTime = Date.now();
+};
 //
 
 //Tạo thứ tự bộ câu hỏi ngẫu nhiên từ 1 đến 10
@@ -101,8 +110,12 @@ Array.from(questionAnswer).forEach((answer, index) => {
 let streak = 0;
 const handleStreakEL = () => {
   Array.from(streakEL.children).forEach((item, index) => {
-    if (index + 1 <= streak) {
-      item.style.backgroundColor = "orange";
+    if (streak) {
+      if (index + 1 <= streak) {
+        item.style.backgroundColor = "orange";
+      }
+    } else {
+      item.style.backgroundColor = "black";
     }
   });
 };

@@ -24,6 +24,14 @@ body {
   background-size: cover;
 }
 
+@keyframes timeCounter {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
 .container {
   display: flex;
   width: 100vw;
@@ -49,7 +57,7 @@ body {
   position: absolute;
   background-color: rgb(170, 170, 170);
   border-radius: 99px;
-  width: 50%;
+  animation-name: timeCounter;
   top: 0;
   bottom: 0;
   left: 0;
