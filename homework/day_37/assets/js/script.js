@@ -17,13 +17,16 @@ const scoreEL = container.querySelector(".score span");
 //
 //Đếm thời gian
 const time = 30 * 1000;
-let scoreTime;
+let countDown;
+
 let startCountDown = (duration) => {
-  // clearInterval(countDown);
   let timeLeft = duration;
-  let countDown = setInterval(() => {
+  countDown = setInterval(() => {
     if (timeLeft <= 0) {
+      // Bỏ qua, hết thời gian -> tính là sai
       clearInterval(countDown);
+      streak = 0;
+      getQuestion();
     } else {
       timeLeft -= 10;
     }
@@ -79,6 +82,7 @@ const getQuestion = async () => {
       console.log(`Lỗi getQuestion: ${err}`);
     });
   // Done
+
   startCountDown(time);
   isLoading = false;
 };
@@ -90,20 +94,23 @@ getQuestion();
 Array.from(questionAnswer).forEach((answer, index) => {
   answer.addEventListener("click", (e) => {
     if (!isLoading) {
-      checkAnswer(index == currentCorrectAnswer, e);
+      let results = index == currentCorrectAnswer;
+      // Dừng tính giờ
+      if (countDown) clearInterval(countDown);
+
+      const background = e.target.previousElementSibling;
+      background.style.backgroundColor = results ? "green" : "red";
+      background.style.opacity = 1;
+      if (results) handleScore();
+
+      // Tính điểm xong mới tính streak cho câu sau
+      streak = results ? streak + 1 : 0;
+      handleStreakEL();
       getQuestion();
     }
   });
 });
 
-const checkAnswer = (results, e) => {
-  const background = e.target.previousElementSibling;
-  background.style.backgroundColor = results ? "green" : "red";
-  background.style.opacity = 1;
-  streak = results ? streak + 1 : 0;
-  handleStreakEL();
-  handleScore();
-};
 //
 
 //Tính streak
@@ -116,9 +123,14 @@ const handleStreakEL = () => {
 //
 
 // Tính điểm
+let scoreTime;
 let score = 0;
 let handleScore = () => {
-  score += 100 + streak * 100;
+  // Điểm thời gian tính theo %, còn 100% time thì được 1000 điểm
+  scoreTime = Math.floor(timeInner.style.width.slice(0, -1) * 10);
+
+  score += scoreTime + (streak > 3 ? 3 : streak) * 100;
+
   scoreEL.innerText = score;
 };
 //
