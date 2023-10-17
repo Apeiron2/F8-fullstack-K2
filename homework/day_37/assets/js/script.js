@@ -16,11 +16,19 @@ const streakEL = container.querySelector(".streak");
 const scoreEL = container.querySelector(".score span");
 //
 //Đếm thời gian
-const time = 30;
-timeInner.style.animationDuration = `${time}s`;
+const time = 30 * 1000;
 let scoreTime;
-let startTimeCounter = () => {
-  const startTime = Date.now();
+let startCountDown = (duration) => {
+  // clearInterval(countDown);
+  let timeLeft = duration;
+  let countDown = setInterval(() => {
+    if (timeLeft <= 0) {
+      clearInterval(countDown);
+    } else {
+      timeLeft -= 10;
+    }
+    timeInner.style.width = `${(timeLeft / duration) * 100}%`;
+  }, 10);
 };
 //
 
@@ -44,13 +52,14 @@ const listQuestions = getRandomArray(totalQuestions);
 let currentQuestion;
 let currentCorrectAnswer;
 let isLoading = false;
-const getQuestion = async (id) => {
+const getQuestion = async () => {
+  currentQuestion = listQuestions.shift();
   // loading...
   isLoading = true;
 
   // Nhận câu hỏi
   await client
-    .get(`/questions/${id}`)
+    .get(`/questions/${currentQuestion}`)
     .then(({ data }) => {
       questionContent.innerText = data.question;
       Array.from(questionAnswer).forEach((answer, index) => {
@@ -67,56 +76,41 @@ const getQuestion = async (id) => {
       });
     })
     .catch((err) => {
-      console.log(err);
+      console.log(`Lỗi getQuestion: ${err}`);
     });
   // Done
+  startCountDown(time);
   isLoading = false;
 };
 
-const handleCurrentQuestion = () => {
-  currentQuestion = listQuestions.shift();
-};
-handleCurrentQuestion();
-getQuestion(currentQuestion);
+getQuestion();
 //
 
 // Check đáp án
 Array.from(questionAnswer).forEach((answer, index) => {
   answer.addEventListener("click", (e) => {
-    const background = e.target.previousElementSibling;
     if (!isLoading) {
-      if (index == currentCorrectAnswer) {
-        background.style.backgroundColor = "green";
-        background.style.opacity = 1;
-        // Tính điểm
-        handleScore();
-        streak++;
-        handleStreakEL();
-      } else {
-        background.style.backgroundColor = "red";
-        background.style.opacity = 1;
-        // Tính điểm
-        streak = 0;
-        handleStreakEL();
-      }
-      handleCurrentQuestion();
-      getQuestion(currentQuestion);
+      checkAnswer(index == currentCorrectAnswer, e);
+      getQuestion();
     }
   });
 });
+
+const checkAnswer = (results, e) => {
+  const background = e.target.previousElementSibling;
+  background.style.backgroundColor = results ? "green" : "red";
+  background.style.opacity = 1;
+  streak = results ? streak + 1 : 0;
+  handleStreakEL();
+  handleScore();
+};
 //
 
 //Tính streak
 let streak = 0;
 const handleStreakEL = () => {
   Array.from(streakEL.children).forEach((item, index) => {
-    if (streak) {
-      if (index + 1 <= streak) {
-        item.style.backgroundColor = "orange";
-      }
-    } else {
-      item.style.backgroundColor = "black";
-    }
+    item.style.backgroundColor = index + 1 <= streak ? "orange" : "black";
   });
 };
 //
