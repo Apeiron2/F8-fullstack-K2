@@ -72,7 +72,8 @@ getPosts();
 
 window.addEventListener("scroll", async (e) => {
   if (
-    window.innerHeight + window.scrollY >= document.body.offsetHeight - 50 &&
+    window.innerHeight + window.scrollY >=
+      (document.body.offsetHeight * 80) / 100 &&
     !isloading
   ) {
     getPosts();

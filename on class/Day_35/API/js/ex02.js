@@ -3,12 +3,17 @@ import { config } from "./config.js";
 const { PAGE_LIMIT } = config;
 let query = {};
 const pavginateNav = document.querySelector(".paginate-nav");
+
 const renderPaginate = (totalPages) => {
   const { _page: page } = query;
   const range = [...Array(totalPages).keys()];
   pavginateNav.innerHTML = `
   <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          ${
+            page > 1
+              ? `<li class="page-item"><a class="page-link page-prev" href="#">Previous</a></li>`
+              : ``
+          }
           ${range
             .map(
               (index) =>
@@ -20,7 +25,11 @@ const renderPaginate = (totalPages) => {
             )
             .join("")}
 
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          ${
+            page < totalPages
+              ? `<li class="page-item"><a class="page-link page-next" href="#">Next</a></li>`
+              : ``
+          }
         </ul>
   `;
 };
@@ -34,7 +43,14 @@ pavginateNav.addEventListener("click", function (e) {
   if (e.target.classList.contains("page-number")) {
     goPage(e.target.innerText);
   }
+  if (e.target.classList.contains("page-prev")) {
+    goPage(query._page - 1);
+  }
+  if (e.target.classList.contains("page-next")) {
+    goPage(query._page + 1);
+  }
 });
+
 const render = (posts) => {
   const stripHtmlTag = (html) => html.replace(/<[^>]*>?/gm, "");
   const postsEl = document.querySelector(".posts");
