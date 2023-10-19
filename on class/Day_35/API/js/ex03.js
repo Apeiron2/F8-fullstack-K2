@@ -5,7 +5,7 @@
 /** Phân quyền */
 
 import { client } from "./client.js";
-
+import { requestRefresh } from "./token.js";
 client.setUrl("https://api.escuelajs.co/api/v1");
 
 //
@@ -49,23 +49,34 @@ const handleLogout = () => {
 const getProfile = async () => {
   const tokens = localStorage.getItem("login_token");
   if (tokens) {
-    const { access_token: accessToken } = JSON.parse(tokens);
+    const { access_token: accessToken, refresh_token: refreshToken } =
+      JSON.parse(tokens);
+
     if (!accessToken) {
       //Xử lý log out
       handleLogout();
     } else {
       client.setToken(accessToken);
+      setTimeout(() => {
+        localStorage.clear();
+      }, 5000);
       const { response, data } = await client.get("/auth/profile");
       if (!response.ok) {
         //Xử lý logout
-        handleLogout();
+        const { data: newToken } = await requestRefresh(refreshToken);
+        if (newToken) {
+          localStorage.setItem("login_token", JSON.stringify(newToken));
+          getProfile();
+        } else {
+          handleLogout();
+        }
       } else {
         const profileName = document.querySelector(".profile .name");
-        const profileAvatar = document.querySelector(".profile .avatar");
+        // const profileAvatar = document.querySelector(".profile .avatar");
         const profileRole = document.querySelector(".profile .role");
 
         profileName.innerHTML = data.name;
-        profileAvatar.src = data.avatar;
+        // profileAvatar.src = data.avatar;
         profileRole.innerHTML = data.role;
       }
     }
@@ -152,4 +163,51 @@ render();
  * Send API
  * Trả về Token hoặc lỗi
  * Nếu thành công -> lưu vào Storage
+ */
+
+// let token = "Token";
+// let isExpire = false;
+// let refreshPromise = null;
+
+// const requestRefresh = () => {
+//   if (!refreshPromise) {
+//     refreshPromise = new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         resolve("New Token:" + Date.now());
+//       }, 1000);
+//     });
+//   }
+//   return refreshPromise;
+// };
+
+// const requestAPI = async (url) => {
+//   if (isExpire) {
+//     token = await requestRefresh();
+//   }
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(`Call API: ${url} với ${token}`);
+//     }, 500);
+//   });
+// };
+
+// (async () => {
+//   const slider = await requestAPI("/slider");
+//   console.log(slider);
+// })();
+// (async () => {
+//   isExpire = true;
+//   const pro = await requestAPI("/pro");
+//   console.log(pro);
+// })();
+// (async () => {
+//   const free = await requestAPI("/free");
+//   console.log(free);
+// })();
+
+/**
+ * Refresh lưu ở trên Server và Client
+ * Access lưu ở Client
+  - Cookie: Dễ bị tấn công CSRF
+  - LocalStorage, SessionStorage: Dễ bị tấn công XSS
  */

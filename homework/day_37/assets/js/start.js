@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-    <title>Trắc nghiệm</title>
-  </head>
-  <body>
-    <!-- <div class="container">
+const questionContainerHTML = `
       <div class="header">
         <div class="time-container">
           <div class="time"></div>
@@ -58,13 +49,22 @@
       <div class="footer">
         <p class="result"></p>
       </div>
-    </div> -->
-    <div class="start">
-      <button class="btn">START</button>
-      <div class="count-to-start">
-        <span>3</span>
-      </div>
-    </div>
-    <!-- <script type="module" src="./assets/js/script.js"></script> -->
-  </body>
-</html>
+
+`;
+const start = document.querySelector(".start");
+const startBtn = start.querySelector(".btn");
+
+const countToStart = start.querySelector(".count-to-start p");
+
+let timeToStart = +countToStart.innerHTML;
+const countDownToStart = () => {
+  let countDown = setInterval(() => {
+    let timeLeft = timeToStart;
+    if (timeLeft <= 0) {
+      clearInterval(countDown);
+    } else {
+      timeLeft--;
+      countDownToStart.innerHTML = timeLeft;
+    }
+  }, 1000);
+};

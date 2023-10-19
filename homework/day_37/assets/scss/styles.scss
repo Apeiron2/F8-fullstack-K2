@@ -165,3 +165,39 @@ body {
     }
   }
 }
+
+.start {
+  .btn {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid white;
+    padding: 10px 20px;
+    color: white;
+    font-size: xxx-large;
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    cursor: pointer;
+    &:active {
+      background-color: white;
+      color: gray;
+    }
+  }
+  .count-to-start {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    background-color: black;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    translate: 0 -50%;
+    span {
+      font-size: x-large;
+      color: white;
+    }
+  }
+}
