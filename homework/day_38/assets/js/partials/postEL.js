@@ -1,5 +1,5 @@
 export const postEL = (post) => {
-  const { title, content, timeUp: time, userId: user } = post;
+  const { title, content, createAt: time, userId: user } = post;
   const username = user.name;
   const div = document.createElement("div");
   div.classList.add("post", "row", "p-3", "border-bottom");

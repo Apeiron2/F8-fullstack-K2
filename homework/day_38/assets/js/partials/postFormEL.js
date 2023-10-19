@@ -34,10 +34,18 @@ export const postFormEL = (tokens) => {
     </div>
 </div>
     `;
-  div.querySelector(".logout").addEventListener("click", () => {
-    localStorage.removeItem("login_token");
-    renderHomePage(false);
+
+  // Đăng xuất
+  div.querySelector(".logout").addEventListener("click", async () => {
+    const { response } = await client.post("/logout");
+    console.log(response);
+    if (response.ok) {
+      localStorage.removeItem("login_token");
+      renderHomePage(false);
+    }
   });
+
+  // Event post
   const form = div.querySelector("form");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -45,27 +53,32 @@ export const postFormEL = (tokens) => {
       title: e.target["title"].value,
       content: e.target["content"].value,
     };
+    // Loading button
     form.querySelector(
       ".btn"
     ).innerHTML = `<span class="spinner-border spinner-border-sm text-light me-2"></span>Loading...`;
+    // Lấy refreshToken
     const { refreshToken } = JSON.parse(localStorage.getItem("login_token"));
-
-    const { response, data } = await client.post("/blogs", body);
+    // fetch post bài
+    const { response } = await client.post("/blogs", body);
     if (response.ok) {
       // Nếu post bài thành công
       renderHomePage(localStorage.getItem("login_token"));
     } else {
       // Nếu post bài thất bại
       if (response.status == 401) {
+        // Cấp lại accessToken
         const { response, data } = await requestRefresh(refreshToken);
         if (response.ok) {
           // Nếu cấp lại accessToken thành công
           const { accessToken, refreshToken } = data.data.token;
           client.setToken(accessToken);
+          // Cập nhật Token vào localStorage
           const loginToken = JSON.parse(localStorage.getItem("login_token"));
           loginToken.accessToken = accessToken;
           loginToken.refreshToken = refreshToken;
           localStorage.setItem("login_token", JSON.stringify(loginToken));
+          //Post lại bài
           client.post("/blogs", body);
           renderHomePage(localStorage.getItem("login_token"));
         } else {
@@ -76,5 +89,6 @@ export const postFormEL = (tokens) => {
       }
     }
   });
+
   return div;
 };
