@@ -37,11 +37,33 @@ export const postFormEL = (tokens) => {
 
   // Đăng xuất
   div.querySelector(".logout").addEventListener("click", async () => {
-    const { response } = await client.post("/logout");
-    console.log(response);
+    const loginToken = JSON.parse(localStorage.getItem("login_token"));
+    client.setToken(loginToken.accessToken);
+    const { response } = await client.post("/auth/logout");
     if (response.ok) {
+      // Đăng xuất thành công
       localStorage.removeItem("login_token");
       renderHomePage(false);
+    } else {
+      // Đăng xuất thất bại
+      // Cấp lại accessToken
+      const { response, data } = await requestRefresh(refreshToken);
+      if (response.ok) {
+        // Nếu cấp lại accessToken thành công
+        const { accessToken, refreshToken } = data.data.token;
+        client.setToken(accessToken);
+        // Cập nhật Token vào localStorage
+        const loginToken = JSON.parse(localStorage.getItem("login_token"));
+        loginToken.accessToken = accessToken;
+        loginToken.refreshToken = refreshToken;
+        localStorage.setItem("login_token", JSON.stringify(loginToken));
+        //Post lại bài
+        client.post("/blogs", body);
+      } else {
+        // Nếu cấp lại thất bại || refreshToken hết hạn
+        localStorage.removeItem("login_token");
+        renderHomePage(false);
+      }
     }
   });
 
