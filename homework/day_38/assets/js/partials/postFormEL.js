@@ -51,7 +51,6 @@ export const postFormEL = (tokens) => {
     const { refreshToken } = JSON.parse(localStorage.getItem("login_token"));
 
     const { response, data } = await client.post("/blogs", body);
-    console.log(response);
     if (response.ok) {
       // Nếu post bài thành công
       renderHomePage(localStorage.getItem("login_token"));
