@@ -116,7 +116,7 @@ export const renderLoginPage = () => {
     const form = e.target;
     const msg = form.querySelector(".msg");
     msg.innerText = "";
-    //get data
+    //Get data
     const body = {
       email: form["login-email"].value,
       password: form["login-password"].value,

@@ -51,21 +51,29 @@ export const postFormEL = (tokens) => {
     const { refreshToken } = JSON.parse(localStorage.getItem("login_token"));
 
     const { response, data } = await client.post("/blogs", body);
+    console.log(response);
     if (response.ok) {
       // Nếu post bài thành công
       renderHomePage(localStorage.getItem("login_token"));
     } else {
-      const { response, data } = await requestRefresh(refreshToken);
-      if (response.ok) {
-        // Nếu cấp lại accessToken thành công
-        console.log(data);
-        client.setToken(data.data.token.accessToken);
-        client.post("/blogs", body);
-        renderHomePage(localStorage.getItem("login_token"));
-      } else {
-        // Nếu cấp lại thất bại || refreshToken hết hạn
-        localStorage.removeItem("login_token");
-        renderHomePage(false);
+      // Nếu post bài thất bại
+      if (response.status == 401) {
+        const { response, data } = await requestRefresh(refreshToken);
+        if (response.ok) {
+          // Nếu cấp lại accessToken thành công
+          const { accessToken, refreshToken } = data.data.token;
+          client.setToken(accessToken);
+          const loginToken = JSON.parse(localStorage.getItem("login_token"));
+          loginToken.accessToken = accessToken;
+          loginToken.refreshToken = refreshToken;
+          localStorage.setItem("login_token", JSON.stringify(loginToken));
+          client.post("/blogs", body);
+          renderHomePage(localStorage.getItem("login_token"));
+        } else {
+          // Nếu cấp lại thất bại || refreshToken hết hạn
+          localStorage.removeItem("login_token");
+          renderHomePage(false);
+        }
       }
     }
   });
