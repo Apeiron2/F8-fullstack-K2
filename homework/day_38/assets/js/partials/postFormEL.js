@@ -46,6 +46,9 @@ export const postFormEL = (tokens) => {
       renderHomePage(false);
     } else {
       // Đăng xuất thất bại
+
+      // Lấy refreshToken
+      const { refreshToken } = JSON.parse(localStorage.getItem("login_token"));
       // Cấp lại accessToken
       const { response, data } = await requestRefresh(refreshToken);
       if (response.ok) {

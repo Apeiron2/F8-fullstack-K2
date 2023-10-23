@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+input[type=text] {
+  margin: 40px;
+  padding: 20px 10px;
+}
+
+.calender {
+  margin: 40px;
+  width: fit-content;
+  padding: 10px;
+  border: 4px double black;
+}
+.calender .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calender .header .right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+.calender .header .right div {
+  font-size: larger;
+  font-weight: bolder;
+}
+.calender .header .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+.calender .header .left .btn {
+  border: none;
+  padding: 10px;
+  font-size: 32px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.calender .header .left .btn:hover {
+  color: blue;
+}
+.calender .header .left .btn:active {
+  color: red;
+}
+.calender table {
+  text-align: center;
+}
+.calender table th {
+  padding: 0px 5px;
+}
+.calender table tbody tr td button {
+  border: 1px dotted black;
+  background-color: transparent;
+  padding: 5px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.calender table tbody tr td button:hover {
+  background-color: rgb(201, 201, 201);
+}
+.calender table tbody tr td button.active {
+  background-color: blue;
+  color: white;
+}
+
+/*# sourceMappingURL=styles.css.map */
