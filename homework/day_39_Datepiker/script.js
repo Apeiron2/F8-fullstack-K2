@@ -61,7 +61,9 @@ const getTimeDDMMYY = (time) => {
     default:
       break;
   }
-  return `${day}, ngày ${date}/${month}/${year}`;
+  return `${day}, ngày ${date < 10 ? `0${date}` : date}/${
+    month < 10 ? `0${month}` : month
+  }/${year}`;
 };
 inputDate.value = getTimeDDMMYY(currentTime);
 
