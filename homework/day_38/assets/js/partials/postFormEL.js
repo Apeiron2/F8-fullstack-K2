@@ -1,7 +1,7 @@
 import { client } from "../client.js";
 import { renderHomePage } from "../pages/home.js";
 import { requestRefresh } from "../token.js";
-
+import { calender } from "./calender.js";
 export const postFormEL = (tokens) => {
   const username = JSON.parse(tokens).name;
   const div = document.createElement("div");
@@ -17,6 +17,8 @@ export const postFormEL = (tokens) => {
         <div class="content d-flex flex-column m-2">
             <label for="content">Content</label>
             <textarea id="content" cols="30" rows="10" class="p-2" required></textarea>
+        </div>
+        <div class="date-picker">
         </div>
         <button class="btn btn-primary m-2">Đăng bài</button>
     </form>
@@ -34,7 +36,7 @@ export const postFormEL = (tokens) => {
     </div>
 </div>
     `;
-
+  calender(div.querySelector(".date-picker"));
   // Đăng xuất
   div.querySelector(".logout").addEventListener("click", async () => {
     const loginToken = JSON.parse(localStorage.getItem("login_token"));
