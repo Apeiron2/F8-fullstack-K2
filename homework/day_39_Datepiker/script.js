@@ -12,15 +12,20 @@ const previousMonthBtn = calender.querySelector(".left .previous");
 const tbody = calender.querySelector("tbody");
 const dateELList = tbody.querySelectorAll("button");
 
-let currentTime = new Date();
-let selectedDate = new Date();
+let currentTime = new Date("2023-10-31");
+//reset về ngày mùng 1 của tháng
+currentTime.setDate(1);
+
+let selectedDate = new Date("2023-10-31");
 
 // Gán hành động khi chọn ngày
 Array.from(dateELList).forEach((dateEL) => {
   dateEL.addEventListener("click", (e) => {
     const element = e.target;
     // Tạo string time
-    const time = `${element.dataset.year}-${element.dataset.month}-${element.innerText}`;
+    const time = `${element.dataset.year}-${+element.dataset.month + 1}-${
+      element.innerText
+    }`;
     //Cập nhật ngày đã chọn (Mặc định hôm nay)
     selectedDate = new Date(time);
     selectDate();
@@ -65,7 +70,7 @@ const getTimeDDMMYY = (time) => {
     month < 10 ? `0${month}` : month
   }/${year}`;
 };
-inputDate.value = getTimeDDMMYY(currentTime);
+inputDate.value = getTimeDDMMYY(selectedDate);
 
 // Active selected date function
 const selectDate = () => {
@@ -91,32 +96,34 @@ const renderCalender = (time) => {
 
   // Render ngày
 
-  // Ngày đầu tháng
-  let date = 1;
-  // Số ngày tháng trước để tính lùi lại trên lịch tháng này
-  let subTime = new Date(time);
-  subTime.setMonth(subTime.getMonth() - 1);
-  let monthPrevious = getDaysInMonth(subTime);
-  // Ngày tháng sau bắt đầu luôn bằng 1
-  let monthNext = 1;
   // Số ngày trong tháng này
   const numberDays = getDaysInMonth(time);
-
+  // Thứ của ngày 1 tháng này
   const day = time.getDay();
+  // Ngày đầu tháng này
+  let date = 1;
+  // Số ngày trong tháng trước <-> Ngày cuối tháng trước
+  let subTime = new Date(time);
+  subTime.setDate(1);
+  subTime.setMonth(subTime.getMonth() - 1);
+  let monthPrevious = getDaysInMonth(subTime);
+  // Ngày đầu tháng sau
+  let monthNext = 1;
+
   // Hiển thị lịch ngày
   for (i = 0; i < 42; i++) {
-    if (i >= day - 1 && i < numberDays + day - 1) {
-      dateELList[i].dataset.month = time.getMonth() + 1;
+    if (i >= day && i <= numberDays - 1 + day) {
+      dateELList[i].dataset.month = time.getMonth();
       dateELList[i].dataset.year = time.getFullYear();
-      // Hiển thị các ngày trong tháng
+      // Hiển thị các ngày trong tháng này
       dateELList[i].innerText = date < 10 ? `0${date}` : date;
       date++;
       dateELList[i].disabled = false;
     } else {
       // Hiển thị thêm tháng trước và sau
-      if (i < day - 1) {
+      if (i < day) {
         // Hiển thị tháng trước
-        dateELList[i].innerText = monthPrevious - (day - 1) + i + 1;
+        dateELList[i].innerText = monthPrevious - day + i + 1;
       } else {
         // Hiển thị tháng sau
         dateELList[i].innerText = monthNext < 10 ? `0${monthNext}` : monthNext;
