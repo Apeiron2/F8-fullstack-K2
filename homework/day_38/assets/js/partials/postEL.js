@@ -1,5 +1,46 @@
 export const postEL = (post) => {
-  const { title, content, createAt: time, userId: user } = post;
+  let { title, content, createAt: time, userId: user } = post;
+  const pattern = {
+    tel: /((?:(?:0\d{2})|(?:\+84))\d{7,8})/gi,
+    mail: /([a-zA-Z]\w+(\.\w{2,})*@[a-zA-Z]\w{2,}(\.\w{2,})*)/gi,
+    youtube:
+      /(?:(?:http|https):\/\/)?(?:(?:(?:(?:(?:[\w\-\_\.]*\.youtube)|(?:youtube))\.com)(?:(?:(?:\/shorts)(?:\/.*)?)|(?:\/watch\?v=([\w&=-]*)))?)|(?:youtu\.be\/([\w\=-]*)\?[\w\=-]*))/gi,
+    link: /((http|https):\/\/[\w\-\.]*[\w\-\.]+\.[a-z]{2,}(:\d{2,})?(\/[\w\-?=&#\.]+)*)/gi,
+  };
+  // Lấy link và mã video youtube
+  let youtubeLinks = content.match(pattern.youtube);
+  let youtubeCode = {};
+  youtubeLinks?.forEach((link) => {
+    if (link.includes("youtu.be")) {
+      youtubeCode[link] = link.match(/\/[\w-_]+\?/)[0].slice(1, -1);
+    }
+    if (link.includes("shorts")) {
+      youtubeCode[link] = link.match(/shorts\/[\w-_]+/)[0].slice(7);
+    }
+    if (link.includes("watch")) {
+      youtubeCode[link] = link.match(/=[\w-_]+/)[0].slice(1);
+    }
+  });
+  //
+
+  // replace
+  content = content.replace(
+    pattern.tel,
+    `<a href="tel: $1" target="_blank">$1</a>`
+  );
+  content = content.replace(
+    pattern.mail,
+    `<a href="mailto: $1" target="_blank">$1</a>`
+  );
+  content = content.replace(
+    pattern.link,
+    ` 
+  <a href="$1" target="_blank">$1</a>`
+  );
+  // add iframe cho link youtube cuối cùng
+  let links = Object.keys(youtubeCode);
+  let lastYotubeLink = links[links.length - 1];
+  content += `<iframe src="https://youtube.com/embed/${youtubeCode[lastYotubeLink]}" height="300%" width="100%"></iframe>`;
   const username = user.name;
   const div = document.createElement("div");
   div.classList.add("post", "row", "p-3", "border-bottom");
