@@ -1,0 +1,32 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-image: url("../img/background-404.webp");
+  background-size: cover;
+  color: rgb(70, 123, 136);
+  h1 {
+    font-size: 200px;
+  }
+  p {
+    font-size: xx-large;
+  }
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    color: rgb(70, 123, 136);
+    background-color: rgba(0, 119, 255, 0.308);
+    font-size: large;
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(0, 119, 255, 0.842);
+      color: white;
+      scale: 1.1;
+    }
+  }
+}

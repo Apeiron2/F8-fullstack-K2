@@ -1,0 +1,8 @@
+import "../assets/scss/Layouts/Header.scss";
+export const Header = () => {
+  return `
+    <header>
+    <h1>Header</h1>
+    </header>
+    `;
+};
