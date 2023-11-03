@@ -1,0 +1,18 @@
+@import "../base/reset";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
+.Header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  h1 {
+    text-align: center;
+    color: $cyan-500;
+  }
+  img {
+    width: 100px;
+    height: auto;
+  }
+}

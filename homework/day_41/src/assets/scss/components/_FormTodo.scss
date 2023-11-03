@@ -1,0 +1,32 @@
+@import "../base/reset";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
+.Form-todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  padding: 20px 0;
+  input {
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 12px;
+    width: 90%;
+    height: 60px;
+  }
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $purple-400;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: x-large;
+    &:hover {
+      background-color: $purple-500;
+    }
+  }
+}

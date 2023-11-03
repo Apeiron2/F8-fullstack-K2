@@ -1,14 +1,14 @@
 import Navigo from "navigo";
 import { Error } from "../Error";
 const render = (component, layout, params) => {
-  let content;
+  let div = document.createElement("div");
   if (layout) {
-    content = layout().replace(/{{main}}/, component(params));
+    div.innerHTML = component(params);
   } else {
     // Nếu không có layout là Error
-    content = component();
+    div.innerHTML = component();
   }
-  root.innerHTML = content;
+  root.querySelector("main").append(div);
 };
 
 const router = (list, layout) => {
