@@ -1,0 +1,15 @@
+header.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  img {
+    max-width: 100px;
+  }
+  h1 {
+    margin-top: 20px;
+    font-size: 40px;
+    color: $cyan-400;
+  }
+}

@@ -1,0 +1,78 @@
+.todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  position: relative;
+  z-index: 1;
+  margin: 10px 0;
+  .content {
+    width: 100%;
+
+    input {
+      width: 100%;
+      min-height: 60px;
+      max-height: 120px;
+      padding: 10px;
+      padding-right: 20%;
+      border: none;
+      border-radius: 5px;
+      background-color: $blue-500;
+      color: white;
+      overflow: hidden;
+      cursor: pointer;
+      &.completed {
+        text-decoration: line-through;
+        font-style: italic;
+      }
+    }
+  }
+  .feature {
+    display: flex;
+    position: absolute;
+    right: 10px;
+    gap: 10px;
+    button {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      border-radius: 5px;
+      i {
+        color: white;
+      }
+      &.edit {
+        background-color: $green-400;
+        &:hover {
+          background-color: $green-500;
+        }
+      }
+      &.delete {
+        background-color: $red-400;
+        &:hover {
+          background-color: $red-500;
+        }
+      }
+      &.accept {
+        background-color: $green-400;
+        &:hover {
+          background-color: $green-500;
+        }
+      }
+      &.cancer {
+        background-color: $red-400;
+        &:hover {
+          background-color: $red-500;
+        }
+      }
+    }
+  }
+  &.edit-form {
+    input {
+      background-color: $yellow-400;
+      color: black;
+    }
+  }
+}

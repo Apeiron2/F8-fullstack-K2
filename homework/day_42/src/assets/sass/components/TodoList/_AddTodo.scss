@@ -1,0 +1,30 @@
+.add-todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  input {
+    width: 85%;
+    height: 60px;
+    padding: 10px;
+    border: 2px solid $gray-500;
+    border-radius: 5px;
+    &:focus {
+      border-color: $green-500;
+    }
+  }
+  button {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: $blue-400;
+    cursor: pointer;
+    &:hover {
+      background-color: $blue-500;
+    }
+  }
+}

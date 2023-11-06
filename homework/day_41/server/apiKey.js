@@ -4,4 +4,5 @@ export const getApiKey = async (email) => {
   if (response.ok) {
     client.setApiKey(data.data.apiKey);
   }
+  return { response, data };
 };
