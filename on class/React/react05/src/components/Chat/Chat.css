@@ -1,0 +1,11 @@
+.chat-box{
+    border: 1px solid rgb(78, 142, 167);
+    color: white;
+    border-radius: 12px;
+    margin: 100px 0;
+}
+.message-item{
+    border-radius: 5px;
+    background-color: rgb(78, 142, 167);
+    padding: 5px;
+}
