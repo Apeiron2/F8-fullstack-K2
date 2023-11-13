@@ -5,6 +5,7 @@ import Cart from "./Cart";
 import { useDispatch, useSelector } from "../../core/hook";
 import { client } from "../../helper/client";
 import { refreshApiKey } from "../../helper/apiKey";
+import { Cookie } from "../../helper/cookie";
 const Shop = () => {
   const { email } = useSelector();
   const dispatch = useDispatch();
@@ -18,42 +19,50 @@ const Shop = () => {
     }
     return { response, data };
   };
-  useEffect(() => {
-    if (email) {
-      const action = async () => {
-        const { response, data } = await getProducts(10);
+  const action = async () => {
+    client.setApiKey(Cookie.get("apiKey"));
+    const { response, data } = await getProducts(10);
+    if (response.ok) {
+      // Get Products success
+      dispatch({
+        type: "get-products",
+        payload: data.data,
+      });
+    } else {
+      if (data.code === 401) {
+        const { response } = refreshApiKey();
         if (response.ok) {
-          // Get Products success
-          dispatch({
-            type: "get-products",
-            payload: data.data,
-          });
-        } else {
-          if (data.code === 401) {
-            const { response } = refreshApiKey();
-            if (response.ok) {
-              const { response, data } = await getProducts(10);
-              if (response.ok) {
-                // Get Products success
-                dispatch({
-                  type: "get-products",
-                  payload: data.data,
-                });
-              } else {
-                dispatch({
-                  type: "login",
-                  payload: false,
-                });
-              }
-            }
-          } else
+          const { response, data } = await getProducts(10);
+          if (response.ok) {
+            // Get Products success
+            dispatch({
+              type: "get-products",
+              payload: data.data,
+            });
+          } else {
             dispatch({
               type: "login",
               payload: false,
             });
+          }
         }
-      };
+      } else
+        dispatch({
+          type: "login",
+          payload: false,
+        });
+    }
+  };
+  useEffect(() => {
+    if (email) {
       action();
+      const newCart = localStorage.getItem("cart")
+        ? JSON.parse(localStorage.getItem("cart"))
+        : [];
+      dispatch({
+        type: "cart/update",
+        payload: newCart,
+      });
     } else {
       dispatch({
         type: "login",

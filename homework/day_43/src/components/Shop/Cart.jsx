@@ -12,7 +12,7 @@ const Cart = () => {
         type: "loading",
         payload: true,
       });
-      const { response } = await client.post("/order", cart);
+      const { response, data } = await client.post("/orders", cart);
       if (response.ok) {
         localStorage.clear();
         dispatch({
@@ -23,13 +23,12 @@ const Cart = () => {
           type: "loading",
           payload: false,
         });
-        alert("Đã mua thành công");
+        alert(data.message);
       } else {
         const { response } = await refreshApiKey();
         if (response.ok) {
-          const { response } = client.post("/order", cart);
+          const { response, data } = await client.post("/orders", cart);
           if (response.ok) {
-            localStorage.clear();
             dispatch({
               type: "cart/update",
               payload: [],
@@ -38,17 +37,18 @@ const Cart = () => {
               type: "loading",
               payload: false,
             });
-            alert("Đã mua thành công");
           } else {
             dispatch({
               type: "loading",
               payload: false,
             });
+
             dispatch({
               type: "login",
               payload: false,
             });
           }
+          alert(data.message);
         } else {
           dispatch({
             type: "loading",
@@ -76,7 +76,7 @@ const Cart = () => {
               </tr>
             </thead>
             <tbody className="table-light">
-              {cart.map(({ _id, name, quantity, price }) => (
+              {cart?.map(({ _id, name, quantity, price }) => (
                 <tr key={_id}>
                   <td>{name}</td>
                   <td>{quantity}</td>

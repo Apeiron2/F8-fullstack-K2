@@ -1,25 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import login from "../assets/login-background.jpg";
 import { useSelector, useDispatch } from "../core/hook";
 import { client } from "../helper/client";
 import { Cookie } from "../helper/cookie";
 const Login = () => {
-  const state = useSelector();
+  const { cart } = useSelector();
   const dispatch = useDispatch();
   const [submit, onsubmit] = useState(false);
   const [messange, setMessage] = useState("");
 
   // Function
-  const getProducts = async (limit = null) => {
-    const url = limit ? `/products?limit=${limit}` : `/products`;
-    const { response, data } = await client.get(url);
-    if (response.ok) {
-      // Get products success
-    } else {
-      // Get products fail
-    }
-    return { response, data };
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     onsubmit(true);
@@ -33,20 +23,8 @@ const Login = () => {
       });
       // Xử lý gì đó ở đây
       Cookie.set("email", email, 5 * 60 * 1000);
+      Cookie.set("apiKey", data.data.apiKey, 5 * 60000);
       client.setApiKey(data.data.apiKey);
-      const { response, data: _data } = await getProducts(10);
-      if (response.ok) {
-        dispatch({
-          type: "get-products",
-          payload: _data.data,
-        });
-      } else {
-        dispatch({
-          type: "login",
-          payload: false,
-        });
-        setMessage("Lấy dữ liệu thất bại!");
-      }
       //
       dispatch({
         type: "loading",
@@ -66,6 +44,9 @@ const Login = () => {
     setMessage(data.message);
     onsubmit(false);
   };
+  useEffect(() => {
+    localStorage.clear();
+  });
   return (
     <div className="container">
       <div className="row">

@@ -7,7 +7,7 @@ const ProductList = () => {
   return (
     <div className="product-list row">
       {products.length ? (
-        products.map((product) => {
+        products?.map((product) => {
           const { _id } = product;
           return <ProductCard key={_id} product={product} />;
         })

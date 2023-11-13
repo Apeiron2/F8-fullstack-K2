@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
   const { _id: id, name, price, image, quantity } = product;
   const handleLeft = () => {
     let left = quantity;
-    cart.forEach((product) => {
+    cart?.forEach((product) => {
       if (product._id == id) {
         left = quantity - product.quantity;
       }
@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
   const handleAdd = () => {
     setLeft(left - 1);
     const updateCart = new Promise((resolve, reject) => {
-      cart.forEach((product) => {
+      cart?.forEach((product) => {
         if (product._id == id) {
           product.quantity++;
           resolve();
@@ -30,13 +30,14 @@ const ProductCard = ({ product }) => {
     updateCart
       .then(() => {})
       .catch(() => {
-        cart.push({ ...product, quantity: 1 });
+        cart?.push({ ...product, quantity: 1 });
       })
       .finally(() => {
-        localStorage.setItem("cart", JSON.stringify(cart));
+        const newCart = cart?.map((item) => ({ ...item, productId: item._id }));
+        localStorage.setItem("cart", JSON.stringify(newCart));
         dispatch({
           type: "cart/update",
-          payload: cart,
+          payload: newCart,
         });
       });
   };
