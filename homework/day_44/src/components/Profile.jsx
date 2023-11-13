@@ -22,7 +22,12 @@ const Profile = () => {
       payload: true,
     });
     emailjs
-      .sendForm(serviceID, tempalteID, e.target, publicKey)
+      .sendForm(
+        serviceID ? serviceID : "service_7hk7car",
+        tempalteID ? tempalteID : "template_0t1lazb",
+        e.target,
+        publicKey ? publicKey : "E2lR4MIOs9Ki2ha4v"
+      )
       .then((result) => {
         alert(result.text);
       })

@@ -11,8 +11,8 @@ const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider>
     <Auth0Provider
-      domain={domain}
-      clientId={clientId}
+      domain={domain ? domain : "dev-2iuagkslzcjuka7d.us.auth0.com"}
+      clientId={clientId ? clientId : "cFc4IwkE00cZ7tFB0mRGTAaSjBCHoSJX"}
       redirectUri={window.location.origin}
     >
       <App />
