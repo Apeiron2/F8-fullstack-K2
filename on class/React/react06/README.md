@@ -51,3 +51,8 @@ Cơ chế là nếu a không thay đổi thì useMemo sẽ lấy giá trị cũ
 # useCallBack
 
     tương tự useMemo nhưng cache function
+
+# useTransition
+
+    Chặn các thay đổi khi render quá lâu ( Kiểu render xong thì mới thay đổi )
+    --> UI bị block trong quá trình Render
