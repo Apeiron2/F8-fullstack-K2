@@ -3,8 +3,10 @@ import { useDispatch } from "react-redux";
 import {
   setAnswer,
   setMaxValue,
+  setStatus,
 } from "../Redux/Redux-actions/InputNumberActions";
 import { setMaxTime } from "../Redux/Redux-actions/CounterActions";
+import { resetTurn } from "../Redux/Redux-actions/HistoryActions";
 
 const RangeSlide = ({
   color = "#02b9bd",
@@ -89,6 +91,8 @@ const RangeSlide = ({
     dispatch(setMaxValue(value));
     dispatch(setAnswer(value));
     dispatch(setMaxTime(value));
+    dispatch(resetTurn());
+    dispatch(setStatus(null));
   }, [value]);
   return (
     <div className="range-slide flex flex-col" style={{ userSelect: "none" }}>

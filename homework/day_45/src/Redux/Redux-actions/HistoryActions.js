@@ -4,6 +4,12 @@ export const updateTurn = (value) => {
     payload: value,
   };
 };
+export const resetTurn = () => {
+  return {
+    type: "History/currentTurn/reset",
+    payload: true,
+  };
+};
 export const updateHistories = (maxTime) => {
   return {
     type: "History/histories/update",

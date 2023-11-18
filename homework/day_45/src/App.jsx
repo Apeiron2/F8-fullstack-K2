@@ -10,12 +10,11 @@ import Replay from "./Components/Replay";
 import History from "./Components/History/History";
 
 function App() {
-  const state = useSelector((state) => state);
+  const { isLight } = useSelector((state) => state.theme);
+  const { maxTime, times } = useSelector((state) => state.counter);
+  const { maxValue, status } = useSelector((state) => state.inputNumber);
   const dispatch = useDispatch();
-  const {
-    counter: { maxTime, times },
-    inputNumber: { maxValue, status },
-  } = state;
+
   useLayoutEffect(() => {
     dispatch(setMaxTime(maxValue));
     dispatch(setAnswer(maxValue));
@@ -23,7 +22,7 @@ function App() {
   return (
     <div
       className={`w-screen h-screen theme-${
-        state.theme.isLight ? "light" : "dark"
+        isLight ? "light" : "dark"
       } fixed top-0 left-0 p-20`}
     >
       <h1>

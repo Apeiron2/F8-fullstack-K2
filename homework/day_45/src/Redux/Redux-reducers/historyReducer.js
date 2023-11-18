@@ -7,6 +7,9 @@ const HistoryReducer = (state = initialState, action) => {
     case "History/currentTurn/update": {
       return { ...state, currentTurn: [...state.currentTurn, action.payload] };
     }
+    case "History/currentTurn/reset": {
+      return { ...state, currentTurn: [] };
+    }
     case "History/histories/update": {
       return {
         ...state,
