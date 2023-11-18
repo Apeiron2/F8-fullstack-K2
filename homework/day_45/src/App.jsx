@@ -7,6 +7,7 @@ import { useLayoutEffect } from "react";
 import { setMaxTime } from "./Redux/Redux-actions/CounterActions";
 import { setAnswer } from "./Redux/Redux-actions/InputNumberActions";
 import Replay from "./Components/Replay";
+import History from "./Components/History/History";
 
 function App() {
   const state = useSelector((state) => state);
@@ -38,6 +39,7 @@ function App() {
       <ThemeToggle />
       <RangeSlide valueOriginal={maxValue} />
       {times == maxTime || status === 0 ? <Replay /> : <InputNumber />}
+      <History />
     </div>
   );
 }

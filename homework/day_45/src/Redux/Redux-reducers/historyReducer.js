@@ -1,9 +1,25 @@
-const initialState = {};
-const historyReducer = (state = initialState, action) => {
+const initialState = {
+  histories: [],
+  currentTurn: [],
+};
+const HistoryReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "History/currentTurn/update": {
+      return { ...state, currentTurn: [...state.currentTurn, action.payload] };
+    }
+    case "History/histories/update": {
+      return {
+        ...state,
+        histories: [
+          ...state.histories,
+          { maxTime: action.payload, times: state.currentTurn },
+        ],
+        currentTurn: [],
+      };
+    }
     default: {
       return state;
     }
   }
 };
-export default historyReducer;
+export default HistoryReducer;

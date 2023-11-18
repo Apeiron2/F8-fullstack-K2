@@ -1,11 +1,11 @@
 import { legacy_createStore as CreateStore, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import historyReducer from "./Redux-reducers/historyReducer";
+import HistoryReducer from "./Redux-reducers/HistoryReducer";
 import ThemeToggleReducer from "./Redux-reducers/ThemeToggleReducer";
 import InputNumberReducer from "./Redux-reducers/InputNumberReducer";
 import CounterReducer from "./Redux-reducers/CounterReducer";
 const rootReducer = combineReducers({
-  history: historyReducer,
+  history: HistoryReducer,
   theme: ThemeToggleReducer,
   inputNumber: InputNumberReducer,
   counter: CounterReducer,

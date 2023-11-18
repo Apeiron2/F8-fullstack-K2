@@ -5,9 +5,16 @@ import {
   setStatus,
 } from "../Redux/Redux-actions/InputNumberActions";
 import { count } from "../Redux/Redux-actions/CounterActions";
+import {
+  updateTurn,
+  updateHistories,
+} from "../Redux/Redux-actions/HistoryActions";
 
 const InputNumber = () => {
-  const { guess, answer, maxValue } = useSelector((state) => state.inputNumber);
+  const { guess, answer, maxValue, status } = useSelector(
+    (state) => state.inputNumber
+  );
+  const { maxTime } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
   const inputRef = useRef();
@@ -25,6 +32,7 @@ const InputNumber = () => {
   const handleSubmit = () => {
     dispatch(count());
     dispatch(setStatus(+guess - answer));
+    dispatch(updateTurn(+value));
   };
   useEffect(() => {
     // Cập nhật guess
