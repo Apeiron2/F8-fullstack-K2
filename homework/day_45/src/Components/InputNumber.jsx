@@ -1,17 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { inputUpdate } from "../Redux/Redux-actions/InputNumberActions";
+import {
+  inputUpdate,
+  setStatus,
+} from "../Redux/Redux-actions/InputNumberActions";
+import { count } from "../Redux/Redux-actions/CounterActions";
 
-const InputNumber = ({ maxCharacter = 4 }) => {
-  const { guess } = useSelector((state) => state.inputNumber);
+const InputNumber = () => {
+  const { guess, answer, maxValue } = useSelector((state) => state.inputNumber);
   const dispatch = useDispatch();
-  const [value, setValue] = useState(guess);
+  const [value, setValue] = useState("");
   const inputRef = useRef();
   const handleInput = (e) => {
     let value = e.target.value;
     if (e.nativeEvent.inputType === "insertText") {
       // Check số lượng ký tự
-      if (value.length <= maxCharacter) {
+      if (+value <= maxValue) {
         setValue(value.replace(/[^0-9]/g, ""));
       }
     } else {
@@ -19,7 +23,8 @@ const InputNumber = ({ maxCharacter = 4 }) => {
     }
   };
   const handleSubmit = () => {
-    console.log(value);
+    dispatch(count());
+    dispatch(setStatus(+guess - answer));
   };
   useEffect(() => {
     // Cập nhật guess

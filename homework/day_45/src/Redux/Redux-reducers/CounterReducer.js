@@ -5,9 +5,11 @@ const initialState = {
 const CounterReducer = (state = initialState, action) => {
   switch (action.type) {
     case "Counter/count": {
-      return { ...state, times: state.times + 1 };
+      return { ...state, times: state.times * action.payload + action.payload };
     }
-
+    case "Counter/setMaxTime": {
+      return { ...state, maxTime: action.payload };
+    }
     default:
       return state;
   }

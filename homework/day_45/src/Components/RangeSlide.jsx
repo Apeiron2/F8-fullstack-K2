@@ -1,4 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  setAnswer,
+  setMaxValue,
+} from "../Redux/Redux-actions/InputNumberActions";
+import { setMaxTime } from "../Redux/Redux-actions/CounterActions";
 
 const RangeSlide = ({
   color = "#02b9bd",
@@ -7,6 +13,7 @@ const RangeSlide = ({
   rangeNumber = 5,
   valueOriginal = 1,
 }) => {
+  const dispatch = useDispatch();
   const sliderRef = useRef(null);
   const [position, setPosition] = useState((valueOriginal / maxValue) * 100);
   const [value, setValue] = useState(valueOriginal);
@@ -78,6 +85,11 @@ const RangeSlide = ({
     }
   }, [isMoving]);
 
+  useEffect(() => {
+    dispatch(setMaxValue(value));
+    dispatch(setAnswer(value));
+    dispatch(setMaxTime(value));
+  }, [value]);
   return (
     <div className="range-slide flex flex-col" style={{ userSelect: "none" }}>
       <h1 className="text-3xl mb-10">
