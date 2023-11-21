@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes } from "react-router-dom";
-import PublicRoutes from "../routes/publicRoutes";
+import PublicRoutes from "../routes/PublicRoutes";
 
 const Layout = () => {
   return (

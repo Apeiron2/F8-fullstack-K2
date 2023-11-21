@@ -21,5 +21,4 @@ const PublicRoutes = (
     <Route path="/login" element={<Login />} />
   </>
 );
-
 export default PublicRoutes;
