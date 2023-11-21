@@ -1,0 +1,9 @@
+.DefaultLayout {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 1fr 1fr 1fr;
+  main {
+    margin: 100px;
+    grid-row-start: 2;
+  }
+}

@@ -1,0 +1,88 @@
+.Item {
+  display: flex;
+  justify-content: space-between;
+  height: 250px;
+  padding: 20px;
+  border: 1px solid var(--main-color);
+  border-radius: 12px;
+  position: relative;
+  & > div {
+    display: flex;
+    .counter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      img {
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        scale: 0.95;
+        &:hover {
+          scale: 1;
+          transition: all 0.5s ease;
+        }
+      }
+      & > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid var(--main-color);
+        border-radius: 5px;
+        button {
+          padding: 5px 12px;
+          border: none;
+
+          background-color: var(--Card-btn-color);
+          color: var(--text-color);
+          &:hover {
+            background-color: var(--Card-btn-hover-color);
+          }
+        }
+      }
+    }
+    .info {
+      padding: 20px;
+      & > div {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        h1 {
+          font-size: 24px;
+          color: var(--main-color);
+          font-weight: 800;
+        }
+        h2 {
+          font-size: 20px;
+        }
+      }
+      h3 {
+        margin: 50px 0;
+        font-size: 28px;
+        font-weight: 600;
+      }
+    }
+  }
+  .total {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    gap: 20px;
+    h3 {
+      margin: 20px 0;
+      font-size: 32px;
+      font-weight: 800;
+    }
+    i {
+      font-size: 32px;
+      color: var(--main-color);
+      cursor: pointer;
+      &:hover {
+        color: rgb(253, 93, 93);
+      }
+    }
+  }
+}

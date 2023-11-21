@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+h1 {
+  @apply text-2xl font-bold;
+}
+.link {
+  @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
+}
+.link.active {
+  @apply text-red-400;
+}
+.btn {
+  @apply px-3 py-1 rounded bg-blue-500 hover:bg-blue-600 text-white;
+}

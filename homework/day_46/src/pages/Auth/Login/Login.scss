@@ -1,0 +1,25 @@
+.Login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  img {
+    width: 30vw;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    label {
+      font-weight: bold;
+      font-size: x-large;
+    }
+    input {
+      width: 20vw;
+      padding: 10px;
+      border: 2px solid var(--main-color);
+      border-radius: 5px;
+    }
+  }
+}
