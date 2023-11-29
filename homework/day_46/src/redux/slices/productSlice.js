@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDetail, getProducts } from "../middlewares/productMiddleware";
+import {
+  getDetail,
+  getProducts,
+  orderCart,
+} from "../middlewares/productMiddleware";
 const initialState = {
   products: [],
   detail: {},
@@ -17,9 +21,6 @@ export const productSlice = createSlice({
       state.cart = state.cart.filter(
         ({ productId }) => productId !== action.payload
       );
-    },
-    orderCart: (state, action) => {
-      state.cart = [];
     },
   },
   extraReducers: (builder) => {
@@ -41,6 +42,16 @@ export const productSlice = createSlice({
       state.status = "fulfilled";
     });
     builder.addCase(getDetail.rejected, (state) => {
+      state.status = "rejected";
+    });
+    builder.addCase(orderCart.pending, (state) => {
+      state.status = "pending";
+    });
+    builder.addCase(orderCart.fulfilled, (state) => {
+      state.status = "fulfilled";
+      state.cart = [];
+    });
+    builder.addCase(orderCart.rejected, (state) => {
       state.status = "rejected";
     });
   },

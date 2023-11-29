@@ -1,17 +1,25 @@
 import React from "react";
 import Item from "./Item/Item";
 import "./Cart.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { orderCart } from "../../redux/middlewares/productMiddleware";
+import { Loading } from "../../components/Loading/Loading";
 const Cart = () => {
   const navigate = useNavigate();
+  const { status } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.product.cart);
   const handleOrder = () => {
-    console.log("Order");
+    dispatch(orderCart(cart));
   };
   return (
     <div className="Cart">
-      {cart.length ? (
+      {status == "pending" ? (
+        <Loading />
+      ) : status == "reject" ? (
+        <h1>Đã có lỗi xảy ra</h1>
+      ) : cart.length ? (
         cart.map(({ productId, quantity, product }) => (
           <Item key={productId} product={product} quantity={quantity} />
         ))

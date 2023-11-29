@@ -1,0 +1,21 @@
+.TodoItem {
+  flex-shrink: 0;
+  width: 300px;
+  height: 100px;
+  border-radius: 5px;
+  margin: 20px;
+  cursor: grab;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  textarea {
+    width: 100%;
+    height: 100%;
+    background-color: antiquewhite;
+    border: none;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+  }
+}

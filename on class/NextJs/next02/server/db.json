@@ -1,0 +1,61 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "todos": [
+    {
+      "id": 1,
+      "name": "Làm bài tập cá nhân"
+    },
+    {
+      "id": 2,
+      "name": "Làm bài tập nhóm"
+    },
+    {
+      "name": "Học HTML",
+      "id": 3
+    },
+    {
+      "name": "Học CSS",
+      "id": 4
+    },
+    {
+      "name": "Học JS",
+      "id": 5
+    },
+    {
+      "name": "Học React",
+      "id": 6
+    },
+    {
+      "name": "Học Redux",
+      "id": 7
+    },
+    {
+      "name": "mới",
+      "id": 8
+    },
+    {
+      "name": "Mới toang",
+      "id": 9
+    },
+    {
+      "name": "xịn",
+      "id": 10
+    }
+  ]
+}

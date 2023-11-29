@@ -7,7 +7,7 @@ export const login = async (email) => {
     client.setApiKey(apiKey);
     Cookie.set("email", email);
     Cookie.set("apiKey", apiKey);
-    localStorage.setItem("cart", JSON.stringify([]));
+    // localStorage.setItem("cart", JSON.stringify([]));
     const {
       response,
       data: {
