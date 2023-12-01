@@ -12,7 +12,7 @@ const TodoItem = ({ task }) => {
     transform,
     transition,
     isDragging,
-  } = useSortable({ id: task._id, data: task });
+  } = useSortable({ id: task._id, data: task, disabled: edit });
   const style = {
     transition,
     transform: CSS.Translate.toString(transform),
@@ -39,9 +39,9 @@ const TodoItem = ({ task }) => {
         readOnly={edit ? false : true}
         style={{
           cursor: `${edit ? "text" : "grab"}`,
-          userSelect: `${edit ? "" : "none"}`,
+          userSelect: `${edit ? "container" : "none"}`,
         }}
-        defaultValue={content}
+        value={content}
       ></textarea>
     </div>
   );

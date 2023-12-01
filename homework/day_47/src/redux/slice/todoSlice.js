@@ -17,13 +17,16 @@ export const todoSlice = createSlice({
     getColumn: () => {},
     addColumn: (state, action) => {},
     updateColumn: (state, action) => {
-      const { id, column } = action.payload;
-      state.listTodo[id] = column;
+      const { id, tasks } = action.payload;
+      state.listTodo[id].tasks = tasks;
     },
     deleteColumn: (state, action) => {},
     getTask: () => {},
     addTask: (state, action) => {},
-    updateTask: (state, action) => {},
+    updateTask: (state, action) => {
+      const { column, index, task } = action.payload;
+      state.listTodo[column].tasks[index] = task;
+    },
     deleteTask: (state, action) => {},
   },
   extraReducers: (builer) => {
