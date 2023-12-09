@@ -24,6 +24,7 @@ import {
   swapTask,
 } from "../../redux/middlewares/todoMiddleware";
 import { swapArray } from "../../services/todoService";
+import TodoColumnAdd from "./TodoColumnAdd/TodoColumnAdd";
 
 const TodoTable = () => {
   const { listTodo, status } = useSelector((state) => state.todo);
@@ -51,48 +52,32 @@ const TodoTable = () => {
     if (!over) return;
     if (dragItem.type == "column") return;
 
-    const activeColumn = active.data.current;
-    const overColumn = over.data.current;
+    const { columnIndex: activeColumnIndex, taskIndex: activeTaskIndex } =
+      active.data.current;
+    const { columnIndex: overColumnIndex, taskIndex: overTaskIndex } =
+      over.data.current;
 
-    if (activeColumn.column != overColumn.column) {
-      const activeColumnIndex = listTodo.findIndex(
-        (column) => column.column.column == activeColumn.column
-      );
-      const overColumnIndex = listTodo.findIndex(
-        (column) => column.column.column == overColumn.column
-      );
-      console.log(activeColumnIndex, overColumnIndex);
-      const activeIndex = listTodo[activeColumnIndex].tasks.findIndex(
-        ({ _id }) => active.id == _id
-      );
-      const overIndex = listTodo[overColumnIndex].tasks.findIndex(
-        ({ _id }) => over.id == _id
-      );
-      let newIndex;
-      const isBelowOverItem =
-        active.rect.current.translated &&
-        active.rect.current.translated.top > over.rect.top + over.rect.height;
-      const modifier = isBelowOverItem ? 1 : 0;
-      newIndex =
-        overIndex >= 0 ? overIndex + modifier : overColumn.column.length + 1;
+    // if (activeColumnIndex != overColumnIndex) {
+    //   let newIndex;
+    //   const isBelowOverItem =
+    //     active.rect.current.translated &&
+    //     active.rect.current.translated.top > over.rect.top + over.rect.height;
+    //   const modifier = isBelowOverItem ? 1 : 0;
+    //   newIndex =
+    //     overTaskIndex >= 0
+    //       ? overTaskIndex + modifier
+    //       : listTodo[activeColumnIndex].tasks.length + 1;
 
-      let newActiveColumn = listTodo[activeColumnIndex].tasks.filter(
-        ({ _id }) => _id !== active.id
-      );
-      let newOverColumn = listTodo[overColumnIndex].tasks.toSpliced(
-        newIndex,
-        0,
-        dragItem.data
-      );
-      dispatch(
-        swapDifColumn(
-          activeColumnIndex,
-          newActiveColumn,
-          overColumnIndex,
-          newOverColumn
-        )
-      );
-    }
+    //   let newActiveTasks = listTodo[activeColumnIndex].tasks.filter(
+    //     ({ _id }) => _id !== active.id
+    //   );
+    //   let newOverTasks = listTodo[overColumnIndex].tasks.toSpliced(
+    //     newIndex,
+    //     0,
+    //     dragItem.data
+    //   );
+    //   dispatch(swapDifColumn(active, over, newActiveTasks, newOverTasks));
+    // }
   };
   const handleDragEnd = (e) => {
     const { active, over } = e;
@@ -145,6 +130,7 @@ const TodoTable = () => {
           {listTodo?.map((column) => (
             <TodoColumn key={column.column._id} column={column} />
           ))}
+          <TodoColumnAdd />
         </div>
       </SortableContext>
       <DragOverlay>

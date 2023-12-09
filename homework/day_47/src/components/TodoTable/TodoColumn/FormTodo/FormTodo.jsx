@@ -1,20 +1,30 @@
 import React, { useRef } from "react";
 import "./FormTodo.scss";
+import { addTasks } from "../../../../services/todoService";
 
-const FormTodo = ({ id, setShow }) => {
-  const handleCancer = () => {};
+const FormTodo = ({ column: _column, setShow }) => {
+  const { column, columnName } = _column;
+  const inputRef = useRef();
+  const handleCancer = (e) => {
+    inputRef.current.value = "";
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const content = e.target[0].value;
     if (content) {
-      console.log(`Thêm ${content} vào cột ${id}`);
+      addTasks({
+        column,
+        columnName,
+        content,
+      });
     }
+    inputRef.current.value = "";
   };
   return (
     <div className="FormTodo">
       <form onSubmit={handleSubmit}>
         <h1>Thêm công việc</h1>
-        <input type="text" placeholder="Tên công việc ..." />
+        <input type="text" placeholder="Tên công việc ..." ref={inputRef} />
         <hr />
         <div>
           <button type="submit">OK</button>

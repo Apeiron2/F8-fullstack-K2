@@ -1,4 +1,4 @@
-const todoApi = "http://localhost:5000/todos";
+const todoApi = "https://jsonplaceholder.typicode.com/posts";
 export const getTodos = async () => {
   const response = await fetch(todoApi, {
     cache: "force-cache",

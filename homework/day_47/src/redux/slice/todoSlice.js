@@ -17,15 +17,15 @@ export const todoSlice = createSlice({
     getColumn: () => {},
     addColumn: (state, action) => {},
     updateColumn: (state, action) => {
-      const { id, tasks } = action.payload;
-      state.listTodo[id].tasks = tasks;
+      const { index, tasks } = action.payload;
+      state.listTodo[index].tasks = tasks;
     },
     deleteColumn: (state, action) => {},
     getTask: () => {},
     addTask: (state, action) => {},
     updateTask: (state, action) => {
-      const { column, index, task } = action.payload;
-      state.listTodo[column].tasks[index] = task;
+      const { indexColumn, indexTask, task } = action.payload;
+      state.listTodo[indexColumn].tasks[indexTask] = task;
     },
     deleteTask: (state, action) => {},
   },
@@ -47,12 +47,20 @@ export const todoSlice = createSlice({
 
 // Xử lý lại dữ liệu
 export const reorganizeTodos = createAsyncThunk("reorganizeTodos", async () => {
-  const {
-    data: { columns, tasks: _tasks },
-  } = await getTodos();
-  const listTodo = columns.map((column) => {
-    const tasks = _tasks.filter((task) => task.column === column.column);
+  const { data } = await getTodos();
+  const { columns, tasks: _tasks } = data.data;
+  const listTodo = columns.map((column, index) => {
+    let taskIndex = -1;
+    let tasks = [];
+    _tasks.forEach((task) => {
+      if (task.column === column.column) {
+        taskIndex = ++taskIndex;
+        // tasks.push({ ...task, taskIndex, columnIndex: index });
+        tasks.push({ ...task });
+      }
+    });
     return {
+      // column: { ...column, index },
       column,
       tasks,
     };

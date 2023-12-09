@@ -66,7 +66,7 @@ const TodoColumn = ({ column: _column }) => {
           </button>
         </div>
       </div>
-      {show ? <FormTodo id={columnData._id} setShow={setShow} /> : ""}
+      {show ? <FormTodo column={columnData} setShow={setShow} /> : ""}
     </>
   );
 };

@@ -2,8 +2,131 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "json-server"
+    },
+    {
+      "id": 2,
+      "title": "html"
+    },
+    {
+      "id": 3,
+      "title": "css"
+    },
+    {
+      "id": 4,
+      "title": "js"
+    },
+    {
+      "title": "addd",
+      "id": 5
+    },
+    {
+      "title": "thêm mới",
+      "id": 6
+    },
+    {
+      "title": "mới toanh",
+      "id": 7
+    },
+    {
+      "title": "hê",
+      "id": 8
+    },
+    {
+      "title": "aaaaa",
+      "id": 9
+    },
+    {
+      "title": "hê lô",
+      "id": 10
+    },
+    {
+      "title": "hahaha",
+      "id": 11
+    },
+    {
+      "title": "mới nè",
+      "id": 12
+    },
+    {
+      "title": "mới căng",
+      "id": 13
+    },
+    {
+      "title": "kakakakakakakakak",
+      "id": 14
+    },
+    {
+      "title": "hahahaha",
+      "id": 15
+    },
+    {
+      "title": "căng",
+      "id": 16
+    },
+    {
+      "title": "cái này hay",
+      "id": 17
+    },
+    {
+      "title": "mới",
+      "id": 18
+    },
+    {
+      "title": "ha",
+      "id": 19
+    },
+    {
+      "title": "okela",
+      "id": 20
+    },
+    {
+      "title": "oakaoa",
+      "id": 21
+    },
+    {
+      "title": "mới",
+      "id": 22
+    },
+    {
+      "title": "thêm",
+      "id": 23
+    },
+    {
+      "title": "căng đét",
+      "id": 24
+    },
+    {
+      "title": "thêm",
+      "id": 25
+    },
+    {
+      "title": "sáu",
+      "id": 26
+    },
+    {
+      "title": "bảy",
+      "id": 27
+    },
+    {
+      "title": "mới nè",
+      "id": 28
+    },
+    {
+      "title": "ảo",
+      "id": 29
+    },
+    {
+      "title": "ghê z",
+      "id": 30
+    },
+    {
+      "title": "ảo ma",
+      "id": 31
+    },
+    {
+      "title": "ádc",
+      "id": 32
     }
   ],
   "comments": [

@@ -1,0 +1,12 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  input {
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 20px;
+  }
+}

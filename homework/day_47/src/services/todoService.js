@@ -1,7 +1,50 @@
 import { client } from "../utils/clientUtils";
+import { Cookie } from "../utils/cookieUtils";
+import { login } from "./userService";
 
 export const getTodos = async () => {
-  const { response, data } = await client.get("/data");
+  const { response, data } = await client.get("/tasks");
+  if (data.code == 401) {
+    const { response, data } = await login(Cookie.get("email"));
+    if (response.ok) {
+      const { response, data } = await client.get("/tasks");
+      localStorage.setItem("tasks", JSON.stringify(data.data));
+      return { response, data };
+    } else {
+      // Đăng xuất
+      console.log("Đăng xuất ", data);
+    }
+  }
+  localStorage.setItem("tasks", JSON.stringify(data.data));
+  return { response, data };
+};
+
+export const addTasks = async (body) => {
+  const tasks = JSON.parse(localStorage.getItem("tasks")).tasks;
+  let newTasks = tasks.map(({ column, columnName, content }) => {
+    column, columnName, content;
+  });
+  tasks.push(body);
+  console.log(body);
+  const { response, data } = await client.post("/tasks", body);
+  if (data.code == 401) {
+    // refresh apikey
+    const { response, data } = await login(Cookie.get("email"));
+    if (response.ok) {
+      const { response, data } = await client.post("/tasks", body);
+      if (response.ok) {
+        localStorage.setItem("tasks", body);
+        return { response, data };
+      } else {
+        // Đăng xuất
+        console.log("Đăng xuất ", data);
+      }
+    } else {
+      // Đăng xuất
+      console.log("Đăng xuất ", data);
+    }
+  }
+  localStorage.setItem("tasks", body);
   return { response, data };
 };
 
