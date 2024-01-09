@@ -1,0 +1,30 @@
+<h1>Chỉnh sửa thông tin  ID: <%= user.id %></h1>
+<form action="/users/edit/<%= user.id %>" method="post">
+  <div class="mb-3">
+    <label for="">Tên</label>
+    <input type="text" name="name" class="form-control" value="<%= user.name %>"/>
+  </div>
+  <div class="mb-3">
+    <label for="">Email</label>
+    <input type="email" name="email" class="form-control" value="<%= user.email %>"/>
+  </div>
+  <div class="mb-3">
+    <label for="">Trạng thái</label>
+    <select name="status" id="" class="form-select">
+      <option value="0" <%= user.status===false ? 'selected' : '' %> >Chưa kích hoạt</option>
+      <option value="1" <%= user.status===true ? 'selected' : '' %>>Kích hoạt</option>
+    </select>
+  </div>
+  <!-- <div class="mb-3">
+    <label for="">Mật khẩu</label>
+    <input type="password" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="">Nhập lại mật khẩu</label>
+    <input type="password" class="form-control" />
+  </div> -->
+  <div class="mb-3">
+    <button class="btn btn-success">Sửa</button>
+    <a href="/users" class="btn btn-danger">Hủy</a>
+  </div>
+</form>

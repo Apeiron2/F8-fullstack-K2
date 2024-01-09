@@ -1,0 +1,38 @@
+<h1>Thêm khóa học</h1>
+<form action="" method="post">
+  <div class="mb-3">
+    <label for="">Tên</label>
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+      placeholder="Tên..."
+      value="<%= req.old.name %>"
+    />
+    <p class="text-danger mt-2 fst-italic"><%= req.errors.name %></p>
+  </div>
+  <div class="mb-3">
+    <label for="">Giá</label>
+    <input
+      type="text"
+      name="price"
+      class="form-control"
+      placeholder="Giá..."
+      value="<%= req.old.price %>"
+    />
+    <p class="text-danger mt-2 fst-italic"><%= req.errors.price %></p>
+  </div>
+  <div class="mb-3">
+    <label for="">Trạng thái</label>
+    <select name="status" id="" class="form-select">
+      <option value="active" <%= req.old.status ==='active'?'selected':'' %>>Kích hoạt</option>
+      <option value="inactive" <%= req.old.status ==='inactive'?'selected':'' %>>Chưa kích hoạt</option>
+    </select>
+  </div>
+  <button class="btn btn-success">Đăng ký</button>
+  <button class="btn btn-danger">Hủy</button>
+</form>
+<% if (req.result) { %>
+ <p class="text-sucess">Thêm thành công!</p>
+<% } %>
+ 

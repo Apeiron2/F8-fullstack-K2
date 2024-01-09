@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 4px double black;
+  padding: 10px;
+}
+button {
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+button:hover {
+  background: gray;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+  width: 500px;
+}
+
+input {
+  border-radius: 12px;
+  padding: 10px;
+}

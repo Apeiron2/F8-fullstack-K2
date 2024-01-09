@@ -1,0 +1,18 @@
+<form
+  style="display: flex; flex-direction: column; gap: 10px; margin: 10px 20px"
+  action=""
+  method="post"
+>
+  <div>
+    <label>Tài khoản</label>
+    <input type="text" name="email" />
+  </div>
+  <%= getError(error,'email') %>
+  <div>
+    <label>Mật khẩu</label>
+    <input type="password" name="password" />
+  </div>
+  <%= getError(error,'password') %>
+
+  <button style="width: 100px">Login</button>
+</form>

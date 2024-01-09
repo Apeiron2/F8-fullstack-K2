@@ -1,0 +1,30 @@
+<h1>Thêm người dùng</h1>
+<form action="/users/add" method="post">
+  <div class="mb-3">
+    <label for="">Tên</label>
+    <input type="text" name="name" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="">Email</label>
+    <input type="email" name="email" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="">Trạng thái</label>
+    <select name="status" id="" class="form-select">
+      <option value="0">Chưa kích hoạt</option>
+      <option value="1">Kích hoạt</option>
+    </select>
+  </div>
+  <!-- <div class="mb-3">
+    <label for="">Mật khẩu</label>
+    <input type="password" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="">Nhập lại mật khẩu</label>
+    <input type="password" class="form-control" />
+  </div> -->
+  <div class="mb-3">
+    <button class="btn btn-success">Thêm</button>
+    <a href="./" class="btn btn-danger">Hủy</a>
+  </div>
+</form>

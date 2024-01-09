@@ -1,0 +1,13 @@
+<h1>Trang chủ</h1>
+<h3><%- title %></h3>
+<p>
+  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore doloremque
+  corrupti cupiditate quod architecto praesentium inventore omnis, illo sunt
+  possimus consequuntur nesciunt veritatis quia ex hic nihil accusantium
+  doloribus debitis.
+</p>
+<%- include('./banner') %>
+<div></div>
+<% users.forEach(use=> { %>
+<h3><%= use %></h3>
+<% }) %>

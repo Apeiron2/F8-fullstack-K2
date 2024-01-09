@@ -1,0 +1,56 @@
+<h1 class="mt-2">Trang chủ</h1>
+<div class="mb-3">
+  <a href="/add" class="btn btn-success">Thêm mới</a>
+</div>
+<form action="" class="d-flex w-50">
+  <select class="form-select" name="status">
+    <option value="all">Tất cả</option>
+    <option value="active">Kích hoạt</option>
+    <option value="inactive">Chưa kích hoạt</option>
+  </select>
+  <input
+    type="search"
+    name="keyword"
+    placeholder="Tìm kiếm ..."
+    class="form-control"
+  />
+  <button class="btn btn-primary">Tìm kiếm</button>
+</form>
+
+<% if (msg.length) { %>
+<div class="alert alert-success mt-2"><%= msg %></div>
+<% } %>
+
+<h2 class="mt-3">Danh sách khóa học</h2>
+<table class="table table-bordered table-hover align-middle mt-3">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Created At</th>
+      <th>Status</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% courses.forEach(course => { %>
+    <tr>
+      <td><%= course.id %></td>
+      <td><%= course.name %></td>
+      <td><%= course.price.toLocaleString() %></td>
+      <td><%= moment(course.created_at).format("DD/MM/YYYY HH:mm:ss") %></td>
+      <td><%= course.status ? 'Kích hoạt':'Chưa kích hoạt' %></td>
+      <td>
+        <a href=<%= `/edit/${course.id}` %> class="btn btn-success">Sửa</a>
+      </td>
+      <td>
+        <form action=<%= `/delete/${course.id}` %> method="POST">
+          <button class="btn btn-danger">Xóa</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
