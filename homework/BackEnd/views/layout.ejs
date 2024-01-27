@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>F8</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <div class="d-flex">
+      <aside class="py-3 w-25">
+        <ul>
+          <li class="py-3"><a href="/">Trang chủ</a></li>
+          <li class="py-3"><a href="/users">Quản lý người dùng</a></li>
+          <li class="py-3"><a href="/roles">Quản lý role</a></li>
+        </ul>
+      </aside>
+      <main class="py-3 w-75">
+        <div class="container"><%- body %></div>
+      </main>
+    </div>
+  </body>
+</html>

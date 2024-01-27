@@ -1,0 +1,25 @@
+<h1 class="text-center">Đăng nhập</h1>
+<form action="" method="post" class="form-control">
+  <div class="mb-3">
+    <label for="">Email</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="Email..."
+      class="form-control"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="">Mật khẩu</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="Mật khẩu..."
+      class="form-control"
+    />
+  </div>
+  <% if (error.length) { %>
+  <div class="mb-3 alert alert-danger"><%= error %></div>
+  <% } %>
+  <button class="btn btn-primary w-100">Đăng nhập</button>
+</form>

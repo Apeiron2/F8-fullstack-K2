@@ -1,0 +1,31 @@
+<h1>Sửa Role (<%= role.id %>)</h1>
+<form action="" method="post">
+  <div class="mb-3">
+    <label for="">Tên</label>
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+      value="<%= role.name %>"
+    />
+  </div>
+  <div class="mb-3">
+    <h3>Danh sách quyền</h3>
+    <% permissionsAll.forEach(permission => { const
+    isChecked=permissionsRole.find(item=>item.id==permission.id); %>
+    <label for="<%= permission.value %>" class="d-block">
+      <input type="checkbox" class="mx-3" <%= isChecked ? 'checked':'' %>
+      id="<%= permission.value %>" name="permissions" value="<%= permission.id
+      %>"><%= permission.value %></label
+    >
+    <% }) %>
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-success">Sửa</button>
+    <a href="/roles" class="btn btn-danger">Hủy</a>
+  </div>
+</form>
+<% if (status) { %>
+<p class="alert alert-<%= status.status?"success":"danger" %>"><%= status.mess %></p>
+<% } %>
+

@@ -26,11 +26,15 @@ module.exports = {
     }
     let limit = 3;
     let offset = (+page - 1) * limit;
-    const { count, rows } = await User.findAndCountAll({
+    let { count, rows } = await User.findAndCountAll({
       order: [["created_at", "asc"]],
       where: filter,
       limit: limit,
       offset: offset,
+      include: {
+        model: model.Phone,
+        as: "phone",
+      },
     });
     const totalPage = Math.ceil(count / limit);
     /**
@@ -41,27 +45,54 @@ module.exports = {
      * Tính tổng số trang: tổng số bản ghi / limit
      * Hiển thị số trang: paginate của boostrap
      */
-    res.render("users/index", { users: rows, totalPage, page, moment });
+    // for (let i = 0; i < rows.length; i++) {
+    //   const phone = await rows[i].getPhone();
+    //   rows[i].phone = phone?.phone;
+    // }
+    res.render("users/index", {
+      users: rows,
+      totalPage,
+      page,
+      moment,
+    });
   },
-  add: (req, res) => {
-    return res.render("users/add");
+  add: async (req, res) => {
+    const courses = await model.Course.findAll({
+      order: [["name", "asc"]],
+    });
+    return res.render("users/add", { courses });
   },
   handleAdd: async (req, res) => {
     const body = req.body;
     body.status = +body.status === 1;
-    const result = await User.create(body);
-    console.log(result);
+    const courses = Array.from(body.courses);
+    const user = await User.create(body);
+    if (user && courses.length) {
+      for (let courseId of courses) {
+        const course = await model.Course.findByPk(courseId);
+        if (course) {
+          await user.addCourse(course);
+        }
+      }
+    }
     return res.redirect("/users");
   },
   edit: async (req, res, next) => {
     const { id } = req.params;
     try {
       // const user = await User.findByPk(id); --> Cách 1 tìm kiếm theo Khóa chính
-      const user = await User.findOne({ where: { id } });
+      const user = await User.findOne({
+        where: { id },
+        include: [{ model: model.Post, as: "posts" }, { model: model.Course }],
+      });
+      console.log(user?.Courses);
       if (!user) {
         throw next(new Error("User không tồn tại"));
       }
-      res.render("users/edit", { user });
+      const courses = await model.Course.findAll({
+        order: [["name", "asc"]],
+      });
+      res.render("users/edit", { user, courses });
     } catch (error) {
       return next(error);
     }
@@ -73,6 +104,12 @@ module.exports = {
     const status = await User.update(body, {
       where: { id },
     });
+    const courses = Array.from(body.courses);
+    const courseList = await Promise.all(
+      courses.map((courseId) => model.Course.findByPk(courseId))
+    );
+    const user = await User.findByPk(id);
+    await user.setCourses(courseList);
     return res.redirect("/users/edit/" + id);
   },
   delete: async (req, res) => {

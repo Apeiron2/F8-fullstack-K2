@@ -1,0 +1,29 @@
+<h1>Thêm Role</h1>
+<form action="" method="post">
+  <div class="mb-3">
+    <label for="">Tên</label>
+    <input type="text" name="name" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <h3>Danh sách quyền</h3>
+    <% permissions.forEach(permission => { %>
+    <label for="<%= permission.value %>" class="d-block">
+      <input
+        type="checkbox"
+        class="mx-3"
+        id="<%= permission.value %>"
+        name="permissions"
+        value="<%= permission.id
+      %>"
+      /><%= permission.value %></label
+    >
+    <% }) %>
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-primary">Thêm</button>
+    <a href="/roles" class="btn btn-danger">Hủy</a>
+  </div>
+</form>
+<% if (status) { %>
+    <p class="alert alert-<%= status.status?"success":"danger" %>"><%= status.mess %></p>
+    <% } %>

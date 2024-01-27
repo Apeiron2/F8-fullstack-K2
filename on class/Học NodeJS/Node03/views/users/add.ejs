@@ -24,6 +24,21 @@
     <input type="password" class="form-control" />
   </div> -->
   <div class="mb-3">
+    <h3>Danh sách khóa học</h3>
+    <% courses.forEach(course => { %>
+    <label for="<%= course.name %>" class="d-block"
+      ><input
+        type="checkbox"
+        class="mx-3"
+        id="<%=
+      course.name %>"
+        name="courses"
+        value="<%= course.id %>"
+      /><%= course.name %></label
+    >
+    <% }) %>
+  </div>
+  <div class="mb-3">
     <button class="btn btn-success">Thêm</button>
     <a href="./" class="btn btn-danger">Hủy</a>
   </div>

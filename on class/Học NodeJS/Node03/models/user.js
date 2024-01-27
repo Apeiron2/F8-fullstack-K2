@@ -9,6 +9,26 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // User.hasOne(models.Phone, {
+      //   foreignKey: "user_id",
+      //   as: "phone",
+      // });
+      // User.hasMany(models.Post, {
+      //   foreignKey: "user_id",
+      //   as: "posts",
+      // });
+      // User.belongsToMany(models.Course, {
+      //   foreignKey: "user_id",
+      //   through: "users_courses",
+      // });
+      User.belongsToMany(models.Permission, {
+        foreignKey: "user_id",
+        through: "users_permissions",
+      });
+      User.belongsToMany(models.Role, {
+        foreignKey: "user_id",
+        through: "users_roles",
+      });
     }
   }
   User.init(
@@ -18,10 +38,12 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      name: DataTypes.STRING(30),
+      full_name: DataTypes.STRING(30),
       email: DataTypes.STRING(100),
       password: DataTypes.STRING(100),
       status: DataTypes.BOOLEAN,
+      phone: DataTypes.STRING(30),
+      address: DataTypes.STRING(60),
     },
     {
       sequelize,
@@ -29,8 +51,6 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "users",
       createdAt: "created_at",
       updatedAt: "updated_at",
-      deletedAt: "deleted_at",
-      paranoid: true,
     }
   );
   return User;
