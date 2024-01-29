@@ -1,0 +1,90 @@
+<form action="" method="post" class="border border rounded p-3">
+  <div class="mb-3">
+    <label class="form-lable fw-bolder mb-2">Liên kết</label>
+    <input
+      type="text"
+      placeholder="Rút gọn liên kết của bạn"
+      class="form-control"
+      name="original"
+      id="original"
+      value="<%= old?.original %>"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-lable fw-bolder mb-2">Link rút gọn</label>
+    <input
+      type="text"
+      placeholder="Nhập mật khẩu để mở khóa"
+      class="form-control"
+      name="shorten"
+      id="shorten"
+      value="<%= old?.password %>"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-lable fw-bolder mb-2">Mật khẩu (tùy chọn)</label>
+    <input
+      type="text"
+      placeholder="Nhập mật khẩu để mở khóa"
+      class="form-control"
+      name="password"
+      id="password"
+      value="<%= old?.password %>"
+    />
+  </div>
+  <div class="mb-3" id="form-check">
+    <div class="form-check mb-2">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        name="safeRedirect"
+        id="flexCheckChecked"
+        checked
+      />
+      <label class="form-check-label" for="flexCheckChecked">
+        Chuyển hướng an toàn (Tránh bị chặn bởi Facebook)
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="custom"
+      id="flexCheckDefault" <%= old?.custom=='on'?'checked':'' %> />
+      <label class="form-check-label" for="flexCheckDefault">
+        Tùy chỉnh ID của liên kết
+      </label>
+    </div>
+    <div class="mb-3 form-control align-items-center w-100" id="customIdInput">
+      <label for=""><%= dnsShorten %> </label>
+      <input
+        type="text"
+        placeholder="ID tùy chỉnh"
+        style="border: none; outline: none"
+        name="customID"
+        class="w-100"
+        value="<%= old?.customID %>"
+      />
+    </div>
+    <script>
+      const isChecked = document.querySelector("#flexCheckDefault");
+      const customIdInput = document.querySelector("#customIdInput");
+      customIdInput.style.display = isChecked.checked ? "flex" : "none";
+      isChecked.addEventListener("change", () => {
+        customIdInput.style.display = isChecked.checked ? "flex" : "none";
+      });
+    </script>
+  </div>
+  <button class="btn btn-primary w-100 mb-3">Rút gọn</button>
+  <% if (success) { %>
+  <div class="alert alert-success mb-3"><%= success %></div>
+  <% if (success=="Rút gọn link thành công!") { %>
+  <div class="mb-3">
+    <label class="form-lable fw-bolder mb-2">Link rút gọn của bạn:</label>
+    <input
+      type="text"
+      class="form-control"
+      value="<%= dnsShorten %><%= hash %>"
+    />
+  </div>
+  <% } %> <% } %> <% if (error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+</form>

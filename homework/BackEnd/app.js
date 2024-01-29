@@ -57,10 +57,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/auth", guestMiddleware, authRouter);
-app.use(authMiddleware);
+// app.use(authMiddleware);
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/roles", rolesRouter);
+// app.use("/users", usersRouter);
+// app.use("/roles", rolesRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

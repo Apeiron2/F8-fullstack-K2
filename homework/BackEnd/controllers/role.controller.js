@@ -1,3 +1,4 @@
+const { ro } = require("@faker-js/faker");
 const model = require("../models/index");
 const { Role, Permission } = model;
 module.exports = {
@@ -5,14 +6,7 @@ module.exports = {
     const roles = await Role.findAll({
       order: [["created_at", "desc"]],
     });
-    const permissionsAll = await Permission.findAll();
-    await Promise.all(
-      roles.map(async (role) => {
-        const permissionsRole = await role.getPermissions();
-        role.permissions = Array.from(permissionsRole);
-      })
-    );
-    res.render("roles/index", { roles, permissionsAll });
+    res.render("roles/index", { roles });
   },
   add: async (req, res) => {
     const status = req.flash("status")[0];
@@ -21,16 +15,23 @@ module.exports = {
   },
   handleAdd: async (req, res) => {
     let { name, permissions } = req.body;
+    permissions = Array.from(permissions);
     const role = await Role.create({ name });
     if (!role) {
       req.flash("status", { status: false, mess: "Tạo Role thất bại!" });
       return res.redirect("/roles/add");
     }
     try {
-      Array.from(permissions).forEach(async (permission) => {
-        permission = await Permission.findByPk(permission);
-        await role.addPermission(permission);
-      });
+      const permissionsInstance = await Promise.all(
+        permissions.map(async (permission) => {
+          const [permissionInstance] = await Permission.findOrCreate({
+            where: { value: permission },
+            default: { value: permission },
+          });
+          return permissionInstance;
+        })
+      );
+      await role.addPermissions(permissionsInstance);
       req.flash("status", { status: true, mess: "Tạo Role thành công!" });
       return res.redirect("/roles/add");
     } catch (error) {
@@ -43,9 +44,14 @@ module.exports = {
     const { id } = req.params;
     const role = await Role.findOne({
       where: { id },
+      include: {
+        model: Permission,
+        as: "permissions",
+      },
     });
+    if (!role) throw Error("Role không tồn tại!");
     const permissionsAll = await Permission.findAll();
-    const permissionsRole = await role.getPermissions();
+    const permissionsRole = await role.permissions;
     res.render("roles/edit", { status, role, permissionsAll, permissionsRole });
   },
   handleEdit: async (req, res) => {
@@ -57,7 +63,16 @@ module.exports = {
     try {
       role.name = name;
       await role.save();
-      await role.setPermissions(permissions);
+      const permissionsInstance = await Promise.all(
+        permissions.map(async (permission) => {
+          const [permissionInstance] = await Permission.findOrCreate({
+            where: { value: permission },
+            default: { value: permission },
+          });
+          return permissionInstance;
+        })
+      );
+      await role.setPermissions(permissionsInstance);
       req.flash("status", { status: true, mess: "Chỉnh sửa thành công!" });
       res.redirect("/roles/edit/" + id);
     } catch (error) {
@@ -67,7 +82,17 @@ module.exports = {
   },
   delete: async (req, res) => {
     const { id } = req.params;
-    const status = await Role.destroy({ where: { id }, force: true });
+    const role = await Role.findOne({
+      where: { id },
+      include: {
+        model: Permission,
+        as: "permissions",
+      },
+    });
+    if (role) {
+      await role.removePermissions(role.permission);
+      await role.destroy();
+    }
     return res.redirect("/roles");
   },
 };

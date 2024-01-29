@@ -6,18 +6,130 @@
   </div>
   <div class="mb-3">
     <h3>Danh sách quyền</h3>
-    <% permissions.forEach(permission => { %>
-    <label for="<%= permission.value %>" class="d-block">
-      <input
-        type="checkbox"
-        class="mx-3"
-        id="<%= permission.value %>"
-        name="permissions"
-        value="<%= permission.id
-      %>"
-      /><%= permission.value %></label
-    >
-    <% }) %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Chức năng</th>
+          <th>Quyền</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Quản lý người dùng</td>
+          <td>
+            <div class="row">
+              <div class="col-3">
+                <label for="users.read">
+                  <input
+                    type="checkbox"
+                    class="mx-3"
+                    id="users.read"
+                    name="permissions"
+                    value="users.read"
+                  />Xem</label
+                >
+              </div>
+            </div>
+           
+              <div class="col-3">
+                <label for="users.add">
+                  <input
+                    type="checkbox"
+                    class="mx-3"
+                    id="users.add"
+                    name="permissions"
+                    value="users.add"
+                  />Thêm</label
+                >
+              </div>
+            
+            
+              <div class="col-3">
+                <label for="users.edit">
+                  <input
+                    type="checkbox"
+                    class="mx-3"
+                    id="users.edit"
+                    name="permissions"
+                    value="users.edit"
+                  />Sửa</label
+                >
+              </div>
+            
+            
+              <div class="col-3">
+                <label for="users.delete">
+                  <input
+                    type="checkbox"
+                    class="mx-3"
+                    id="users.delete"
+                    name="permissions"
+                    value="users.delete"
+                  />Xóa</label
+                >
+              </div>
+            
+          </td>
+        </tr>
+        <tr>
+          <td>Quản lý vai trò</td>
+          <td>
+            <div class="row">
+              <div class="col-3">
+                <label for="roles.read">
+                  <input
+                    type="checkbox"
+                    class="mx-3"
+                    id="roles.read"
+                    name="permissions"
+                    value="roles.read"
+                  />Xem</label
+                >
+              </div>
+            </div>
+            
+              <div class="col-3">
+                <label for="roles.add">
+                  <input
+                    type="checkbox"
+                    class="mx-3"
+                    id="roles.add"
+                    name="permissions"
+                    value="roles.add"
+                  />Thêm</label
+                >
+              </div>
+            
+            
+              <div class="col-3">
+                <label for="roles.edit">
+                  <input
+                    type="checkbox"
+                    class="mx-3"
+                    id="roles.edit"
+                    name="permissions"
+                    value="roles.edit"
+                  />Sửa</label
+                >
+              </div>
+            
+            
+              <div class="col-3">
+                <label for="roles.delete">
+                  <input
+                    type="checkbox"
+                    class="mx-3"
+                    id="roles.delete"
+                    name="permissions"
+                    value="roles.delete"
+                  />Xóa</label
+                >
+              </div>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="mb-3">
     <button class="btn btn-primary">Thêm</button>

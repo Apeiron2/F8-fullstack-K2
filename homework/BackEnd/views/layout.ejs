@@ -9,17 +9,28 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <div class="d-flex">
-      <aside class="py-3 w-25">
-        <ul>
-          <li class="py-3"><a href="/">Trang chủ</a></li>
-          <li class="py-3"><a href="/users">Quản lý người dùng</a></li>
-          <li class="py-3"><a href="/roles">Quản lý role</a></li>
-        </ul>
-      </aside>
-      <main class="py-3 w-75">
-        <div class="container"><%- body %></div>
-      </main>
-    </div>
+    <main class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-3">
+            <aside class="py-3">
+              <h1>Menu</h1>
+              <ul>
+                <li class="nav-item py-3">
+                  <a href="/" class="nav-link">Trang chủ</a>
+                </li>
+                <li class="nav-item py-3">
+                  <a href="/users" class="nav-link">Quản lý người dùng</a>
+                </li>
+                <li class="nav-item py-3">
+                  <a href="/roles" class="nav-link">Quản lý role</a>
+                </li>
+              </ul>
+            </aside>
+          </div>
+          <div class="col-9"><%- body %></div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

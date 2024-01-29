@@ -1,0 +1,77 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Liên kết rút gọn</th>
+      <th>Liên kết gốc</th>
+      <th>Mật khẩu</th>
+      <th>Lượt truy cập</th>
+      <th>Thời gian tạo</th>
+      <th>Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% shortenList.forEach((shorten,index) => { %>
+    <tr>
+      <td><%= index+1 %></td>
+      <td>
+        <a
+          href="<%= dnsShorten %><%= shorten.hash %>"
+          target="_blank"
+          class="nav-link"
+          ><%= dnsShorten %><%= shorten.hash %></a
+        >
+      </td>
+      <td>
+        <a
+          href="<%= shorten.original %>"
+          target="_blank"
+          class="nav-link text-wrap"
+          ><%= shorten.hostname %></a
+        >
+      </td>
+      <td>
+        <% if (!shorten.password) { %> (Không có) <% } %> <% if
+        (shorten.password) { %>
+        <button class="btn btn-secondary passwordBtn">Xem</button>
+        <span style="cursor: pointer"><%= shorten.password %></span>
+        <% } %>
+      </td>
+      <td><%= shorten.clicked %></td>
+      <td><%= shorten.time_ago %></td>
+      <td class="d-flex gap-3 justify-content-center align-items-center">
+        <a
+          href="/edit/<%= shorten.hash %>"
+          class="btn btn-primary edit"
+          data-hash="<%= shorten.hash %>"
+          data-original="<%= shorten.original %>"
+          data-shorten="<%= dnsShorten %><%= shorten.hash %>"
+          data-password="<%= shorten.password %>"
+          ><i class="fa-regular fa-pen-to-square"></i
+        ></a>
+        <a href="/share/<%= shorten.hash %>" class="btn btn-success">
+          <i class="fa-regular fa-share-from-square"></i
+        ></a>
+        <a href="/delete/<%= shorten.hash %>" class="btn btn-danger"
+          ><i class="fa-regular fa-trash-can"></i
+        ></a>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+<script>
+  const passwordBtns = document.querySelectorAll(".passwordBtn");
+  passwordBtns.forEach((passwordBtn) => {
+    const passwordText = passwordBtn.nextElementSibling;
+    passwordText.style.display = "none";
+    passwordBtn.addEventListener("click", () => {
+      passwordBtn.style.display = "none";
+      passwordText.style.display = "inline";
+    });
+    passwordText.addEventListener("click", () => {
+      passwordBtn.style.display = "inline-block";
+      passwordText.style.display = "none";
+    });
+  });
+</script>

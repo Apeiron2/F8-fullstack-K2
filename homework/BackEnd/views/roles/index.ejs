@@ -3,26 +3,17 @@
 <table class="table table-bordered">
   <thead>
     <tr>
+      <th>STT</th>
       <th>Tên</th>
-      <th>Quyền</th>
       <th style="width: 50px">Sửa</th>
       <th style="width: 50px">Xóa</th>
     </tr>
   </thead>
   <tbody>
-    <% roles.forEach(role => { %>
+    <% roles.forEach((role,index) => { %>
     <tr>
+      <td><%= index+1 %></td>
       <td><%= role.name %></td>
-      <td class="d-flex">
-        <% permissionsAll.forEach(permission => { const
-        isChecked=role.permissions?.find(item=>item.id==permission.id); %>
-        <label for="<%= permission.value %>" class="d-block">
-          <input type="checkbox" class="mx-3" <%= isChecked ? 'checked':'' %>
-          id="<%= permission.value %>" name="permissions" value="<%=
-          permission.id %>"><%= permission.value %></label
-        >
-        <% }) %>
-      </td>
       <td>
         <a href="/roles/edit/<%= role.id %>" class="btn btn-warning">Sửa</a>
       </td>

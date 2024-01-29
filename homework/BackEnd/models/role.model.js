@@ -30,7 +30,10 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      name: DataTypes.STRING(100),
+      name: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+      },
     },
     {
       sequelize,

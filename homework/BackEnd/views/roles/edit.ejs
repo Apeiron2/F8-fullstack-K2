@@ -2,23 +2,89 @@
 <form action="" method="post">
   <div class="mb-3">
     <label for="">Tên</label>
-    <input
-      type="text"
-      name="name"
-      class="form-control"
-      value="<%= role.name %>"
-    />
+    <input type="text" name="name" class="form-control" value="<%= role.name %>" />
   </div>
   <div class="mb-3">
     <h3>Danh sách quyền</h3>
-    <% permissionsAll.forEach(permission => { const
-    isChecked=permissionsRole.find(item=>item.id==permission.id); %>
-    <label for="<%= permission.value %>" class="d-block">
-      <input type="checkbox" class="mx-3" <%= isChecked ? 'checked':'' %>
-      id="<%= permission.value %>" name="permissions" value="<%= permission.id
-      %>"><%= permission.value %></label
-    >
-    <% }) %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Chức năng</th>
+          <th>Quyền</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Quản lý người dùng</td>
+          <td>
+            <div class="row">
+              <div class="col-3">
+                <label for="users.read">
+                  <input type="checkbox" class="mx-3" id="users.read" name="permissions" value="users.read"
+                    <%=permissionsRole.find(item=>item.value=="users.read") ? 'checked':'' %>
+                  />Xem</label>
+              </div>
+              <div class="col-3">
+                <label for="users.add">
+                  <input type="checkbox" class="mx-3" id="users.add" name="permissions" value="users.add"
+                    <%=permissionsRole.find(item=>item.value=="users.add") ? 'checked':'' %>
+                  />Thêm</label>
+              </div>
+              <div class="col-3">
+                <label for="users.edit">
+                  <input type="checkbox" class="mx-3" id="users.edit" name="permissions" value="users.edit"
+                    <%=permissionsRole.find(item=>item.value=="users.edit") ? 'checked':'' %>
+                  />Sửa</label>
+              </div>
+              <div class="col-3">
+                <label for="users.delete">
+                  <input type="checkbox" class="mx-3" id="users.delete" name="permissions" value="users.delete"
+                    <%=permissionsRole.find(item=>item.value=="users.delete") ? 'checked':'' %>
+                  />Xóa</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Quản lý vai trò</td>
+          <td>
+            <div class="row">
+              <div class="col-3">
+                <label for="roles.read">
+                  <input type="checkbox" class="mx-3" id="roles.read" name="permissions" value="roles.read"
+                    <%=permissionsRole.find(item=>item.value=="roles.read") ? 'checked':'' %>
+                  />Xem</label>
+              </div>
+              <div class="col-3">
+                <label for="roles.add">
+                  <input type="checkbox" class="mx-3" id="roles.add" name="permissions" value="roles.add"
+                    <%=permissionsRole.find(item=>item.value=="roles.add") ? 'checked':'' %>
+                  />Thêm</label>
+              </div>
+
+
+              <div class="col-3">
+                <label for="roles.edit">
+                  <input type="checkbox" class="mx-3" id="roles.edit" name="permissions" value="roles.edit"
+                    <%=permissionsRole.find(item=>item.value=="roles.edit") ? 'checked':'' %>
+                  />Sửa</label>
+              </div>
+
+
+              <div class="col-3">
+                <label for="roles.delete">
+                  <input type="checkbox" class="mx-3" id="roles.delete" name="permissions" value="roles.delete"
+                    <%=permissionsRole.find(item=>item.value=="roles.delete") ? 'checked':'' %>
+                  />Xóa</label>
+              </div>
+            </div>
+
+
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="mb-3">
     <button class="btn btn-success">Sửa</button>
@@ -26,6 +92,6 @@
   </div>
 </form>
 <% if (status) { %>
-<p class="alert alert-<%= status.status?"success":"danger" %>"><%= status.mess %></p>
-<% } %>
-
+  <p class="alert alert-<%= status.status?"success":"danger" %>"><%= status.mess %>
+  </p>
+  <% } %>

@@ -1,0 +1,52 @@
+<div
+  class="d-flex flex-column justify-content-center align-items-center gap-3 mx-auto"
+  style="width: 300px"
+>
+  <a href="<%= shorten.original %>" id="original" class="btn btn-primary w-100"
+    >Nhấn để tiếp tục</a
+  >
+  <a class="btn btn-primary w-100">Chia sẻ lên facebook</a>
+  <a class="btn btn-primary w-100" id="qrcodeBtn"
+    >Gửi tới điện thoại (QR code)</a
+  >
+  <a href="/" class="btn btn-primary w-100">Rút gọn liên kết mới</a>
+</div>
+<div
+  id="qrcode"
+  class="p-3 border rounded flex-column justify-content-center align-items-center position-absolute bg-white"
+  style="
+    translate: -50% -50%;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    height: 500px;
+  "
+>
+  <button
+    type="button"
+    class="btn-close position-absolute"
+    style="top: 10px; right: 10px"
+    aria-label="Close"
+  ></button>
+  <span class="text-center fw-bolder fs-5">Mã QR</span>
+  <img
+    id="qrcode-inner"
+    style="width: 400px; height: 400px"
+    class="p-3"
+    src="data:image/png;base64,<%= qrcode %>"
+  />
+</div>
+<script>
+  const qrcodeBtn = document.querySelector("#qrcodeBtn");
+  const qrcodeDiv = document.querySelector("#qrcode");
+  const qrcodeInner = qrcodeDiv.querySelector("#qrcode-inner");
+  const closeBtn = qrcodeDiv.querySelector(".btn-close");
+  qrcodeDiv.style.display = "none";
+  qrcodeBtn.addEventListener("click", () => {
+    qrcodeDiv.style.display = "flex";
+  });
+  closeBtn.addEventListener("click", () => {
+    qrcodeDiv.style.display = "none";
+  });
+</script>

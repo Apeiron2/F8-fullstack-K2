@@ -24,7 +24,7 @@ module.exports = {
         },
       ];
     }
-    let limit = 5;
+    let limit = 100;
     let offset = (+page - 1) * limit;
     let { count, rows } = await User.findAndCountAll({
       order: [["created_at", "asc"]],
@@ -96,7 +96,6 @@ module.exports = {
   edit: async (req, res, next) => {
     const { id } = req.params;
     try {
-      // const user = await User.findByPk(id); --> Cách 1 tìm kiếm theo Khóa chính
       const user = await User.findOne({
         where: { id },
         include: [{ model: model.Role, as: "roles" }],
@@ -107,7 +106,8 @@ module.exports = {
       const roles = await model.Role.findAll({
         order: [["name", "asc"]],
       });
-      res.render("users/edit", { user, roles });
+      const role_user = await user.getRoles();
+      res.render("users/edit", { user, roles, role_user });
     } catch (error) {
       return next(error);
     }

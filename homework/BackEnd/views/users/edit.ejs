@@ -23,7 +23,7 @@
     <label for="">Nhập lại mật khẩu</label>
     <input type="password" class="form-control" />
   </div> -->
-  <div class="mb-3">
+  <!-- <div class="mb-3">
     <h3>Danh sách bài viết</h3>
     <% user?.posts?.forEach(post => { %>
     <div class="p-3 border">
@@ -32,14 +32,14 @@
     </div>
     <% }) %>
 
-  </div>
+  </div> -->
   <div class="mb-3">
-    <h3>Danh sách khóa học</h3>
-    <% courses.forEach(course => { 
-      const isChecked=user?.Courses?.find(item=>item.id==course.id);
+    <h3>Phân quyền</h3>
+    <% roles.forEach(role => { 
+      const isChecked=role_user.find(item=>item.id==role.id);
       %>
-    <label for="<%= course.name %>" class="d-block"><input type="checkbox" class="mx-3" <%= isChecked ? 'checked':'' %>
-        id="<%= course.name %>" name="courses" value="<%= course.id %>"><%= course.name %></label>
+    <label for="<%= role.name %>" class="d-block"><input type="checkbox" class="mx-3" <%= isChecked ? 'checked':'' %>
+        id="<%= role.name %>" name="courses" value="<%= role.id %>"><%= role.name %></label>
     <% }) %>
   </div>
   <div class="mb-3">
