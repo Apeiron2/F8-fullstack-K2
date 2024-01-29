@@ -19,5 +19,15 @@ router.get("/logout", (req, res) => {
   req.logout((err) => {});
   return res.redirect("/auth/login");
 });
-
+router.get(
+  "/facebook/redirect",
+  passport.authenticate("facebook", { scope: "email" })
+);
+router.get(
+  "/facebook/callback",
+  passport.authenticate("facebook", {
+    failureRedirect: "/auth/login",
+    failureFlash: true,
+  })
+);
 module.exports = router;

@@ -19,6 +19,7 @@ const guestMiddleware = require("./middlewares/guest.middleware");
 const validateMiddleware = require("./middlewares/validate.middlware");
 const { User } = require("./models/index");
 const passportLocal = require("./passports/passport.local");
+const passportFacebook = require("./passports/passport.facebook");
 
 var app = express();
 app.use(
@@ -34,6 +35,7 @@ app.use(validateMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use("local", passportLocal);
+passport.use("facebook", passportFacebook);
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);

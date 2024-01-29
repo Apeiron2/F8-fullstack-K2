@@ -7,7 +7,7 @@ moment.locale("vi");
 /* GET home page. */
 router.get("/", async function (req, res, next) {
   const dnsShorten = process.env.DNS_SHORTEN;
-  const { id } = req.user;
+  const { id, name } = req.user;
   const hash = req.flash("hash")[0];
   const old = req.flash("old")[0];
   const error = req.flash("error")[0];
@@ -20,12 +20,15 @@ router.get("/", async function (req, res, next) {
     },
     order: [[{ model: Shorten, as: "shortens" }, "created_at", "DESC"]],
   });
+
   const shortenList = Array.from(await user.shortens);
   shortenList.forEach((shorten) => {
     const url = new URL(shorten.original);
     shorten.hostname = url.hostname;
     shorten.time_ago = moment(shorten.created_at).fromNow();
+    shorten.share = `https://www.facebook.com/sharer.php?u=${shorten.original}&hashtag=%23${name}`;
   });
+
   return res.render("index", {
     dnsShorten,
     error,

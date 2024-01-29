@@ -5,7 +5,12 @@
   <a href="<%= shorten.original %>" id="original" class="btn btn-primary w-100"
     >Nhấn để tiếp tục</a
   >
-  <a class="btn btn-primary w-100">Chia sẻ lên facebook</a>
+  <a
+    href="<%= shorten.share %>"
+    onclick="window.open(this.href,'_blank','width:500px,height:500px');return false;"
+    class="btn btn-primary w-100"
+    >Chia sẻ lên facebook</a
+  >
   <a class="btn btn-primary w-100" id="qrcodeBtn"
     >Gửi tới điện thoại (QR code)</a
   >

@@ -49,7 +49,11 @@
           data-password="<%= shorten.password %>"
           ><i class="fa-regular fa-pen-to-square"></i
         ></a>
-        <a href="/share/<%= shorten.hash %>" class="btn btn-success">
+        <a
+          href="<%= shorten.share %>"
+          onclick="window.open(this.href,'_blank','width:500;height:500');return false;"
+          class="btn btn-success"
+        >
           <i class="fa-regular fa-share-from-square"></i
         ></a>
         <a href="/delete/<%= shorten.hash %>" class="btn btn-danger"
