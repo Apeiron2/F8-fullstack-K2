@@ -5,6 +5,7 @@
       <th>Liên kết rút gọn</th>
       <th>Liên kết gốc</th>
       <th>Mật khẩu</th>
+      <th>An toàn</th>
       <th>Lượt truy cập</th>
       <th>Thời gian tạo</th>
       <th>Hành động</th>
@@ -36,6 +37,9 @@
         <button class="btn btn-secondary passwordBtn">Xem</button>
         <span style="cursor: pointer"><%= shorten.password %></span>
         <% } %>
+      </td>
+      <td>
+        <input type="checkbox" <%= shorten.status?"checked":"" %> disabled>
       </td>
       <td><%= shorten.clicked %></td>
       <td><%= shorten.time_ago %></td>

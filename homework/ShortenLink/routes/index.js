@@ -41,6 +41,9 @@ router.get("/", async function (req, res, next) {
 });
 
 router.post("/", shortenController.create);
+router.get("/edit/:hash", (req, res) => {
+  return res.redirect("/");
+});
 router.post("/edit/:hash", shortenController.update);
 router.get("/delete/:hash", shortenController.delete);
 
