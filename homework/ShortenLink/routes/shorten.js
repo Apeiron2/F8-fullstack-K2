@@ -3,7 +3,7 @@ var router = express.Router();
 const qrcode = require("qrcode");
 const { User, Shorten } = require("../models/index");
 router.get("/:hash", async (req, res) => {
-  const { name } = req.user;
+  const name = req?.user?.name;
   const { hash } = req.params;
   const shortenInstance = await Shorten.findOne({ where: { hash } });
   if (shortenInstance) {
