@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Black_list_token extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,34 +9,29 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasMany(models.Shorten, {
-        foreignKey: "user_id",
-        as: "shortens",
-        onDelete: "CASCADE",
-      });
     }
   }
-  User.init(
+  Black_list_token.init(
     {
       id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
+        type: DataTypes.INTEGER(),
         autoIncrement: true,
+        primaryKey: true,
       },
-      name: DataTypes.STRING(100),
-      email: DataTypes.STRING(100),
-      password: DataTypes.STRING(100),
-      provider: DataTypes.STRING(20),
-      status: DataTypes.BOOLEAN,
-      refresh_token: DataTypes.STRING,
+      token: {
+        type: DataTypes.STRING(),
+      },
+      expired: {
+        type: DataTypes.DATE(),
+      },
     },
     {
       sequelize,
-      modelName: "User",
-      tableName: "users",
+      modelName: "Black_list_token",
+      tableName: "black_list_tokens",
       createdAt: "created_at",
       updatedAt: "updated_at",
     }
   );
-  return User;
+  return Black_list_token;
 };

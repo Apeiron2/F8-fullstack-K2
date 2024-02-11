@@ -9,26 +9,31 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasMany(models.Shorten, {
-        foreignKey: "user_id",
-        as: "shortens",
-        onDelete: "CASCADE",
-      });
     }
   }
   User.init(
     {
       id: {
         type: DataTypes.INTEGER,
-        primaryKey: true,
         autoIncrement: true,
+        primaryKey: true,
       },
-      name: DataTypes.STRING(100),
-      email: DataTypes.STRING(100),
-      password: DataTypes.STRING(100),
-      provider: DataTypes.STRING(20),
-      status: DataTypes.BOOLEAN,
-      refresh_token: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING(60),
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+      },
+      password: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+      },
+      status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     {
       sequelize,

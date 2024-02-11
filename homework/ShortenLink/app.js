@@ -1,6 +1,7 @@
 require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
+const cors = require("cors");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
@@ -12,6 +13,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var authRouter = require("./routes/auth");
 var shortenRouter = require("./routes/shorten");
+var apiRouter = require("./routes/api");
 
 // Middlewares
 const authMiddleware = require("./middlewares/auth.middleware");
@@ -22,6 +24,17 @@ const passportLocal = require("./passports/passport.local");
 const passportFacebook = require("./passports/passport.facebook");
 
 var app = express();
+var whitelist = ["http://127.0.0.1:5500"];
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+app.use(cors(corsOptions));
 app.use(
   session({
     secret: "apeiron",
@@ -54,6 +67,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use("/api", apiRouter);
 app.use("/shorten", shortenRouter);
 app.use("/auth", guestMiddleware, authRouter);
 app.use(authMiddleware);
