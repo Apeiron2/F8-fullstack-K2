@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>Users</h1>
+  <a href="/add" class="btn btn-primary my-3">Thêm mới</a>
+  <table class="table table-bordered">
+    <thead>
+      <th>STT</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Status</th>
+      <th>Created At</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      <% users.forEach((users,index) => { %>
+      <tr class="text-center">
+        <td><%= index+1 %></td>
+        <td><%= users.id %></td>
+        <td><%= users.name %></td>
+        <td><%= users.email %></td>
+        <td><%= users.status %></td>
+        <td><%= moment(users.created_at).format('DD/MM/YYYY HH:SS') %></td>
+        <td>
+          <button class="btn btn-warning d-inline">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-danger d-inline">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

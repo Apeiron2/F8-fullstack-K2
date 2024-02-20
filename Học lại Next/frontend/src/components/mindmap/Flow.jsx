@@ -3,88 +3,145 @@ import ReactFlow, {
   Background,
   Controls,
   MiniMap,
-  useNodesState,
-  useEdgesState,
   useReactFlow,
+  applyEdgeChanges,
+  applyNodeChanges,
 } from "reactflow";
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import "reactflow/dist/style.css";
-import CustomNode from "@/components/mindmap/CustomNode";
+import { CustomNode } from "@/components/mindmap/CustomNode";
+import { useDispatch, useSelector } from "react-redux";
+import { elementSlice, fetchMindmap } from "@/redux/slices/elementSlice";
+import { CustomEdge } from "./CustomEdge";
+const {
+  updateNodes,
+  updateEdges,
+  addElement,
+  addEdge,
+  deleteNode,
+  deleteEdge,
+} = elementSlice.actions;
+const nodeTypes = {
+  custom: CustomNode,
+};
+const edgeTypes = {
+  custom: CustomEdge,
+};
 
-const initialNodes = [
-  {
-    id: "1",
-    data: { label: "Hello" },
-    position: { x: 0, y: 0 },
-    type: "default",
-  },
-  {
-    id: "2",
-    data: { label: "Hello 2 " },
-    position: { x: 100, y: 100 },
-    type: "default",
-  },
-  {
-    id: "3",
-    data: { label: "Hello 3" },
-    position: { x: 100, y: 200 },
-    type: "default",
-  },
-  {
-    id: "4",
-    data: { label: "New Node" },
-    position: { x: 200, y: 200 },
-    type: "default",
-  },
-];
+export default function Flow({ mindmap }) {
+  useEffect(() => {
+    dispatch(fetchMindmap(mindmap));
+    return undefined;
+  }, []);
+  const nodes = useSelector((state) => state.element.nodes);
+  const edges = useSelector((state) => state.element.edges);
+  const dispatch = useDispatch();
+  let [newId, setNewId] = useState(+nodes[nodes.length - 1].id);
+  const sourceNodeId = useRef(null);
+  const selectedNode = useRef(null);
+  const selectedEdge = useRef(null);
+  const onNodesChange = (changes) => {
+    const updatedNodes = applyNodeChanges(changes, nodes);
+    dispatch(updateNodes(updatedNodes));
+  };
 
-const initialEdges = [
-  { id: "1-2", source: "1", target: "2", label: "to the", type: "step" },
-];
-export default function Flow() {
-  let [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  let [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = useCallback(
-    (connection) => {
-      setEdges([...edges, connection]);
+  const onEdgesChange = (changes) => {
+    const updatedEdges = applyEdgeChanges(changes, edges);
+    dispatch(updateEdges(updatedEdges));
+  };
+
+  const onConnect = useCallback((edge) => {
+    // addEdge nếu kết nối thành công
+    if (edge.source !== edge.target) {
+      dispatch(addEdge(edge));
+    }
+    sourceNodeId.current = null;
+  }, []);
+
+  const onConnectStart = useCallback(
+    (e) => {
+      // Xác định id của node được kéo
+      if (e.target.dataset.handlepos === "bottom") {
+        sourceNodeId.current = e.target.dataset.nodeid;
+      }
+      if (e.target.dataset.handlepos === "top") {
+        sourceNodeId.current = null;
+      }
     },
-    [setEdges]
+    [sourceNodeId]
   );
   const { screenToFlowPosition } = useReactFlow();
-  const onConnectEnd = useCallback(
-    (e) => {
-      if (!e.target.classList.contains("react-flow__pane")) return;
-      const newId = (nodes.length + 1).toString();
-      const newNode = {
-        id: newId,
-        data: { label: "New Node" },
-        position: screenToFlowPosition({ x: e.clientX, y: e.clientY }),
-        type: "default",
+  const onConnectEnd = (e) => {
+    if (
+      e.target.classList.contains("react-flow__pane") &&
+      sourceNodeId.current
+    ) {
+      // addElement khi kéo ra vị trí trống từ nút source(bottom)
+      setNewId(++newId);
+      const position = screenToFlowPosition({
+        // Chỉnh spawn về giữa node
+        x: e.clientX - 120,
+        y: e.clientY - 30,
+      });
+      const payload = {
+        id: newId.toString(),
+        source: sourceNodeId.current,
+        position,
       };
-      const newEdge = {
-        source: "1",
-        target: newId,
-      };
-      setNodes([...nodes, newNode]);
-      setEdges([...edges, newEdge]);
-    },
-    [edges]
-  );
-  const nodeTypes = useMemo(
-    () => ({
-      custom: CustomNode,
-    }),
-    []
-  );
+
+      dispatch(addElement(payload));
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("keyup", (e) => {
+      if (
+        e.key === "Delete" &&
+        selectedNode.current &&
+        selectedNode.current !== "1"
+      ) {
+        dispatch(deleteNode(selectedNode.current));
+        selectedNode.current = null;
+      }
+      if (e.key === "Delete" && selectedEdge.current) {
+        dispatch(deleteEdge(selectedEdge.current));
+        selectedEdge.current = null;
+      }
+    });
+    return document.removeEventListener("keyup", (e) => {
+      if (
+        e.key === "Delete" &&
+        selectedNode.current &&
+        selectedNode.current !== "1"
+      ) {
+        dispatch(deleteNode(selectedNode.current));
+        selectedNode.current = null;
+      }
+      if (e.key === "Delete" && selectedEdge.current) {
+        dispatch(deleteEdge(selectedEdge.current));
+        selectedEdge.current = null;
+      }
+    });
+  }, []);
+
   return (
     <ReactFlow
-      nodes={nodes}
       nodeTypes={nodeTypes}
+      edgeTypes={edgeTypes}
+      nodes={nodes}
       onNodesChange={onNodesChange}
       edges={edges}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
+      onConnectStart={onConnectStart}
       onConnectEnd={onConnectEnd}
+      onNodeClick={(e, node) => {
+        selectedNode.current = node.id;
+        selectedEdge.current = null;
+      }}
+      onEdgeClick={(e, edge) => {
+        selectedEdge.current = edge.id;
+        selectedNode.current = null;
+      }}
       fitView
     >
       <Background />

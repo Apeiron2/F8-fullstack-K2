@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasMany(models.Mindmap, {
+        as: "mindmap",
+        foreignKey: "user_id",
+      });
     }
   }
   User.init(
@@ -33,6 +37,13 @@ module.exports = (sequelize, DataTypes) => {
       status: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
+      },
+      provider: {
+        type: DataTypes.STRING(30),
+        defaultValue: "local",
+      },
+      refresh_token: {
+        type: DataTypes.STRING(100),
       },
     },
     {
