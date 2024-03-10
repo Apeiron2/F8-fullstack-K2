@@ -1,88 +1,24 @@
-"use client";
-import React from "react";
-// Import the components from Next.js
-import Head from "next/head";
-import Link from "next/link";
+export async function generateMetadata({ params }) {
+  return {
+    title: "Contact",
+    description: "Contact to Mindmaps Flow's Team",
+  };
+}
 
 // Define the component for the contact page
 export default function Contact() {
-  // Define the state variables for the form fields
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [subject, setSubject] = React.useState("");
-  const [message, setMessage] = React.useState("");
-
-  // Define the state variables for the form validation and feedback
-  const [validated, setValidated] = React.useState(false);
-  const [error, setError] = React.useState(null);
-  const [success, setSuccess] = React.useState(null);
-  const [loading, setLoading] = React.useState(false);
-
-  // Define the handler function for the form submission
-  const handleSubmit = async (event) => {
-    // Prevent the default behavior of the form
-    event.preventDefault();
-
-    // Check the validity of the form fields
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.stopPropagation();
-    } else {
-      // Set the loading state to true
-      setLoading(true);
-
-      // Create the data object for the form fields
-      const data = {
-        name,
-        email,
-        subject,
-        message,
-      };
-
-      // Send the data to a server-side function or a third-party service
-      // For example, you can use Next.js API routes or SB Forms
-      // Here we use a mock API for demonstration purposes
-      try {
-        const response = await fetch("https://reqres.in/api/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-        const result = await response.json();
-        // If the response is successful, set the success state to true
-        if (response.ok) {
-          setSuccess(true);
-        } else {
-          // If the response is not successful, set the error state to the error message
-          setError(result.error);
-        }
-      } catch (error) {
-        // If there is an error, set the error state to the error message
-        setError(error.message);
-      }
-
-      // Set the loading state to false
-      setLoading(false);
-    }
-
-    // Set the validated state to true
-    setValidated(true);
-  };
-
   return (
     <>
       <section className="ftco-section">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-md-6 text-center mb-5">
+            <div className="col-md-6 text-center mb-3">
               <h2 className="heading-section">Contact Form</h2>
             </div>
           </div>
           <div className="row justify-content-center ">
             <div className="col-lg-10 col-md-12">
-              <div className="wrapper border border-5 border-primary p-1 rounded-3">
+              <div className="wrapper">
                 <div className="row no-gutters">
                   <div className="col-md-7 d-flex align-items-stretch">
                     <div className="contact-wrap w-100 p-md-5 p-4">

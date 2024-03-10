@@ -2,16 +2,14 @@
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
 import { ReactFlowProvider } from "reactflow";
-import Flow from "./Flow";
-import SaveBtn from "./SaveBtn";
-import { useEffect } from "react";
 
-export default function FlowProvider({ mindmap }) {
+import FlowContext from "./FlowContext";
+
+export default function FlowProvider({ mindmap, edit }) {
   return (
     <ReactFlowProvider>
       <Provider store={store}>
-        <SaveBtn />
-        <Flow mindmap={mindmap} />
+        <FlowContext mindmap={mindmap} edit={edit} />
       </Provider>
     </ReactFlowProvider>
   );

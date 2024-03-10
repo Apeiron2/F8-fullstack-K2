@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="py-5 mt-3 row">
+    <footer className="py-5 row">
       <div className="row">
         <div className="col-6 col-md-2 mb-3">
           <h5>Product</h5>

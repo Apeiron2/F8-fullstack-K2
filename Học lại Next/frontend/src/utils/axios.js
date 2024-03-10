@@ -1,15 +1,16 @@
 "use client";
 import axios from "axios";
+import Cookies from "js-cookie";
 const axiosInstance = axios.create({
   baseURL: process.env.HOST,
   headers: { "Content-Type": "application/json" },
 });
-axios.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   function (config) {
     // Do something before request is sent
-    const { accessToken } = JSON.parse(localStorage.getItem("login_token"));
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${token}`;
+    if (Cookies.get("login_token")) {
+      const { accessToken } = JSON.parse(Cookies.get("login_token"));
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
@@ -18,23 +19,31 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-axios.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const { config, response } = error;
     const originalRequest = config;
-    if (response && response.status === 401) {
+
+    if (
+      response &&
+      response.status === 401 &&
+      originalRequest.url !== "/auth/refresh"
+    ) {
       // Refresh token
-      const { refreshToken } = JSON.parse(localStorage.getItem("login_token"));
+      let refreshToken;
+      if (Cookies.get("login_token")) {
+        refreshToken = JSON.parse(Cookies.get("login_token"));
+      }
       if (refreshToken) {
         // Gọi API refresh token
-        return axios
-          .post("/api/auth/refresh", {
+        return axiosInstance
+          .post("/auth/refresh", {
             refreshToken,
           })
           .then((res) => {
             const { data } = res.data;
-            localStorage.setItem("login_token", data);
+            Cookies.set("login_token", JSON.stringify(data));
             // Cập nhật header với token mới
             originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
             // Gửi lại request ban đầu
@@ -49,6 +58,7 @@ axios.interceptors.response.use(
         // Xử lý trường hợp không có refresh token
         // Ví dụ: logout người dùng
         window.location.href = "/login";
+        // axiosInstance.post("/auth/logout");
       }
     }
     return Promise.reject(error);

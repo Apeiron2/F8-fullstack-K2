@@ -1,8 +1,9 @@
-"use client";
-// Import the components from Next.js
-import Head from "next/head";
-
-import Link from "next/link";
+export async function generateMetadata({ params }) {
+  return {
+    title: "Features",
+    description: "All Features of Mindmaps Flow",
+  };
+}
 
 // Define the features of the web mindmap app
 const features = [
@@ -33,15 +34,6 @@ const features = [
 export default function Features() {
   return (
     <div>
-      <Head>
-        <title>Web Mindmap - Features</title>
-        <meta
-          name="description"
-          content="Learn about the features of the web mindmap app"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <div className="container">
         <h1 className="text-center my-4">Features</h1>
         <div className="row">
@@ -64,9 +56,6 @@ export default function Features() {
             </div>
           ))}
         </div>
-        <p className="text-center my-4">
-          <Link href="/">Back to home</Link>
-        </p>
       </div>
     </div>
   );

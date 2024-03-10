@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const { User, Mindmap } = require("../../models/index");
 const crypto = require("crypto");
 module.exports = {
@@ -7,6 +8,7 @@ module.exports = {
     try {
       const mindmaps = await Mindmap.findAll({
         where: { user_id },
+        order: [["created_at", "desc"]],
       });
       Object.assign(response, {
         status: 200,
@@ -22,16 +24,61 @@ module.exports = {
     res.status(response.status).json(response);
   },
   find: async (req, res) => {
-    const response = {
-      status: 200,
-      message: "Success",
-      data: req.mindmap,
-    };
+    const { id } = req.params;
+    const response = {};
+    try {
+      const mindmap = await Mindmap.findByPk(id);
+      const { JWT_SECRET } = process.env;
+      const token = req.get("Authorization")?.split(" ")[1];
+      if (token) {
+        const { userId } = jwt.verify(token, JWT_SECRET);
+        if (userId == mindmap.user_id) {
+          Object.assign(response, {
+            status: 200,
+            message: "Success",
+            data: mindmap,
+            edit: true,
+          });
+        } else {
+          if (mindmap.private) {
+            Object.assign(response, {
+              status: 404,
+              message: "Not Found",
+            });
+          } else {
+            Object.assign(response, {
+              status: 200,
+              message: "Success",
+              data: mindmap,
+              edit: false,
+            });
+          }
+        }
+      } else {
+        if (mindmap.private) {
+          Object.assign(response, {
+            status: 404,
+            message: "Not Found",
+          });
+        } else {
+          mindmap.edit = false;
+          Object.assign(response, {
+            status: 200,
+            message: "Success",
+            data: mindmap,
+          });
+        }
+      }
+    } catch (error) {
+      Object.assign(response, {
+        status: 500,
+        message: "Server Error",
+      });
+    }
     res.status(response.status).json(response);
   },
   create: async (req, res) => {
     const user_id = req.user.id;
-    //body={ title, description, data, private }
     const body = req.body;
     const id = crypto.randomBytes(16).toString("hex");
     const response = {};
@@ -53,9 +100,10 @@ module.exports = {
   update: async (req, res) => {
     const { id } = req.params;
     const method = req.method;
-    const user_id = req.user.id;
+    // const user_id = req.user.id;
     //body={ title, description, data, private }
-    const body = { ...req.body, user_id };
+    const body = req.body;
+    console.log(body);
     const response = {};
     if (method === "PUT") {
       body = Object.assign(

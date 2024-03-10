@@ -11,7 +11,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import "reactflow/dist/style.css";
 import { CustomNode } from "@/components/mindmap/CustomNode";
 import { useDispatch, useSelector } from "react-redux";
-import { elementSlice, fetchMindmap } from "@/redux/slices/elementSlice";
+import { elementSlice } from "@/redux/slices/elementSlice";
 import { CustomEdge } from "./CustomEdge";
 const {
   updateNodes,
@@ -28,15 +28,12 @@ const edgeTypes = {
   custom: CustomEdge,
 };
 
-export default function Flow({ mindmap }) {
-  useEffect(() => {
-    dispatch(fetchMindmap(mindmap));
-    return undefined;
-  }, []);
-  const nodes = useSelector((state) => state.element.nodes);
-  const edges = useSelector((state) => state.element.edges);
+export default function Flow({ edit }) {
+  const nodes = useSelector((state) => state.element.data.nodes);
+  const edges = useSelector((state) => state.element.data.edges);
+
   const dispatch = useDispatch();
-  let [newId, setNewId] = useState(+nodes[nodes.length - 1].id);
+  let [newId, setNewId] = useState(+nodes?.[nodes?.length - 1]?.id);
   const sourceNodeId = useRef(null);
   const selectedNode = useRef(null);
   const selectedEdge = useRef(null);
@@ -107,6 +104,7 @@ export default function Flow({ mindmap }) {
         selectedEdge.current = null;
       }
     });
+
     return document.removeEventListener("keyup", (e) => {
       if (
         e.key === "Delete" &&

@@ -4,12 +4,15 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { object, string } from "yup";
 import instance from "@/utils/axios";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const router = useRouter();
+  const [isLoading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const email = e.target[0].value;
     const password = e.target[1].value;
     let userSchema = object({
@@ -28,28 +31,45 @@ const Login = () => {
         .post("/auth/login", body)
         .then((res) => {
           if (res.status == 200) {
-            localStorage.setItem("login-token", JSON.stringify(res.data.data));
-            router.push("/");
+            Cookies.set("login_token", JSON.stringify(res.data.data), {
+              secure: true,
+            });
+            instance
+              .get("/auth/profile")
+              .then((res) => {
+                Cookies.set("profile", JSON.stringify(res.data.data), {
+                  secure: true,
+                });
+                window.location.href = "/";
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           }
         })
         .catch((err) => {
-          if (err.response.data.status == 400) {
+          console.log(err);
+          if (err?.response?.data?.status == 400) {
             setErrors({ fail: "Email or password is incorrect" });
           } else {
             setErrors({ fail: "An error has occurred! Try again" });
           }
+        })
+        .finally(() => {
+          setLoading(false);
         });
     } catch (error) {
       const errors = Object.fromEntries(
         error.inner.map((item) => [item.path, item.message])
       );
       setErrors(errors);
+      setLoading(false);
     }
   };
   return (
     <div className="d-flex justify-content-center align-items-center">
       <form
-        className="w-25 border border-2 rounded-3 p-3"
+        className="w-50 border border-2 rounded-5 p-5"
         onSubmit={handleSubmit}
       >
         <h1 className="text-center text-primary mb-4">LOGIN</h1>
@@ -103,7 +123,9 @@ const Login = () => {
           </div>
         </div>
 
-        <button className="btn btn-primary btn-block mb-4">Sign in</button>
+        <button className="btn btn-primary btn-block mb-4">
+          {isLoading ? "Loading..." : "Sign in"}
+        </button>
 
         <div className="text-center">
           <p>

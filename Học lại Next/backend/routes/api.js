@@ -17,12 +17,7 @@ router.delete("/v1/users/:id", userController.delete);
 
 // Mindmap
 router.get("/v1/mindmaps", authMiddleware, mindmapController.getAll);
-router.get(
-  "/v1/mindmaps/:id",
-
-  mindmapMiddleware,
-  mindmapController.find
-);
+router.get("/v1/mindmaps/:id", mindmapController.find);
 router.post("/v1/mindmaps", authMiddleware, mindmapController.create);
 router.patch(
   "/v1/mindmaps/:id",
@@ -47,6 +42,6 @@ router.delete(
 router.post("/v1/auth/login", authController.login);
 router.get("/v1/auth/profile", authMiddleware, authController.profile);
 router.post("/v1/auth/logout", authMiddleware, authController.logout);
-router.post("/v1/auth/refresh", authMiddleware, authController.refresh);
+router.post("/v1/auth/refresh", authController.refresh);
 
 module.exports = router;

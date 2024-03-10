@@ -1,7 +1,9 @@
-"use client";
-// Import the components from Next.js
-import Head from "next/head";
-import Link from "next/link";
+export async function generateMetadata({ params }) {
+  return {
+    title: "Pricing",
+    description: "Upgrade your Mindmaps Flow account",
+  };
+}
 
 // Define the pricing plans of the web mindmap app
 const plans = [
@@ -47,16 +49,6 @@ const plans = [
 export default function Pricing() {
   return (
     <div>
-      <Head>
-        <title>Web Mindmap - Pricing</title>
-        <meta
-          name="description"
-          content="Learn about the pricing plans of the web mindmap app"
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-      </Head>
-
       <div className="container">
         <h1 className="text-center my-4">Pricing</h1>
         <p className="text-center my-4">
@@ -88,9 +80,6 @@ export default function Pricing() {
             </div>
           ))}
         </div>
-        <p className="text-center my-4">
-          <Link href="/">Back to home</Link>
-        </p>
       </div>
     </div>
   );

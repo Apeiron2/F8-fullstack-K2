@@ -1,25 +1,41 @@
 "use client";
 import { clsx } from "clsx";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import instance from "@/utils/axios";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { useEffect, useState } from "react";
 
-const Header = async () => {
-  const { user } = useUser;
+import axiosInstance from "@/utils/axios";
+import Cookies from "js-cookie";
+const Header = () => {
+  const [user, setUser] = useState(undefined);
+  useEffect(() => {
+    if (Cookies.get("profile") && Cookies.get("login_token")) {
+      setUser(JSON.parse(Cookies.get("profile")));
+    }
+  }, []);
+  const router = useRouter();
   const pathname = usePathname();
   const clsxNavLink = (href) => {
     const className = clsx("nav-link px-2 text-decoration-none", {
-      active: pathname.startsWith(href),
+      active: pathname == href,
     });
     return className;
   };
+  const handleLogout = () => {
+    axiosInstance
+      .post("auth/logout")
+      .then((res) => {
+        Cookies.remove("login_token");
+        Cookies.remove("profile");
+        window.location.href = "/";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
-    <header
-      style={{ height: "8vh" }}
-      className="row d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
-    >
+    <header className="row d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-3 border-bottom">
       <div className="col-md-3 mb-2 mb-md-0">
         <Link
           href="/"
@@ -31,7 +47,7 @@ const Header = async () => {
 
       <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 nav-pills gap-3">
         <li className="nav-item">
-          <Link href="/" className={clsxNavLink("/users")}>
+          <Link href="/" className={clsxNavLink("/")}>
             Home
           </Link>
         </li>
@@ -59,16 +75,16 @@ const Header = async () => {
 
       {user ? (
         <div className="col-md-3 text-end d-flex align-items-center">
-          <span className="text-start">Hi, {user.name}</span>
+          <span className="text-start">Hi, {user?.name}</span>
           <Link
-            href="/mindmap"
+            href="/mindmaps"
             className="text-primary fw-bold fs-5 text-decoration-none mx-3"
           >
             Mindmap
           </Link>
-          <Link href="/logout" className="btn btn-danger">
+          <button className="btn btn-danger" onClick={handleLogout}>
             Logout
-          </Link>
+          </button>
         </div>
       ) : (
         <div className="col-md-3 text-end">

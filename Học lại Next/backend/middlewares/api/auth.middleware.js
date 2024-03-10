@@ -6,10 +6,17 @@ module.exports = async (req, res, next) => {
   const response = {};
   const token = req.get("Authorization")?.split(" ")[1];
   if (!token) {
-    Object.assign(response, {
-      status: 401,
-      mess: "Unauthorized",
-    });
+    if (req.path == "/v1/auth/profile") {
+      Object.assign(response, {
+        status: 404,
+        message: "Not Found",
+      });
+    } else {
+      Object.assign(response, {
+        status: 401,
+        message: "Unauthorized",
+      });
+    }
   } else {
     try {
       const existToken = await Black_list_token.findOne({ where: { token } });
@@ -28,7 +35,7 @@ module.exports = async (req, res, next) => {
     } catch (error) {
       Object.assign(response, {
         status: 401,
-        mess: "Unauthorized",
+        message: "Unauthorized",
       });
     }
   }

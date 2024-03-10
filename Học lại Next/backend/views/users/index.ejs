@@ -1,26 +1,32 @@
 <div class="container">
   <h1>Users</h1>
-  <a href="/add" class="btn btn-primary my-3">Thêm mới</a>
+  <a href="/users/add" class="btn btn-primary my-3">Thêm mới</a>
   <table class="table table-bordered">
     <thead>
-      <th>STT</th>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Status</th>
-      <th>Created At</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <tr>
+        <th>STT</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Created At</th>
+        <th>Mindmaps</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
     </thead>
     <tbody>
-      <% users.forEach((users,index) => { %>
+      <% users.forEach((user,index) => { %>
       <tr class="text-center">
         <td><%= index+1 %></td>
-        <td><%= users.id %></td>
-        <td><%= users.name %></td>
-        <td><%= users.email %></td>
-        <td><%= users.status %></td>
-        <td><%= moment(users.created_at).format('DD/MM/YYYY HH:SS') %></td>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.status %></td>
+        <td><%= moment(user.created_at).format('DD/MM/YYYY HH:MM') %></td>
+        <td>
+          <a href=<%= `/users/${user.id}/mindmaps`%> class="btn btn-outline-success">Mindmaps</a>
+        </td>
         <td>
           <button class="btn btn-warning d-inline">
             <i class="fa-regular fa-pen-to-square"></i>

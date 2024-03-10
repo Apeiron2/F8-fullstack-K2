@@ -5,19 +5,28 @@ module.exports = async (req, res, next) => {
   const user_id = req?.user?.id;
   const method = req.method;
   const response = {};
+
   try {
     const mindmap = await Mindmap.findByPk(id);
     if (!mindmap) {
       throw new Error(404);
     }
-    if (method === "GET" && mindmap.user_id !== user_id) {
-      if (mindmap.private) {
-        throw new Error(403);
-      } else {
-        req.mindmap = mindmap;
-        return next();
-      }
-    }
+    // if (method === "GET") {
+    //   if (!user_id) {
+    //     if (!mindmap.private) {
+    //       req.mindmap = mindmap;
+    //       return next();
+    //     }
+    //     throw new Error(403);
+    //   }
+    //   if (mindmap.user_id !== user_id) {
+    //     if (mindmap.private) {
+    //       throw new Error(403);
+    //     }
+    //   }
+    //   req.mindmap = mindmap;
+    //   return next();
+    // }
     if (mindmap.user_id !== user_id) {
       throw new Error(403);
     }
@@ -35,6 +44,5 @@ module.exports = async (req, res, next) => {
       message: resHTTP[status] ? resHTTP[status] : resHTTP[500],
     });
   }
-
   res.status(response.status).json(response);
 };

@@ -1,5 +1,9 @@
-import mockup from "../../public/images/mindmap_mockup.png";
-
+export async function generateMetadata({ params }) {
+  return {
+    title: "Home",
+    description: "Mindmaps Flow Website",
+  };
+}
 export default function Home() {
   return (
     <div className="bg-indigo-100 py-6 md:py-12">

@@ -1,21 +1,15 @@
-// Import the components from Next.js
-import Head from "next/head";
 import Link from "next/link";
+export async function generateMetadata({ params }) {
+  return {
+    title: "About",
+    description: "About Mindmaps Flow's Team",
+  };
+}
 
 // Define the component for the About page
 export default function About() {
   return (
     <div>
-      <Head>
-        <title>Web Mindmap - About</title>
-        <meta
-          name="description"
-          content="Learn about the creator and the purpose of the web mindmap app"
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-      </Head>
-
       <div className="container">
         <h1 className="text-center my-4">About</h1>
         <div className="row">
@@ -51,14 +45,11 @@ export default function About() {
               creating it. If you have any feedback, questions, or suggestions,
               please feel free to contact me.
             </p>
-            <Link href="/contact" className="btn btn-primary">
+            <Link href="/contact" className="btn btn-outline-primary">
               Contact me
             </Link>
           </div>
         </div>
-        <p className="text-center my-4">
-          <Link href="/">Back to home</Link>
-        </p>
       </div>
     </div>
   );
